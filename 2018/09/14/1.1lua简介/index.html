@@ -134,13 +134,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="凡 若">
-<meta property="og:url" content="http://blog.fanruo.net/index.html">
+  <meta name="description" content="简介Lua（发音： /ˈluːə/）程序设计语言是一个简洁、轻量、可扩展的脚本语言，Lua在葡萄牙语中的意思是月亮。Lua 是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个研究小组，由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueired">
+<meta name="keywords" content="lua">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.1 lua简介">
+<meta property="og:url" content="http://blog.fanruo.net/2018/09/14/1.1lua简介/index.html">
 <meta property="og:site_name" content="凡 若">
+<meta property="og:description" content="简介Lua（发音： /ˈluːə/）程序设计语言是一个简洁、轻量、可扩展的脚本语言，Lua在葡萄牙语中的意思是月亮。Lua 是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个研究小组，由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueired">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-14T12:46:56.895Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="凡 若">
+<meta name="twitter:title" content="1.1 lua简介">
+<meta name="twitter:description" content="简介Lua（发音： /ˈluːə/）程序设计语言是一个简洁、轻量、可扩展的脚本语言，Lua在葡萄牙语中的意思是月亮。Lua 是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个研究小组，由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueired">
 
 
 
@@ -149,7 +154,7 @@
 
 
 
-  <link rel="canonical" href="http://blog.fanruo.net/"/>
+  <link rel="canonical" href="http://blog.fanruo.net/2018/09/14/1.1lua简介/"/>
 
 
 
@@ -159,7 +164,7 @@
   };
 </script>
 
-  <title>凡 若</title>
+  <title>1.1 lua简介 | 凡 若</title>
   
 
 
@@ -206,8 +211,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,7 +252,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
@@ -324,178 +328,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.fanruo.net/2018/09/14/1.2lua环境安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Frank Yu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凡 若">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/14/1.2lua环境安装/" itemprop="url">
-                  1.2 lua环境安装
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-09-14 20:40:04 / Modified: 20:46:16" itemprop="dateCreated datePublished" datetime="2018-09-14T20:40:04+08:00">2018-09-14</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/lua/" itemprop="url" rel="index"><span itemprop="name">lua</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          lua 环境安装linux 系统安装lualinux &amp; Mac上安装 Lua 安装非常简单，只需要下载源码包并在终端解压编译即可，本文使用了5.3.4版本进行安装：12345curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gztar zxf lua-5.3.4.tar.gzcd lua-5.3.4make linux testmake install
-mac 系统安装lua12345curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gztar zxf lua-5.3.4.tar.gzcd lua-5.3.4make macosx testmake install
-
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/14/1.2lua环境安装/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-	  <div>
-    	
-	</div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -527,11 +362,7 @@ mac 系统安装lua12345curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gztar zx
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/14/1.1lua简介/" itemprop="url">
-                  1.1 lua简介
-                </a>
+          <h1 class="post-title" itemprop="name headline">1.1 lua简介
               
             
           </h1>
@@ -612,19 +443,31 @@ mac 系统安装lua12345curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gztar zx
       
 
       
-        
-          
-          简介Lua（发音： /ˈluːə/）程序设计语言是一个简洁、轻量、可扩展的脚本语言，Lua在葡萄牙语中的意思是月亮。Lua 是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个研究小组，由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueiredo所组成并于1993年开发。
-Lua是一种轻量语言，它的官方版本只包括一个精简的核心和最基本的库。这使得Lua体积小、启动速度快。它用ANSI C 语言编写并以源代码形式开放，编译后仅仅一百余K，可以很方便的嵌入别的程序里。和许多“大而全”的语言不一样，网路通讯、图形界面等都没有默认提供。但是Lua可以很容易地被扩展：
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/14/1.1lua简介/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Lua（发音： /ˈluːə/）程序设计语言是一个简洁、轻量、可扩展的脚本语言，Lua在葡萄牙语中的意思是月亮。<br>Lua 是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个研究小组，由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueiredo所组成并于1993年开发。</p>
+<p>Lua是一种轻量语言，它的官方版本只包括一个精简的核心和最基本的库。这使得Lua体积小、启动速度快。它用ANSI C 语言编写并以源代码形式开放，编译后仅仅一百余K，可以很方便的嵌入别的程序里。和许多“大而全”的语言不一样，网路通讯、图形界面等都没有默认提供。但是Lua可以很容易地被扩展：由宿主语言（通常是C或C++）提供这些功能，Lua可以使用它们，就像是本来就内置的功能一样。事实上，现在已经有很多成熟的扩展模块可供选用。</p>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol>
+<li>Lua的目标是成为一个很容易嵌入其它语言中使用的语言。大多数程序员也认为它的确做到了这一点。</li>
+<li>很多应用程序使用Lua作为自己的嵌入式脚本语言，以此来实现可配置性、可扩展性。</li>
+</ol>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ol>
+<li><strong>轻量级：</strong> 它是使用ANSI C语言编写并以源代码形式开放，编译后仅仅一百余K，可以很方便的嵌入别的程序里。它的官方版本只包括一个精简的核心和最基本的库。这使得Lua体积小、启动速度快。和许多“大而全”的语言不一样，网路通讯、图形界面等都没有默认提供。但是Lua可以很容易地被扩展：由宿主语言（通常是C或C++）提供这些功能，Lua可以使用它们，就像是本来就内置的功能一样。事实上，现在已经有很多成熟的扩展模块可供选用。</li>
+<li><strong>可扩展：</strong> Lua提供了非常易于使用的扩展接口和机制：由宿主语言(通常是C或C++)提供这些功能，Lua可以使用它们，就像是本来就内置的功能一样。</li>
+<li><strong>支持多重编程范式：</strong> 支持面向过程(procedure-oriented)编程和函数式编程(functional programming)。</li>
+<li><strong>自动内存管理：</strong> 支持增量式垃圾收集策略。</li>
+<li><strong>原生数据类型少：</strong> 它只提供了数字（缺省是双精度浮点数，可配置）、布尔量、字符串、表、子程序、协程（coroutine）以及用户自定义数据这几种。但是其处理表和字符串的效率非常之高，加上元表的支持，开发者可以高效的模拟出需要的复杂数据类型（比如数组，哈希表，集合，对象等）。</li>
+<li><strong>可以用于嵌入式硬件:</strong> 不仅可以嵌入其他编程语言，而且可以嵌入微处理器中.</li>
+<li><strong>支持协程：</strong> 有内建的，与操作系统无关的协作式多线程（coroutine）支持。</li>
+</ol>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ol>
+<li>游戏开发</li>
+<li>独立应用脚本</li>
+<li>Web 应用脚本</li>
+<li>扩展和数据库插件如：MySQL Proxy 和 MySQL WorkBench</li>
+<li>安全系统，如入侵检测系统</li>
+</ol>
+<h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"hello world"</span>)</span><br></pre></td></tr></table></figure>
+<p>lua 打印<code>hello workd</code>只需调用<code>print()</code>函数即可</p>
+
       
     </div>
 
@@ -636,23 +479,99 @@ Lua是一种轻量语言，它的官方版本只包括一个精简的核心和�
 
 	  <div>
     	
+      	
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/09/14/1.1lua简介/">1.1 lua简介</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 Frank Yu 的个人博客">Frank Yu</a></p>
+  <p><span>原始链接:</span><a href="/2018/09/14/1.1lua简介/" title="1.1 lua简介">http://blog.fanruo.net/2018/09/14/1.1lua简介/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://blog.fanruo.net/2018/09/14/1.1lua简介/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+
+      	
 	</div>
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat_pay.jpeg" alt="Frank Yu WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/lua/" rel="tag"><i class="fa fa-tag"></i> lua</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/14/1.2lua环境安装/" rel="prev" title="1.2 lua环境安装">
+                1.2 lua环境安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -662,14 +581,19 @@ Lua是一种轻量语言，它的官方版本只包括一个精简的核心和�
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -690,8 +614,17 @@ Lua是一种轻量语言，它的官方版本只包括一个精简的核心和�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -778,6 +711,22 @@ Lua是一种轻量语言，它的官方版本只包括一个精简的核心和�
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特性"><span class="nav-number">3.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景"><span class="nav-number">4.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hello-world"><span class="nav-number">5.</span> <span class="nav-text">hello world</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -919,6 +868,10 @@ Lua是一种轻量语言，它的官方版本只包括一个精简的核心和�
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
 
   
 
