@@ -5,9 +5,9 @@
   <subtitle>初心 读书 知新 生活</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://blog.fanruo.net/"/>
+  <link href="https://m.fanruo.net/"/>
   <updated>2019-05-19T15:47:50.877Z</updated>
-  <id>http://blog.fanruo.net/</id>
+  <id>https://m.fanruo.net/</id>
   
   <author>
     <name>Frank Yu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>2.3 lua 表达式</title>
-    <link href="http://blog.fanruo.net/2019/05/19/2-3-lua-%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    <id>http://blog.fanruo.net/2019/05/19/2-3-lua-表达式/</id>
+    <link href="https://m.fanruo.net/2019/05/19/2-3-lua-%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>https://m.fanruo.net/2019/05/19/2-3-lua-表达式/</id>
     <published>2019-05-19T15:44:58.000Z</published>
     <updated>2019-05-19T15:47:50.877Z</updated>
     
@@ -39,17 +39,17 @@
     
     </summary>
     
-      <category term="lua" scheme="http://blog.fanruo.net/categories/lua/"/>
+      <category term="lua" scheme="https://m.fanruo.net/categories/lua/"/>
     
     
-      <category term="lua, 表达式" scheme="http://blog.fanruo.net/tags/lua-%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+      <category term="lua, 表达式" scheme="https://m.fanruo.net/tags/lua-%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>2.2 lua 基础数据类型</title>
-    <link href="http://blog.fanruo.net/2019/05/19/2-2-lua-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
-    <id>http://blog.fanruo.net/2019/05/19/2-2-lua-基础数据类型/</id>
+    <link href="https://m.fanruo.net/2019/05/19/2-2-lua-%E5%9F%BA%E7%A1%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    <id>https://m.fanruo.net/2019/05/19/2-2-lua-基础数据类型/</id>
     <published>2019-05-19T15:39:48.000Z</published>
     <updated>2019-05-19T15:40:20.157Z</updated>
     
@@ -64,17 +64,17 @@
     
     </summary>
     
-      <category term="lua" scheme="http://blog.fanruo.net/categories/lua/"/>
+      <category term="lua" scheme="https://m.fanruo.net/categories/lua/"/>
     
     
-      <category term="lua" scheme="http://blog.fanruo.net/tags/lua/"/>
+      <category term="lua" scheme="https://m.fanruo.net/tags/lua/"/>
     
   </entry>
   
   <entry>
     <title>2.1 lua 基本语法</title>
-    <link href="http://blog.fanruo.net/2019/05/19/2-1-lua-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
-    <id>http://blog.fanruo.net/2019/05/19/2-1-lua-基本语法/</id>
+    <link href="https://m.fanruo.net/2019/05/19/2-1-lua-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
+    <id>https://m.fanruo.net/2019/05/19/2-1-lua-基本语法/</id>
     <published>2019-05-19T15:35:04.000Z</published>
     <updated>2019-05-19T15:35:44.251Z</updated>
     
@@ -89,17 +89,17 @@
     
     </summary>
     
-      <category term="lua" scheme="http://blog.fanruo.net/categories/lua/"/>
+      <category term="lua" scheme="https://m.fanruo.net/categories/lua/"/>
     
     
-      <category term="lua" scheme="http://blog.fanruo.net/tags/lua/"/>
+      <category term="lua" scheme="https://m.fanruo.net/tags/lua/"/>
     
   </entry>
   
   <entry>
     <title>1.2 lua环境安装</title>
-    <link href="http://blog.fanruo.net/2018/09/14/1.2lua%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"/>
-    <id>http://blog.fanruo.net/2018/09/14/1.2lua环境安装/</id>
+    <link href="https://m.fanruo.net/2018/09/14/1.2lua%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"/>
+    <id>https://m.fanruo.net/2018/09/14/1.2lua环境安装/</id>
     <published>2018-09-14T12:40:04.000Z</published>
     <updated>2018-09-14T12:46:16.577Z</updated>
     
@@ -114,17 +114,17 @@
     
     </summary>
     
-      <category term="lua" scheme="http://blog.fanruo.net/categories/lua/"/>
+      <category term="lua" scheme="https://m.fanruo.net/categories/lua/"/>
     
     
-      <category term="lua" scheme="http://blog.fanruo.net/tags/lua/"/>
+      <category term="lua" scheme="https://m.fanruo.net/tags/lua/"/>
     
   </entry>
   
   <entry>
     <title>1.1 lua简介</title>
-    <link href="http://blog.fanruo.net/2018/09/14/1.1lua%E7%AE%80%E4%BB%8B/"/>
-    <id>http://blog.fanruo.net/2018/09/14/1.1lua简介/</id>
+    <link href="https://m.fanruo.net/2018/09/14/1.1lua%E7%AE%80%E4%BB%8B/"/>
+    <id>https://m.fanruo.net/2018/09/14/1.1lua简介/</id>
     <published>2018-09-14T12:32:38.000Z</published>
     <updated>2018-09-14T12:46:56.895Z</updated>
     
@@ -139,10 +139,10 @@
     
     </summary>
     
-      <category term="lua" scheme="http://blog.fanruo.net/categories/lua/"/>
+      <category term="lua" scheme="https://m.fanruo.net/categories/lua/"/>
     
     
-      <category term="lua" scheme="http://blog.fanruo.net/tags/lua/"/>
+      <category term="lua" scheme="https://m.fanruo.net/tags/lua/"/>
     
   </entry>
   
