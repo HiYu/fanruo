@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="lua 是一门极其精简的语言，内置类型只要nil,boolean,number等三种基本类型，以及string,table等二种组合类型。没有C/C++ 等语言中的class、struct等复杂类型，这些类型可以通过table来实现。同时，不同于其他语言（如C/C++和java），function在lua中也作为一个一级类型。 nilnil 是一种类型，Lua 将 nil 用于表示“无效值”。">
+<meta name="keywords" content="lua">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.2 lua 基础数据类型">
+<meta property="og:url" content="http://blog.fanruo.net/2019/05/19/2-2-lua-基础数据类型/index.html">
+<meta property="og:site_name" content="凡 若">
+<meta property="og:description" content="lua 是一门极其精简的语言，内置类型只要nil,boolean,number等三种基本类型，以及string,table等二种组合类型。没有C/C++ 等语言中的class、struct等复杂类型，这些类型可以通过table来实现。同时，不同于其他语言（如C/C++和java），function在lua中也作为一个一级类型。 nilnil 是一种类型，Lua 将 nil 用于表示“无效值”。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-19T15:40:20.157Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2.2 lua 基础数据类型">
+<meta name="twitter:description" content="lua 是一门极其精简的语言，内置类型只要nil,boolean,number等三种基本类型，以及string,table等二种组合类型。没有C/C++ 等语言中的class、struct等复杂类型，这些类型可以通过table来实现。同时，不同于其他语言（如C/C++和java），function在lua中也作为一个一级类型。 nilnil 是一种类型，Lua 将 nil 用于表示“无效值”。">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="凡 若" type="application/atom+xml"/>
+
+
+
+  
+  
+  <link rel="canonical" href="http://blog.fanruo.net/2019/05/19/2-2-lua-基础数据类型/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>2.2 lua 基础数据类型 | 凡 若</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凡 若</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">初心 读书 知新 生活</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br/>日程表</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.fanruo.net/2019/05/19/2-2-lua-基础数据类型/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Yu"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凡 若"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">2.2 lua 基础数据类型
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-19 23:39:48 / 修改时间：23:40:20" itemprop="dateCreated datePublished" datetime="2019-05-19T23:39:48+08:00">2019-05-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/lua/" itemprop="url" rel="index"><span itemprop="name">lua</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>lua 是一门极其精简的语言，内置类型只要<code>nil</code>,<code>boolean</code>,<code>number</code>等三种基本类型，以及<code>string</code>,<code>table</code>等二种组合类型。没有C/C++ 等语言中的<code>class</code>、<code>struct</code>等复杂类型，这些类型可以通过<code>table</code>来实现。同时，不同于其他语言（如C/C++和java），<code>function</code>在lua中也作为一个一级类型。</p>
+<h2 id="nil"><a href="#nil" class="headerlink" title="nil"></a>nil</h2><p><code>nil</code> 是一种类型，Lua 将 <code>nil</code> 用于表示“无效值”。</p>
+<ol>
+<li>一个变量在第一次赋值前的默认值是 <code>nil</code></li>
+<li>将<code>nil</code> 赋予给一个全局变量就等同于删除它.</li>
+<li>openresty 中提供了另一种表示空值的类型<code>ngx.null</code>.</li>
+</ol>
+<p><code>nil</code>在lua中有其特殊意义，如果一个变量被设置为<code>nil</code>，就等于说该变量<strong>未定义</strong>，与无穷无尽的其他未定义的变量一样。那么，如果把redis查询为空的结果设置为<code>nil</code>，就无法把”查询为空”和“未定义”区分开来了，例如在一个table中，一个key对应一个value，如果将该value设置为<code>nil</code>，则相当让key凭空消失，这显然是不合理的。所以必须用一个userdata类型的独特的值来表示这种查询为空，但又不等同于未定义的变量，例如<code>ngx.null</code>。同样的情况想必在sql的lua模块中也会出现，用来处理记录中键值查询为空的情况。<br>lua中神奇的<code>nil</code>了。<code>nil</code>是一种类型，该类型只有一个值，这个值就是<code>nil</code>。该值的作用只有一个，表示一个变量不存在。跟C\C++等常规语言不同，”不存在“跟空、0完全是两个概念。在C语言中，一个字符串如果为空，那么它就只有一个为<code>0</code>的<code>\nul</code>结束符，如果对齐进行逻辑判断，则是假。但lua中，只要一个变量不是<code>nil</code>类型或者是boolean类型中的<code>false</code>,则对它进行逻辑判断，结果是真，即使该值是一个数字0，或者是一个空字符串。</p>
+<h2 id="boolean"><a href="#boolean" class="headerlink" title="boolean"></a>boolean</h2><p>布尔类型，可选值 true/false；<strong>Lua 中 nil 和 false 为“假”</strong>，其它所有值均为“真”。比如 0 和空字符串就是“真”；C 或者 Perl 程序员或许会对此感到惊讶。</p>
+<h2 id="number"><a href="#number" class="headerlink" title="number"></a>number</h2><p>Number 类型用于表示实数，和 C/C++ 里面的 <code>double</code> 类型很类似。可以使用数学函数<code>math.floor</code>（ 向下取整） 和 <code>math.ceil</code>（ 向上取整） 进行取整操作。</p>
+<p>一般地，Lua 的 number 类型就是用双精度浮点数来实现的。值得一提的是，LuaJIT 支持所谓的“dual-number”（ 双数） 模式，即 LuaJIT 会根据上下文用整型来存储整数，而用双精度浮点数来存放浮点数。另外，LuaJIT 还支持“长长整型”的大整数（ 在 x86_64 体系结构上则是 64 位整数） 。例如<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span>print(9223372036854775807LL - 1)</span><br><span class="line">9223372036854775806LL</span><br></pre></td></tr></table></figure></p>
+<h2 id="string"><a href="#string" class="headerlink" title="string"></a>string</h2><p>Lua 中有三种方式表示字符串:</p>
+<ol>
+<li>使用一对匹配的单引号。例：’hello’。</li>
+<li>使用一对匹配的双引号。例：”hello”。</li>
+<li>字符串还可以用一种长括号（ 即[[ ]]） 括起来的方式定义。我们把两个正的方括号（ 即[[）间插入 n 个等号定义为第 n 级正长括号。就是说，0 级正的长括号写作 [[ ，一级正的长括号写作 [=[，如此等等。反的长括号也作类似定义；举个例子，4 级反的长括号写作]====]。一个长字符串可以由任何一级的正的长括号开始，而由第一个碰到的同级反的长括号结束。整个词法分析过程将不受分行限制，不处理任何转义符，并且忽略掉任何不同级别的长括号。这种方式描述的字符串可以包含任何东西，当然本级别的反长括号除外。例：[[abc\nbc]]，里面的 “\n” 不会被转义。</li>
+</ol>
+<p><strong>特别注意：</strong>Lua 的字符串是<em>不可改变</em>的值，不能像在 c 语言中那样直接修改字符串的某个字符，而是根据修改要求来创建一个新的字符串。Lua 也<em>不能</em>通过下标来访问字符串的某个字符。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span>local str1 = 'hello world'</span><br><span class="line"><span class="meta">&gt;</span>local str2 = "hello world"</span><br><span class="line"><span class="meta">&gt;</span>local str3 = [["add\name",'hello']]</span><br><span class="line"><span class="meta">&gt;</span>local str4 = [=[string have a [[]].]=]</span><br><span class="line"><span class="meta">&gt;</span>local str5 = 'hello\nworld'</span><br><span class="line"><span class="meta">&gt;</span>local str6 = "hello\nworld"</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span>print(str1)</span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;</span>print(str2)</span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;</span>print(str3)</span><br><span class="line">"add\name",'hello'</span><br><span class="line"><span class="meta">&gt;</span>print(str4)</span><br><span class="line">string have a [[]]</span><br><span class="line"><span class="meta">&gt;</span>print(str5)</span><br><span class="line">hello</span><br><span class="line">world</span><br><span class="line"><span class="meta">&gt;</span>print(str6)</span><br><span class="line">hello</span><br><span class="line">world</span><br></pre></td></tr></table></figure>
+<p><strong>特别注意：</strong> 从上面实例<code>str5</code>和<code>str6</code>可以看出<code>&#39;</code>和<code>&quot;</code>在lua中作用是一致的，二者中的<code>\n</code>这类转义字符都会被转义，这一点要区别一下shell中<code>&#39;</code>和<code>&quot;</code>。</p>
+<p>在 Lua 实现中，Lua 字符串一般都会经历一个“内化”（ intern） 的过程，即两个完全一样的Lua 字符串在 Lua 虚拟机中只会存储一份。每一个 Lua 字符串在创建时都会插入到 Lua 虚拟机内部的一个全局的哈希表中。 这意味着</p>
+<ol>
+<li>创建相同的 Lua 字符串并不会引入新的动态内存分配操作，所以相对便宜（ 但仍有全局哈希表查询的开销。</li>
+<li>内容相同的 Lua 字符串不会占用多份存储空间。</li>
+<li>已经创建好的 Lua 字符串之间进行相等性比较时是 O(1) 时间度的开销，而不是通常见到的 O(n)，比较索引就可以了。</li>
+</ol>
+<h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><p>Table 类型实现了一种抽象的“关联数组”。“关联数组”是一种具有特殊索引方式的数组，索引通常是字符串（ string） 或者 number 类型，但也可以是除 nil 以外的任意类型的值。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> corp = &#123;</span><br><span class="line">web = <span class="string">"www.google.com"</span>, <span class="comment">--索引为字符串，key = "web",</span></span><br><span class="line"><span class="comment">-- value = "www.google.com"</span></span><br><span class="line">telephone = <span class="string">"12345678"</span>, <span class="comment">--索引为字符串</span></span><br><span class="line">staff = &#123;<span class="string">"Jack"</span>, <span class="string">"Scott"</span>, <span class="string">"Gary"</span>&#125;, <span class="comment">--索引为字符串，值也是一个表</span></span><br><span class="line"><span class="number">100876</span>, <span class="comment">--相当于 [1] = 100876，此时索引为数字</span></span><br><span class="line"><span class="comment">-- key = 1, value = 100876</span></span><br><span class="line"><span class="number">100191</span>, <span class="comment">--相当于 [2] = 100191，此时索引为数字</span></span><br><span class="line">[<span class="number">10</span>] = <span class="number">360</span>, <span class="comment">--直接把数字索引给出</span></span><br><span class="line">[<span class="string">"city"</span>] = <span class="string">"Beijing"</span> <span class="comment">--索引为字符串</span></span><br><span class="line">&#125; p</span><br><span class="line">rint(corp.web) <span class="comment">--&gt;output:www.google.com</span></span><br><span class="line"><span class="built_in">print</span>(corp[<span class="string">"telephone"</span>]) <span class="comment">--&gt;output:12345678</span></span><br><span class="line"><span class="built_in">print</span>(corp[<span class="number">2</span>]) <span class="comment">--&gt;output:100191</span></span><br><span class="line"><span class="built_in">print</span>(corp[<span class="string">"city"</span>]) <span class="comment">--&gt;output:"Beijing"</span></span><br><span class="line"><span class="built_in">print</span>(corp.staff[<span class="number">1</span>]) <span class="comment">--&gt;output:Jack</span></span><br><span class="line"><span class="built_in">print</span>(corp[<span class="number">10</span>]) <span class="comment">--&gt;output:360</span></span><br></pre></td></tr></table></figure></p>
+<p>在内部实现上，table 通常实现为一个哈希表、一个数组、或者两者的混合。具体的实现为何种形式，动态依赖于具体的 table 的键分布特点。</p>
+<h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><p>在 Lua 中，函数:</p>
+<ol>
+<li>也是一种数据类型,</li>
+<li>函数可以存储在变量中，</li>
+<li>可以通过参数传递给其他函数，</li>
+<li>还可以作为其他函数的返回值</li>
+</ol>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"in the function"</span>)</span><br><span class="line"><span class="comment">--dosomething()</span></span><br><span class="line"><span class="keyword">local</span> x = <span class="number">10</span></span><br><span class="line"><span class="keyword">local</span> y = <span class="number">20</span></span><br><span class="line"><span class="keyword">return</span> x + y</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">local</span> a = foo <span class="comment">--把函数赋给变量</span></span><br><span class="line"><span class="built_in">print</span>(a())</span><br><span class="line"><span class="comment">--output:</span></span><br><span class="line"><span class="keyword">in</span> the <span class="function"><span class="keyword">function</span></span></span><br><span class="line"><span class="function">30</span></span><br></pre></td></tr></table></figure>
+<p>有名函数的定义可以理解为是匿名函数对变量的赋值。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<p>可以写成如下形式：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">foo = <span class="function"><span class="keyword">function</span> <span class="params">()</span></span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<p>类似地，<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<p>等价于<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> foo = <span class="function"><span class="keyword">function</span> <span class="params">()</span></span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/image/wechat_pay.jpeg" alt="Frank Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Frank Yu</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://blog.fanruo.net/2019/05/19/2-2-lua-基础数据类型/" title="2.2 lua 基础数据类型">http://blog.fanruo.net/2019/05/19/2-2-lua-基础数据类型/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/lua/" rel="tag"># lua</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/19/2-1-lua-基本语法/" rel="next" title="2.1 lua 基本语法">
+                <i class="fa fa-chevron-left"></i> 2.1 lua 基本语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Frank Yu</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/HiYu" title="GitHub &rarr; https://github.com/HiYu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="mailto:zhaoyyuu@gmail.com" title="E-Mail &rarr; mailto:zhaoyyuu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"/></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nil"><span class="nav-number">1.</span> <span class="nav-text">nil</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#boolean"><span class="nav-number">2.</span> <span class="nav-text">boolean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#number"><span class="nav-number">3.</span> <span class="nav-text">number</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string"><span class="nav-number">4.</span> <span class="nav-text">string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#table"><span class="nav-number">5.</span> <span class="nav-text">table</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#function"><span class="nav-number">6.</span> <span class="nav-text">function</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frank Yu</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">6k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">5 分钟</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
