@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="开始C语言之后大多数讲解语言的书籍都会以打印hello world来开始。那么，如何使用lua 打印hello world呢？ 1print(&quot;hello world&quot;) 和python、golang等语言类似，执行这条语句有两种方式：  交互方式尴尬 执行lua脚本文件的方式  交互方式首先，在终端输入lua，进入交互模式 123[work@fanruo ~]$ luaLua 5.1.4  Co">
-<meta name="keywords" content="lua">
+  <meta name="description" content="安装 librdkafka123456# 百度内部CLIB_DIR=&quot;/home/yuhai06/workspace/kafka/librdkafka/&quot; #安装路径wget -r -nH --level=0 --cut-dirs=7 getprod@product.scm.baidu.com:/data/prod-64/baidu/fdw/kafka-client/kafka-client_1-">
+<meta name="keywords" content="kafka,消息队列,librdkafka,MQ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2.1 lua 基本语法">
-<meta property="og:url" content="https://m.fanruo.net/2019/05/19/2-1-lua-基本语法/index.html">
+<meta property="og:title" content="librdkafka 安装与使用">
+<meta property="og:url" content="https://m.fanruo.net/2019/05/20/librdkafka-安装与使用/index.html">
 <meta property="og:site_name" content="凡 若">
-<meta property="og:description" content="开始C语言之后大多数讲解语言的书籍都会以打印hello world来开始。那么，如何使用lua 打印hello world呢？ 1print(&quot;hello world&quot;) 和python、golang等语言类似，执行这条语句有两种方式：  交互方式尴尬 执行lua脚本文件的方式  交互方式首先，在终端输入lua，进入交互模式 123[work@fanruo ~]$ luaLua 5.1.4  Co">
+<meta property="og:description" content="安装 librdkafka123456# 百度内部CLIB_DIR=&quot;/home/yuhai06/workspace/kafka/librdkafka/&quot; #安装路径wget -r -nH --level=0 --cut-dirs=7 getprod@product.scm.baidu.com:/data/prod-64/baidu/fdw/kafka-client/kafka-client_1-">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-19T15:55:20.933Z">
+<meta property="og:updated_time" content="2019-05-20T00:54:21.193Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2.1 lua 基本语法">
-<meta name="twitter:description" content="开始C语言之后大多数讲解语言的书籍都会以打印hello world来开始。那么，如何使用lua 打印hello world呢？ 1print(&quot;hello world&quot;) 和python、golang等语言类似，执行这条语句有两种方式：  交互方式尴尬 执行lua脚本文件的方式  交互方式首先，在终端输入lua，进入交互模式 123[work@fanruo ~]$ luaLua 5.1.4  Co">
+<meta name="twitter:title" content="librdkafka 安装与使用">
+<meta name="twitter:description" content="安装 librdkafka123456# 百度内部CLIB_DIR=&quot;/home/yuhai06/workspace/kafka/librdkafka/&quot; #安装路径wget -r -nH --level=0 --cut-dirs=7 getprod@product.scm.baidu.com:/data/prod-64/baidu/fdw/kafka-client/kafka-client_1-">
 
 
 
@@ -117,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://m.fanruo.net/2019/05/19/2-1-lua-基本语法/"/>
+  <link rel="canonical" href="https://m.fanruo.net/2019/05/20/librdkafka-安装与使用/"/>
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>2.1 lua 基本语法 | 凡 若</title>
+  <title>librdkafka 安装与使用 | 凡 若</title>
   
 
 
@@ -364,7 +364,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2019/05/19/2-1-lua-基本语法/"/>
+    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2019/05/20/librdkafka-安装与使用/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Frank Yu"/>
@@ -381,7 +381,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">2.1 lua 基本语法
+          <h2 class="post-title" itemprop="name headline">librdkafka 安装与使用
 
               
             
@@ -407,7 +407,7 @@
                 
               
 
-              <time title="创建时间：2019-05-19 23:35:04 / 修改时间：23:55:20" itemprop="dateCreated datePublished" datetime="2019-05-19T23:35:04+08:00">2019-05-19</time>
+              <time title="创建时间：2019-05-20 08:53:02 / 修改时间：08:54:21" itemprop="dateCreated datePublished" datetime="2019-05-20T08:53:02+08:00">2019-05-20</time>
             
 
             
@@ -429,7 +429,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/lua/" itemprop="url" rel="index"><span itemprop="name">lua</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/消息队列/" itemprop="url" rel="index"><span itemprop="name">消息队列</span></a></span>
 
                 
                 
@@ -458,7 +458,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">912</span>
+                <span title="本文字数">1.7k</span>
               
 
               
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -492,39 +492,12 @@
       
 
       
-        <h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>C语言之后大多数讲解语言的书籍都会以打印<code>hello world</code>来开始。那么，如何使用lua 打印<code>hello world</code>呢？</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"hello world"</span>)</span><br></pre></td></tr></table></figure>
-<p>和python、golang等语言类似，执行这条语句有两种方式：</p>
-<ol>
-<li>交互方式尴尬</li>
-<li>执行lua脚本文件的方式</li>
-</ol>
-<h3 id="交互方式"><a href="#交互方式" class="headerlink" title="交互方式"></a>交互方式</h3><p>首先，在终端输入<code>lua</code>，进入交互模式</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[work@fanruo ~]$ lua</span><br><span class="line">Lua 5.1.4  Copyright (C) 1994-2008 Lua.org, PUC-Rio</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
-<p>输入<code>lua</code>后会显示一行信息，包括版本、版权信息等，随后是提示符。在提示符后输入<code>print(&quot;hello world&quot;)</code> 回车，就会打印<code>hello world</code>。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> print("hello world")</span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="执行lua脚本文件方式"><a href="#执行lua脚本文件方式" class="headerlink" title="执行lua脚本文件方式"></a>执行lua脚本文件方式</h3><p>将上述语句保存为<code>hello_world.lua</code>文件：</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/lua</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"hello world"</span>)</span><br></pre></td></tr></table></figure>
-<p>在命令输入如下命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[work@fanruo ~]$ lua hello_world.lua</span><br><span class="line">hello world</span><br></pre></td></tr></table></figure></p>
-<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><ol>
-<li><p>单行注释</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"hello world"</span>)</span><br><span class="line"><span class="comment">--单行注释</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>多行注释</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"hello world"</span>)</span><br><span class="line"><span class="comment">--[[</span></span><br><span class="line"><span class="comment">多</span></span><br><span class="line"><span class="comment">行</span></span><br><span class="line"><span class="comment">注</span></span><br><span class="line"><span class="comment">释</span></span><br><span class="line"><span class="comment">--]]</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><code>lua</code>的多行注释有点像<code>html</code>的多行注释。</p>
-<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p><code>lua</code>的标识符和<code>c/c++</code>等语言类似：</p>
-<ol>
-<li>以下划线（_）和字母（a-zA-Z）开头；</li>
-<li>后续加0个或者多个下划线(_)、字母（a-zA-Z）和数字（0-9）；</li>
-<li>最好不要使用下划线加大写字母的标示符，因为Lua的保留字也是这样的。</li>
-<li>不允许使用特殊字符如 @, $, 和 % 来定义标示符；</li>
-<li>Lua 是一个区分大小写的编程语言。</li>
-</ol>
-<p><strong>注意：</strong>事实上，在编程时，即使使用的语言区分大小写也不建议使用大小写来区分标识符。</p>
-<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">and</span> <span class="keyword">break</span> <span class="keyword">do</span> <span class="keyword">else</span> <span class="keyword">elseif</span></span><br><span class="line"><span class="keyword">end</span> <span class="literal">false</span> <span class="keyword">for</span> <span class="function"><span class="keyword">function</span> <span class="title">if</span></span></span><br><span class="line"><span class="function"><span class="title">in</span> <span class="title">local</span> <span class="title">nil</span> <span class="title">not</span> <span class="title">or</span></span></span><br><span class="line"><span class="function"><span class="title">repeat</span> <span class="title">return</span> <span class="title">then</span> <span class="title">true</span> <span class="title">until</span></span></span><br><span class="line"><span class="function"><span class="title">while</span></span></span><br></pre></td></tr></table></figure>
+        <h2 id="安装-librdkafka"><a href="#安装-librdkafka" class="headerlink" title="安装 librdkafka"></a>安装 librdkafka</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 百度内部</span><br><span class="line">CLIB_DIR="/home/yuhai06/workspace/kafka/librdkafka/" #安装路径</span><br><span class="line">wget -r -nH --level=0 --cut-dirs=7 getprod@product.scm.baidu.com:/data/prod-64/baidu/fdw/kafka-client/kafka-client_1-0-0-1_PD_BL/ --user getprod --password getprod --preserve-permissions</span><br><span class="line">cd output</span><br><span class="line">sh install.sh $CLIB_DIR</span><br><span class="line">export LD_LIBRARY_PATH=$CLIB_DIR/lib:$LD_LIBRARY_PATH</span><br></pre></td></tr></table></figure>
+<h2 id="使用-librdkafka"><a href="#使用-librdkafka" class="headerlink" title="使用 librdkafka"></a>使用 librdkafka</h2><p>librdkafka中自带examples，cpp目录下是C++版本的包括两个cpp文件：consumer.cpp和producer.cpp，即生产者和消费者。修改其中<code>brokers</code>变量和<code>topic_str</code>变量的值。</p>
+<p>consumer.cpp文件的第58~63行修改如下（只修改了59行和61行，为看起来直观一些多粘了几行）：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//broker列表，可以用逗号隔开，只写其中一个也可以，这是线下测试环境</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> brokers = <span class="string">"10.159.1.40:19092,10.159.1.41:19092,10.159.1.42:19092"</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> errstr;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> topic_str=<span class="string">"test_mq"</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; topics;</span><br><span class="line">topics.push_back(topic_str);</span><br></pre></td></tr></table></figure></p>
+<p>producer.cpp文件的第31~34行修改如下（只修改了32行和34行，为看起来直观一些多粘了几行）：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//broker列表，可以用逗号隔开，只写其中一个也可以，这是线下测试环境</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> brokers = <span class="string">"10.159.1.40:19092,10.159.1.41:19092,10.159.1.42:19092"</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> errstr;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> topic_str=<span class="string">"test_mq"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>编译consumer.cpp和producer.cpp<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd /home/yuhai06/workspace/kafka/output/examples/cpp</span><br><span class="line"><span class="meta">$</span> g++ -o consumer consumer.cpp -lrdkafka++ -lrdkafka -lstdc++ -lbaas_c_style_interface -I/home/yuhai06/workspace/kafka/librdkafka/include -L/home/yuhai06/workspace/kafka/librdkafka/lib</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> g++ -o producer producer.cpp -lrdkafka++ -lrdkafka -lstdc++ -lbaas_c_style_interface -I/home/yuhai06/workspace/kafka/librdkafka/include -L/home/yuhai06/workspace/kafka/librdkafka/lib</span><br></pre></td></tr></table></figure></p>
+<p>运行producer和consumer（控制台交互式的程序，需要开两个窗口）<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd /home/yuhai06/workspace/kafka/output/examples/cpp</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> ./producer</span><br><span class="line"><span class="meta">%</span> Created producer rdkafka#producer-1</span><br><span class="line">hello world</span><br><span class="line"><span class="meta">%</span> Produced message (11 bytes)</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> ./consumer</span><br><span class="line"><span class="meta">%</span> Created consumer rdkafka#consumer-1</span><br><span class="line">Read msg at offset 7</span><br><span class="line">hello world</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -583,7 +556,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://m.fanruo.net/2019/05/19/2-1-lua-基本语法/" title="2.1 lua 基本语法">https://m.fanruo.net/2019/05/19/2-1-lua-基本语法/</a>
+    <a href="https://m.fanruo.net/2019/05/20/librdkafka-安装与使用/" title="librdkafka 安装与使用">https://m.fanruo.net/2019/05/20/librdkafka-安装与使用/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -596,7 +569,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/lua/" rel="tag"># lua</a>
+            <a href="/tags/kafka/" rel="tag"># kafka</a>
+          
+            <a href="/tags/消息队列/" rel="tag"># 消息队列</a>
+          
+            <a href="/tags/librdkafka/" rel="tag"># librdkafka</a>
+          
+            <a href="/tags/MQ/" rel="tag"># MQ</a>
           
         </div>
       
@@ -609,8 +588,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/14/1.2lua环境安装/" rel="next" title="1.2 lua 环境安装">
-                <i class="fa fa-chevron-left"></i> 1.2 lua 环境安装
+              <a href="/2019/05/20/搭建-kafka-测试集群/" rel="next" title="搭建 kafka 测试集群">
+                <i class="fa fa-chevron-left"></i> 搭建 kafka 测试集群
               </a>
             
           </div>
@@ -618,10 +597,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/19/2-2-lua-基础数据类型/" rel="prev" title="2.2 lua 基础数据类型">
-                2.2 lua 基础数据类型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -817,7 +792,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交互方式"><span class="nav-number">1.1.</span> <span class="nav-text">交互方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行lua脚本文件方式"><span class="nav-number">1.2.</span> <span class="nav-text">执行lua脚本文件方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注释"><span class="nav-number">2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标识符"><span class="nav-number">3.</span> <span class="nav-text">标识符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关键字"><span class="nav-number">4.</span> <span class="nav-text">关键字</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-librdkafka"><span class="nav-number">1.</span> <span class="nav-text">安装 librdkafka</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-librdkafka"><span class="nav-number">2.</span> <span class="nav-text">使用 librdkafka</span></a></li></ol></div>
             
 
           </div>
