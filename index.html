@@ -222,6 +222,8 @@
     
 
     
+      
+    
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
 
@@ -238,6 +240,8 @@
       
     
 
+    
+      
     
 
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
@@ -256,8 +260,10 @@
     
 
     
+      
+    
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">6</span></a>
 
   </li>
         
@@ -273,8 +279,10 @@
     
 
     
+      
+    
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">2</span></a>
 
   </li>
         
@@ -290,8 +298,10 @@
     
 
     
+      
+    
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">7</span></a>
 
   </li>
         
@@ -306,6 +316,8 @@
       
     
 
+    
+      
     
 
     <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br/>日程表</a>
@@ -517,7 +529,8 @@
         
           
             <p>
-              安装 librdkafkagit clone https://github.com/edenhill/librdkafka.git ./librdkafkacd ./librdkafka./configure# Or, to automatically install dependencies us
+              安装 librdkafkagit clone https://github.com/edenhill/librdkafka.git ./librdkafkacd ./librdkafka./configure# Or, to automatically install dependencies using the system's package manager:# ./configure --install-deps# Or, build dependencies from source:# ./configure --install-deps --source-deps-onlymakesudo make install
+使用 librdkafkalibrdkafka 中自带 examples，cpp 目录
               ...
             </p>
           <!--noindex-->
@@ -740,7 +753,12 @@
         
           
             <p>
-              申请机器联系OP同学申请机器，Linux服务器一台、三台、五台、（2*n+1），Zookeeper集群的工作是超过半数才能对外提供服务，3台中超过两台超过半数，允许1台挂掉 ，是否可用偶数，其实没必要。如果有四台那么挂掉一台还剩下三台服务器，如果在挂掉一个就不行了，这里记住是超过半数。找到如下 3 
+              申请机器联系OP同学申请机器，Linux服务器一台、三台、五台、（2*n+1），Zookeeper集群的工作是超过半数才能对外提供服务，3台中超过两台超过半数，允许1台挂掉 ，是否可用偶数，其实没必要。如果有四台那么挂掉一台还剩下三台服务器，如果在挂掉一个就不行了，这里记住是超过半数。找到如下 3 台机器：
+
+10.159.1.4010.159.1.4110.159.1.42
+
+安装基础环境安装Java环境支持，需要安装sun-java8，不再赘述。
+目录规划首先要注意在生产环境中目录结构要定义好，防止在项目过多的时候找不到所需的项目。$ pwd/home/work$ mkdir opt$ cd opt$ mkdir zookeeper$ mkdir kafka$ tree -L 1.├── kafka└── 
               ...
             </p>
           <!--noindex-->
@@ -998,7 +1016,7 @@
 
 
 
-实例print(1 + 2) --&gt;打印 3print(5 / 10) --&gt;打印 0.5。 这是Lua不同于c语言的print(
+实例print(1 + 2) --&gt;打印 3print(5 / 10) --&gt;打印 0.5。 这是Lua不同于c语言的print(5.0 / 10) --&gt;打印 0.5。 浮点数相除的结果是浮点数-- print(10 / 0) --&gt;注意除数不能为0，计算的结果会出错print(2 ^ 10) --&gt;打印 1024。 求2的10次方local num = 1357print(num % 2) --&gt;打印 1print((num % 2) == 1) --&gt;打印 true。 判断num是否为奇数print((num
               ...
             </p>
           <!--noindex-->
@@ -1221,7 +1239,14 @@
         
           
             <p>
-              lua 是一门极其精简的语言，内置类型只要nil,boolean,number等三种基本类型，以及string,table等二种组合类型。没有C/C++ 等语言中的class、struct等复杂类型，这些类型可以通过table来实现。同时，不同于其他语言（如C/C++和java），function在
+              lua 是一门极其精简的语言，内置类型只要nil,boolean,number等三种基本类型，以及string,table等二种组合类型。没有C/C++ 等语言中的class、struct等复杂类型，这些类型可以通过table来实现。同时，不同于其他语言（如C/C++和java），function在lua中也作为一个一级类型。
+nilnil 是一种类型，Lua 将 nil 用于表示“无效值”。
+
+一个变量在第一次赋值前的默认值是 nil
+将nil 赋予给一个全局变量就等同于删除它.
+openresty 中提供了另一种表示空值的类型ngx.null.
+
+nil在lua中有其特殊意义，如果一个变量被设置为nil，就等于说该变量未定义，与无穷无尽的其他未定义的变量一样。那么，如果把redis查询为空的结果设置为nil
               ...
             </p>
           <!--noindex-->
@@ -1451,7 +1476,10 @@ print("hello world")
 交互方式尴尬
 执行lua脚本文件的方式
 
-交互方式首先，在终端
+交互方式首先，在终端输入lua，进入交互模式
+[work@fanruo ~]$ luaLua 5.1.4  Copyright (C) 1994-2008 Lua.org, PUC-Rio&gt;
+输入lua后会显示一行信息，包括版本、版权信息等，随后是提示符。在提示符后输入print(&quot;hello world&quot;) 回车，就会打印hello world。
+&gt; print("hello world")hello 
               ...
             </p>
           <!--noindex-->
@@ -1686,8 +1714,10 @@ print("hello world")
         
           
             <p>
-              lua 环境安装linux 系统安装lualinux &amp; Mac上安装 Lua 安装非常简单，只需要下载源码包并在终端解压编译即可，本文使用了5.3.4版本进行安装：curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gztar zxf lua-5
-              ...
+              lua 环境安装linux 系统安装lualinux &amp; Mac上安装 Lua 安装非常简单，只需要下载源码包并在终端解压编译即可，本文使用了5.3.4版本进行安装：curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gztar zxf lua-5.3.4.tar.gzcd lua-5.3.4make linux testmake install
+mac 系统安装luacurl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gztar zxf lua-5.3.4.tar.gzcd lua-5.3.4make macosx testmake install
+
+              
             </p>
           <!--noindex-->
           
@@ -1921,7 +1951,8 @@ print("hello world")
         
           
             <p>
-              简介Lua（发音： /ˈluːə/）程序设计语言是一个简洁、轻量、可扩展的脚本语言，Lua在葡萄牙语中的意思是月亮。Lua 是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个研究小组，由Roberto Ierusal
+              简介Lua（发音： /ˈluːə/）程序设计语言是一个简洁、轻量、可扩展的脚本语言，Lua在葡萄牙语中的意思是月亮。Lua 是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个研究小组，由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueiredo所组成并于1993年开发。
+Lua是一种轻量语言，它的官方版本只包括一个精简的核心和最基本的库。这使得Lua体积小、启动速度快。它用ANSI C 语言编写并以源代码形式开放，编译后仅仅一百余K，可以很方便的嵌入别的程序里。和许多“大而全”的语言不一样，网路通讯、图形界面等都没有默认提供。但是Lua可以很容易地被扩展：
               ...
             </p>
           <!--noindex-->
@@ -2089,19 +2120,19 @@ print("hello world")
                 <span class="links-of-author-item">
                   
                   
-                  
                     
                   
-                  <a href="https://github.com/HiYu" title="GitHub &rarr; https://github.com/HiYu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+                  
+                  <a href="https://github.com/HiYu" title="GitHub &rarr; https://github.com/HiYu" rel="noopener" target="_blank">GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
                   
                   
-                  
                     
                   
-                  <a href="mailto:zhaoyyuu@gmail.com" title="E-Mail &rarr; mailto:zhaoyyuu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                  <a href="mailto:zhaoyyuu@gmail.com" title="E-Mail &rarr; mailto:zhaoyyuu@gmail.com" rel="noopener" target="_blank">E-Mail</a>
                 </span>
               
             </div>
@@ -2185,6 +2216,32 @@ print("hello world")
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
 
 
 
