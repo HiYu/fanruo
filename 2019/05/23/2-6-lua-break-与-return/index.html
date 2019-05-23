@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="简介Lua（发音： /ˈluːə/）程序设计语言是一个简洁、轻量、可扩展的脚本语言，Lua在葡萄牙语中的意思是月亮。Lua 是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个研究小组，由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueired">
-<meta name="keywords" content="lua">
+  <meta name="description" content="和其他语言一样lua也提供对应的跳出关键字，不过lua不提供continue关键字。 break语句break用于跳出循环，终止for、repeat、while 三种循环的执行，并跳出当前循环体，继续执行当前循环之后的语句,在循环外部不可用。 returnreturn 只能写在语句块的最后，一旦执行了return 语句，该语句之后的所有语句都不会再执行。若要写在函数中间，则只能写在一个显式的语句块">
+<meta name="keywords" content="lua,语法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.1 lua 简介">
-<meta property="og:url" content="https://m.fanruo.net/2018/09/14/1-1-lua-简介/index.html">
+<meta property="og:title" content="2.6 lua break 与 return">
+<meta property="og:url" content="https://m.fanruo.net/2019/05/23/2-6-lua-break-与-return/index.html">
 <meta property="og:site_name" content="凡 若">
-<meta property="og:description" content="简介Lua（发音： /ˈluːə/）程序设计语言是一个简洁、轻量、可扩展的脚本语言，Lua在葡萄牙语中的意思是月亮。Lua 是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个研究小组，由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueired">
+<meta property="og:description" content="和其他语言一样lua也提供对应的跳出关键字，不过lua不提供continue关键字。 break语句break用于跳出循环，终止for、repeat、while 三种循环的执行，并跳出当前循环体，继续执行当前循环之后的语句,在循环外部不可用。 returnreturn 只能写在语句块的最后，一旦执行了return 语句，该语句之后的所有语句都不会再执行。若要写在函数中间，则只能写在一个显式的语句块">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-21T08:32:23.258Z">
+<meta property="og:updated_time" content="2019-05-23T00:57:52.057Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1.1 lua 简介">
-<meta name="twitter:description" content="简介Lua（发音： /ˈluːə/）程序设计语言是一个简洁、轻量、可扩展的脚本语言，Lua在葡萄牙语中的意思是月亮。Lua 是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个研究小组，由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueired">
+<meta name="twitter:title" content="2.6 lua break 与 return">
+<meta name="twitter:description" content="和其他语言一样lua也提供对应的跳出关键字，不过lua不提供continue关键字。 break语句break用于跳出循环，终止for、repeat、while 三种循环的执行，并跳出当前循环体，继续执行当前循环之后的语句,在循环外部不可用。 returnreturn 只能写在语句块的最后，一旦执行了return 语句，该语句之后的所有语句都不会再执行。若要写在函数中间，则只能写在一个显式的语句块">
 
 
 
@@ -117,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://m.fanruo.net/2018/09/14/1-1-lua-简介/"/>
+  <link rel="canonical" href="https://m.fanruo.net/2019/05/23/2-6-lua-break-与-return/"/>
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>1.1 lua 简介 | 凡 若</title>
+  <title>2.6 lua break 与 return | 凡 若</title>
   
 
 
@@ -376,7 +376,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2018/09/14/1-1-lua-简介/"/>
+    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2019/05/23/2-6-lua-break-与-return/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Frank Yu"/>
@@ -393,7 +393,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">1.1 lua 简介
+          <h2 class="post-title" itemprop="name headline">2.6 lua break 与 return
 
               
             
@@ -419,24 +419,12 @@
                 
               
 
-              <time title="创建时间：2018-09-14 20:32:38" itemprop="dateCreated datePublished" datetime="2018-09-14T20:32:38+08:00">2018-09-14</time>
+              <time title="创建时间：2019-05-23 08:56:53 / 修改时间：08:57:52" itemprop="dateCreated datePublished" datetime="2019-05-23T08:56:53+08:00">2019-05-23</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-21 16:32:23" itemprop="dateModified" datetime="2019-05-21T16:32:23+08:00">2019-05-21</time>
               
             
           </span>
@@ -479,8 +467,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/09/14/1-1-lua-简介/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/14/1-1-lua-简介/" itemprop="commentCount"></span>
+                <a href="/2019/05/23/2-6-lua-break-与-return/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/23/2-6-lua-break-与-return/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -488,7 +476,7 @@
 
           
           
-            <span id="/2018/09/14/1-1-lua-简介/" class="leancloud_visitors" data-flag-title="1.1 lua 简介">
+            <span id="/2019/05/23/2-6-lua-break-与-return/" class="leancloud_visitors" data-flag-title="2.6 lua break 与 return">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -513,7 +501,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.3k</span>
+                <span title="本文字数">934</span>
               
 
               
@@ -547,30 +535,11 @@
       
 
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Lua（发音： /ˈluːə/）程序设计语言是一个简洁、轻量、可扩展的脚本语言，Lua在葡萄牙语中的意思是月亮。<br>Lua 是巴西里约热内卢天主教大学（Pontifical Catholic University of Rio de Janeiro）里的一个研究小组，由Roberto Ierusalimschy、Waldemar Celes 和 Luiz Henrique de Figueiredo所组成并于1993年开发。</p>
-<p>Lua是一种轻量语言，它的官方版本只包括一个精简的核心和最基本的库。这使得Lua体积小、启动速度快。它用ANSI C 语言编写并以源代码形式开放，编译后仅仅一百余K，可以很方便的嵌入别的程序里。和许多“大而全”的语言不一样，网路通讯、图形界面等都没有默认提供。但是Lua可以很容易地被扩展：由宿主语言（通常是C或C++）提供这些功能，Lua可以使用它们，就像是本来就内置的功能一样。事实上，现在已经有很多成熟的扩展模块可供选用。</p>
-<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol>
-<li>Lua的目标是成为一个很容易嵌入其它语言中使用的语言。大多数程序员也认为它的确做到了这一点。</li>
-<li>很多应用程序使用Lua作为自己的嵌入式脚本语言，以此来实现可配置性、可扩展性。</li>
-</ol>
-<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ol>
-<li><strong>轻量级：</strong> 它是使用ANSI C语言编写并以源代码形式开放，编译后仅仅一百余K，可以很方便的嵌入别的程序里。它的官方版本只包括一个精简的核心和最基本的库。这使得Lua体积小、启动速度快。和许多“大而全”的语言不一样，网路通讯、图形界面等都没有默认提供。但是Lua可以很容易地被扩展：由宿主语言（通常是C或C++）提供这些功能，Lua可以使用它们，就像是本来就内置的功能一样。事实上，现在已经有很多成熟的扩展模块可供选用。</li>
-<li><strong>可扩展：</strong> Lua提供了非常易于使用的扩展接口和机制：由宿主语言(通常是C或C++)提供这些功能，Lua可以使用它们，就像是本来就内置的功能一样。</li>
-<li><strong>支持多重编程范式：</strong> 支持面向过程(procedure-oriented)编程和函数式编程(functional programming)。</li>
-<li><strong>自动内存管理：</strong> 支持增量式垃圾收集策略。</li>
-<li><strong>原生数据类型少：</strong> 它只提供了数字（缺省是双精度浮点数，可配置）、布尔量、字符串、表、子程序、协程（coroutine）以及用户自定义数据这几种。但是其处理表和字符串的效率非常之高，加上元表的支持，开发者可以高效的模拟出需要的复杂数据类型（比如数组，哈希表，集合，对象等）。</li>
-<li><strong>可以用于嵌入式硬件:</strong> 不仅可以嵌入其他编程语言，而且可以嵌入微处理器中.</li>
-<li><strong>支持协程：</strong> 有内建的，与操作系统无关的协作式多线程（coroutine）支持。</li>
-</ol>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ol>
-<li>游戏开发</li>
-<li>独立应用脚本</li>
-<li>Web 应用脚本</li>
-<li>扩展和数据库插件如：MySQL Proxy 和 MySQL WorkBench</li>
-<li>安全系统，如入侵检测系统</li>
-</ol>
-<h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">"hello world"</span>)</span><br></pre></td></tr></table></figure>
-<p>lua 打印<code>hello workd</code>只需调用<code>print()</code>函数即可</p>
+        <p>和其他语言一样<code>lua</code>也提供对应的跳出关键字，不过<code>lua</code>不提供<code>continue</code>关键字。</p>
+<h2 id="break"><a href="#break" class="headerlink" title="break"></a>break</h2><p>语句<code>break</code>用于跳出循环，终止<code>for</code>、<code>repeat</code>、<code>while</code> 三种循环的执行，并跳出当前循环体，继续执行当前循环之后的语句,在循环外部不可用。</p>
+<h2 id="return"><a href="#return" class="headerlink" title="return"></a>return</h2><p>return 只能写在语句块的最后，一旦执行了return 语句，该语句之后的所有语句都不会再执行。若要写在函数中间，则只能写在一个显式的语句块内。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(x, y)</span></span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line">    <span class="comment">--print("add: I will return the result " .. (x + y))</span></span><br><span class="line">    <span class="comment">--因为前面有个return，若不注释该语句，则会报错</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">is_positive</span><span class="params">(x)</span></span></span><br><span class="line">    <span class="keyword">if</span> x &gt; <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">return</span> x .. <span class="string">" is positive"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> x .. <span class="string">" is non-positive"</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="comment">--由于return只出现在前面显式的语句块，所以此语句不注释也不会报错</span></span><br><span class="line">    <span class="comment">--，但是不会被执行，此处不会产生输出</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"function end!"</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">sum = add(<span class="number">10</span>, <span class="number">20</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The sum is "</span> .. sum) <span class="comment">--&gt;output:The sum is 30</span></span><br><span class="line">answer = is_positive(<span class="number">-10</span>)</span><br><span class="line"><span class="built_in">print</span>(answer) <span class="comment">--&gt;output:-10 is non-positive</span></span><br></pre></td></tr></table></figure></p>
+<p>有时候，为了调试方便，我们可以想在某个函数的中间提前 <code>return</code> ，以进行控制流的短路。此时我们可以将 <code>return</code> 放在一个 <code>do ... end</code> 代码块中:<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"before"</span>)</span><br><span class="line">    <span class="keyword">do</span> <span class="keyword">return</span> <span class="keyword">end</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"after"</span>) <span class="comment">-- 这一行语句永远不会执行到</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>特别注意</strong>：上述实例中<code>return</code>如果不放在<code>do ... end</code>中将会保存，因为<code>return</code>只能放在函数的最后。</p>
 
       
     </div>
@@ -605,7 +574,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://m.fanruo.net/2018/09/14/1-1-lua-简介/" title="1.1 lua 简介">https://m.fanruo.net/2018/09/14/1-1-lua-简介/</a>
+    <a href="https://m.fanruo.net/2019/05/23/2-6-lua-break-与-return/" title="2.6 lua break 与 return">https://m.fanruo.net/2019/05/23/2-6-lua-break-与-return/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
@@ -620,6 +589,8 @@
           
             <a href="/tags/lua/" rel="tag"># lua</a>
           
+            <a href="/tags/语法/" rel="tag"># 语法</a>
+          
         </div>
       
 
@@ -631,15 +602,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/05/21/2-5-lua-变量/" rel="next" title="2.5 lua 变量">
+                <i class="fa fa-chevron-left"></i> 2.5 lua 变量
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/14/1-2-lua-环境安装/" rel="prev" title="1.2 lua 环境安装">
-                1.2 lua 环境安装 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -847,7 +818,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特性"><span class="nav-number">3.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景"><span class="nav-number">4.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hello-world"><span class="nav-number">5.</span> <span class="nav-text">hello world</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#break"><span class="nav-number">1.</span> <span class="nav-text">break</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#return"><span class="nav-number">2.</span> <span class="nav-text">return</span></a></li></ol></div>
             
 
           </div>
