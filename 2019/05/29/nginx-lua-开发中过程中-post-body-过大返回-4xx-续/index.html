@@ -96,21 +96,19 @@
 
 
 
-  <meta name="description" content="about">
-<meta name="keywords" content="人工智能 基础架构 读书 人文 经济 历史">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://m.fanruo.net/about/index.html">
+  <meta name="description" content="背景随着业务发展会出现较大的 post body 数据，按照提到的方式修改后，大部分情况下 post body 正常接收并处理落日志。但会偶现空日志的情况。 问题分析经过多轮本地和沙盒压测，复现了问题。由于在出现空日志情况是 error 日志并没留下相关信息，随后做了如下处理：  把 error 日志级别调到 debug，当问题复现时，error.log 中会有客户端过早断开连接类似的日子打出。">
+<meta name="keywords" content="Nginx,OpenResty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx + lua 开发中过程中 post body 过大返回 4xx (续)">
+<meta property="og:url" content="https://m.fanruo.net/2019/05/29/nginx-lua-开发中过程中-post-body-过大返回-4xx-续/index.html">
 <meta property="og:site_name" content="凡 若">
-<meta property="og:description" content="about">
+<meta property="og:description" content="背景随着业务发展会出现较大的 post body 数据，按照提到的方式修改后，大部分情况下 post body 正常接收并处理落日志。但会偶现空日志的情况。 问题分析经过多轮本地和沙盒压测，复现了问题。由于在出现空日志情况是 error 日志并没留下相关信息，随后做了如下处理：  把 error 日志级别调到 debug，当问题复现时，error.log 中会有客户端过早断开连接类似的日子打出。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-11T14:54:43.123Z">
+<meta property="og:updated_time" content="2019-05-29T01:25:38.494Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="about">
+<meta name="twitter:title" content="nginx + lua 开发中过程中 post body 过大返回 4xx (续)">
+<meta name="twitter:description" content="背景随着业务发展会出现较大的 post body 数据，按照提到的方式修改后，大部分情况下 post body 正常接收并处理落日志。但会偶现空日志的情况。 问题分析经过多轮本地和沙盒压测，复现了问题。由于在出现空日志情况是 error 日志并没留下相关信息，随后做了如下处理：  把 error 日志级别调到 debug，当问题复现时，error.log 中会有客户端过早断开连接类似的日子打出。">
 
-
-  
 
 
   <link rel="alternate" href="/atom.xml" title="凡 若" type="application/atom+xml"/>
@@ -119,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://m.fanruo.net/about/"/>
+  <link rel="canonical" href="https://m.fanruo.net/2019/05/29/nginx-lua-开发中过程中-post-body-过大返回-4xx-续/"/>
 
 
 
@@ -129,7 +127,7 @@
   };
 </script>
 
-  <title>about | 凡 若</title>
+  <title>nginx + lua 开发中过程中 post body 过大返回 4xx (续) | 凡 若</title>
   
 
 
@@ -238,7 +236,7 @@
         
         
           
-          <li class="menu-item menu-item-about menu-item-active">
+          <li class="menu-item menu-item-about">
 
     
     
@@ -358,77 +356,282 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2019/05/29/nginx-lua-开发中过程中-post-body-过大返回-4xx-续/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Yu"/>
+      <meta itemprop="description" content="初心 读书 知新 生活"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凡 若"/>
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h2 class="post-title" itemprop="name headline">about
-
-</h2>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>about</p>
+          <h2 class="post-title" itemprop="name headline">nginx + lua 开发中过程中 post body 过大返回 4xx (续)
 
+              
+            
+          </h2>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-29 09:21:00 / 修改时间：09:25:38" itemprop="dateCreated datePublished" datetime="2019-05-29T09:21:00+08:00">2019-05-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/OpenResty/" itemprop="url" rel="index"><span itemprop="name">OpenResty</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/29/nginx-lua-开发中过程中-post-body-过大返回-4xx-续/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/29/nginx-lua-开发中过程中-post-body-过大返回-4xx-续/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/05/29/nginx-lua-开发中过程中-post-body-过大返回-4xx-续/" class="leancloud_visitors" data-flag-title="nginx + lua 开发中过程中 post body 过大返回 4xx (续)">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">763</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>随着业务发展会出现较大的 post body 数据，按照提到的方式修改后，大部分情况下 post body 正常接收并处理落日志。但会偶现空日志的情况。</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>经过多轮本地和沙盒压测，复现了问题。由于在出现空日志情况是 error 日志并没留下相关信息，随后做了如下处理：</p>
+<ol>
+<li>把 error 日志级别调到 debug，当问题复现时，error.log 中会有客户端过早断开连接类似的日子打出。</li>
+<li>在 access 日志中添加 request_time, status,等信息，发现出现空日志时，status=408，request_time 都比较长。</li>
+</ol>
+<p>因此，可以明确出现该问题是客户端链接超时造成的。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>为解决该问题，做如下优化：</p>
+<h3 id="调整超时时间，和-buffer"><a href="#调整超时时间，和-buffer" class="headerlink" title="调整超时时间，和 buffer"></a>调整超时时间，和 buffer</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">client_body_timeout 10s;</span><br><span class="line">client_header_timeout 10s;</span><br><span class="line">client_body_in_single_buffer on; #这个 directive 让 Nginx 将所有的 request body 存储在一个缓冲当中，它的默认值是 off。启用它可以优化读取 $request_body 变量时的 I/O 性能</span><br></pre></td></tr></table></figure>
+<h3 id="开启-access-buffer-和-if"><a href="#开启-access-buffer-和-if" class="headerlink" title="开启 access buffer 和 if"></a>开启 access buffer 和 if</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">log_format  main escape=json '[$log_time] [$logid] [INFO] $click_info';</span><br><span class="line"><span class="meta">#</span>设置变量loggable，默认$loggable=0;当$status==200时，$loggable=1</span><br><span class="line">map $status $loggable &#123;</span><br><span class="line">	200  1;</span><br><span class="line">    default 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只有真确处理了请求才会写日志。客户端在收到 408 时，会将 body 拆分重传。</p>
+
       
     </div>
+
     
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
 
 
 
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Frank Yu</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
     
+    <a href="https://m.fanruo.net/2019/05/29/nginx-lua-开发中过程中-post-body-过大返回-4xx-续/" title="nginx + lua 开发中过程中 post body 过大返回 4xx (续)">https://m.fanruo.net/2019/05/29/nginx-lua-开发中过程中-post-body-过大返回-4xx-续/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
     
-    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Nginx/" rel="tag"># Nginx</a>
+          
+            <a href="/tags/OpenResty/" rel="tag"># OpenResty</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/28/nginx-lua-开发中过程中-post-body-过大返回-4xx/" rel="next" title="nginx + lua 开发中过程中 post body 过大返回 4xx">
+                <i class="fa fa-chevron-left"></i> nginx + lua 开发中过程中 post body 过大返回 4xx
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
@@ -461,8 +664,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -611,6 +823,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题分析"><span class="nav-number">2.</span> <span class="nav-text">问题分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#调整超时时间，和-buffer"><span class="nav-number">3.1.</span> <span class="nav-text">调整超时时间，和 buffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开启-access-buffer-和-if"><span class="nav-number">3.2.</span> <span class="nav-text">开启 access buffer 和 if</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
