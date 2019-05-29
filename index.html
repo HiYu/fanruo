@@ -421,7 +421,7 @@
                 
               
 
-              <time title="创建时间：2019-05-29 09:21:00 / 修改时间：09:25:38" itemprop="dateCreated datePublished" datetime="2019-05-29T09:21:00+08:00">2019-05-29</time>
+              <time title="创建时间：2019-05-29 09:21:00 / 修改时间：09:33:09" itemprop="dateCreated datePublished" datetime="2019-05-29T09:21:00+08:00">2019-05-29</time>
             
 
             
@@ -503,7 +503,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">763</span>
+                <span title="本文字数">800</span>
               
 
               
@@ -540,11 +540,11 @@
         
           
             <p>
-              背景随着业务发展会出现较大的 post body 数据，按照提到的方式修改后，大部分情况下 post body 正常接收并处理落日志。但会偶现空日志的情况。
+              背景随着业务发展会出现较大的 post body 数据，按照nginx + lua 开发中过程中 post body 过大返回 4xx提到的方式修改后，大部分情况下 post body 正常接收并处理落日志。但会偶现空日志的情况。
 问题分析经过多轮本地和沙盒压测，复现了问题。由于在出现空日志情况是 error 日志并没留下相关信息，随后做了如下处理：
 
 把 error 日志级别调到 debug，当问题复现时，error.log 中会有客户端过早断开连接类似的日子打出。
-在 access 日志中添加 request_time, status,等信息，
+在 a
               ...
             </p>
           <!--noindex-->
