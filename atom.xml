@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://m.fanruo.net/"/>
-  <updated>2019-05-29T01:33:09.267Z</updated>
+  <updated>2019-06-18T06:56:59.242Z</updated>
   <id>https://m.fanruo.net/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>openresty 执行阶段问题踩坑</title>
+    <link href="https://m.fanruo.net/2019/06/18/openresty-%E6%89%A7%E8%A1%8C%E9%98%B6%E6%AE%B5%E9%97%AE%E9%A2%98%E8%B8%A9%E5%9D%91/"/>
+    <id>https://m.fanruo.net/2019/06/18/openresty-执行阶段问题踩坑/</id>
+    <published>2019-06-18T06:55:58.000Z</published>
+    <updated>2019-06-18T06:56:59.242Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>由于业务需求我们需要根据<code>client_ip</code>对部分接口做一个简单的 ab test，将部分流量导新的服务上。基于之前做 WAF 的经验，制定了大体方案：根据 <code>client_ip</code> 做 hash， 根据 hash 值来确定是请求新后端还是原来的后端服务。<br>在说明详细方案前，先说明一下现状。当前的配置如下：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^/api/rest/v\d+/Login &#123;</span><br><span class="line">    rewrite ^(.*)$ /loginServer$1 break;</span><br><span class="line"></span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_next_upstream error timeout invalid_header;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_set_header Clientip $http_clientip;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Scheme $scheme;</span><br><span class="line">    proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header Connection "";</span><br><span class="line"></span><br><span class="line">    proxy_pass http://test.fanruo.net;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>其中，<code>/loginServer</code>是当前服务路径前缀，<code>/loginServerNew</code>是新服务路径前缀。所以，具体需求可以描述为，10% 的用户使用<code>/loginServerNew</code>服务，90% 的用户使用<code>/loginServer</code>服务。</p><h3 id="具体方案"><a href="#具体方案" class="headerlink" title="具体方案"></a>具体方案</h3><ol><li>根据字符串 client_ip 转成长整数 ip_num;</li><li>对 ip_num 按 100 取模，取最后两位 hash；</li><li>当 hash &lt; 10 时走<code>/loginServerNew</code>服务， 设置 <code>tag=&quot;New&quot;</code>, 否则 <code>tag=&quot;&quot;</code></li><li>改造<code>rewrite</code>指令为<code>rewrite ^(.*)$ /loginServer$tag$1 break;</code></li></ol><p>对应配置为</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^/api/rest/v\d+/Login &#123;</span><br><span class="line">    set $tag "";</span><br><span class="line">    access_by_lua_file conf/lua/abtest.lua;</span><br><span class="line">    rewrite ^(.*)$ /loginServer$tag$1 break;</span><br><span class="line"></span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_next_upstream error timeout invalid_header;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_set_header Clientip $http_clientip;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Scheme $scheme;</span><br><span class="line">    proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header Connection "";</span><br><span class="line"></span><br><span class="line">    proxy_pass http://test.fanruo.net;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>对应 lua 脚本（conf/lua/btest.lua）：</p><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> client_ip = ngx.var.http_clientip <span class="keyword">or</span> ngx.var.remote_addr</span><br><span class="line"><span class="keyword">local</span> o1,o2,o3,o4 = client_ip:<span class="built_in">match</span>(<span class="string">"(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)"</span> )</span><br><span class="line"><span class="keyword">local</span> ip_num = <span class="number">2</span>^<span class="number">24</span>*o1 + <span class="number">2</span>^<span class="number">16</span>*o2 + <span class="number">2</span>^<span class="number">8</span>*o3 + o4</span><br><span class="line"><span class="keyword">local</span> hash = ip_num % <span class="number">100</span></span><br><span class="line"></span><br><span class="line">ngx.var.tag = <span class="string">""</span></span><br><span class="line"><span class="keyword">if</span> hash &gt; <span class="number">10</span> <span class="keyword">then</span></span><br><span class="line">    ngx.var.tag = <span class="string">"New"</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>按照上述实现，最终总是走原来的服务<code>/loginServer</code>。通过分析 tag 的值一直是 “”，因此，需求不能满足。</p><h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>通过分析，由于之前 WAF 是通过直接修改 proxy_pass 参数来完成的，而 proxy_pass 对应 content phase，该阶段在 access phase 之后，因此上面的配置没有问题。而本需求是在 rewrite phase，因此需要在该阶段之前修改对应变量 tag 只能在 set phase 来完成 nginx 变量修改操作。</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>跟进上述分析，修改 nginx.conf 配置和 lua 脚本如下：</p><p>lua 脚本修改为：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> client_ip = ngx.var.http_clientip <span class="keyword">or</span> ngx.var.remote_addr</span><br><span class="line"><span class="keyword">local</span> o1,o2,o3,o4 = client_ip:<span class="built_in">match</span>(<span class="string">"(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)"</span> )</span><br><span class="line"><span class="keyword">local</span> ip_num = <span class="number">2</span>^<span class="number">24</span>*o1 + <span class="number">2</span>^<span class="number">16</span>*o2 + <span class="number">2</span>^<span class="number">8</span>*o3 + o4</span><br><span class="line"><span class="keyword">local</span> hash = ip_num % <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> tag = <span class="string">""</span></span><br><span class="line"><span class="keyword">if</span> hash &gt; <span class="number">10</span> <span class="keyword">then</span></span><br><span class="line">    tag = <span class="string">"New"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> tag</span><br></pre></td></tr></table></figure></p><p>nginx.conf 配置修改为：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^/api/rest/v\d+/Login &#123;</span><br><span class="line">    set_by_lua_file $tag conf/lua/abtest.lua;</span><br><span class="line">    rewrite ^(.*)$ /loginServer$tag$1 break;</span><br><span class="line"></span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_next_upstream error timeout invalid_header;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_set_header Clientip $http_clientip;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Scheme $scheme;</span><br><span class="line">    proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header Connection "";</span><br><span class="line"></span><br><span class="line">    proxy_pass http://test.fanruo.net;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;由于业务需求我们需要根据&lt;code&gt;client_ip&lt;/code&gt;对部分接口做一个简单的 ab test，将部分流量导新的服务上。基于之前
+      
+    
+    </summary>
+    
+      <category term="OpenResty" scheme="https://m.fanruo.net/categories/OpenResty/"/>
+    
+    
+      <category term="OpenResty" scheme="https://m.fanruo.net/tags/OpenResty/"/>
+    
+  </entry>
   
   <entry>
     <title>nginx + lua 开发中过程中 post body 过大返回 4xx (续)</title>
@@ -39,9 +64,9 @@
       <category term="OpenResty" scheme="https://m.fanruo.net/categories/Nginx/OpenResty/"/>
     
     
-      <category term="Nginx" scheme="https://m.fanruo.net/tags/Nginx/"/>
-    
       <category term="OpenResty" scheme="https://m.fanruo.net/tags/OpenResty/"/>
+    
+      <category term="Nginx" scheme="https://m.fanruo.net/tags/Nginx/"/>
     
   </entry>
   
@@ -70,9 +95,9 @@
     
       <category term="lua" scheme="https://m.fanruo.net/tags/lua/"/>
     
-      <category term="Nginx" scheme="https://m.fanruo.net/tags/Nginx/"/>
-    
       <category term="OpenResty" scheme="https://m.fanruo.net/tags/OpenResty/"/>
+    
+      <category term="Nginx" scheme="https://m.fanruo.net/tags/Nginx/"/>
     
   </entry>
   

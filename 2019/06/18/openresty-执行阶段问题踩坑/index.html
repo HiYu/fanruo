@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="lua 环境安装linux 系统安装lualinux &amp;amp; Mac上安装 Lua 安装非常简单，只需要下载源码包并在终端解压编译即可，本文使用了5.3.4版本进行安装：12345curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gztar zxf lua-5.3.4.tar.gzcd lua-5.3.4make linux testmake in">
-<meta name="keywords" content="lua">
+  <meta name="description" content="背景由于业务需求我们需要根据client_ip对部分接口做一个简单的 ab test，将部分流量导新的服务上。基于之前做 WAF 的经验，制定了大体方案：根据 client_ip 做 hash， 根据 hash 值来确定是请求新后端还是原来的后端服务。在说明详细方案前，先说明一下现状。当前的配置如下：1234567891011121314151617location ~ ^/api/rest/v\">
+<meta name="keywords" content="OpenResty">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.2 lua 环境安装">
-<meta property="og:url" content="https://m.fanruo.net/2018/09/14/1-2-lua-环境安装/index.html">
+<meta property="og:title" content="openresty 执行阶段问题踩坑">
+<meta property="og:url" content="https://m.fanruo.net/2019/06/18/openresty-执行阶段问题踩坑/index.html">
 <meta property="og:site_name" content="凡 若">
-<meta property="og:description" content="lua 环境安装linux 系统安装lualinux &amp;amp; Mac上安装 Lua 安装非常简单，只需要下载源码包并在终端解压编译即可，本文使用了5.3.4版本进行安装：12345curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gztar zxf lua-5.3.4.tar.gzcd lua-5.3.4make linux testmake in">
+<meta property="og:description" content="背景由于业务需求我们需要根据client_ip对部分接口做一个简单的 ab test，将部分流量导新的服务上。基于之前做 WAF 的经验，制定了大体方案：根据 client_ip 做 hash， 根据 hash 值来确定是请求新后端还是原来的后端服务。在说明详细方案前，先说明一下现状。当前的配置如下：1234567891011121314151617location ~ ^/api/rest/v\">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-21T08:33:10.701Z">
+<meta property="og:updated_time" content="2019-06-18T06:56:59.242Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1.2 lua 环境安装">
-<meta name="twitter:description" content="lua 环境安装linux 系统安装lualinux &amp;amp; Mac上安装 Lua 安装非常简单，只需要下载源码包并在终端解压编译即可，本文使用了5.3.4版本进行安装：12345curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gztar zxf lua-5.3.4.tar.gzcd lua-5.3.4make linux testmake in">
+<meta name="twitter:title" content="openresty 执行阶段问题踩坑">
+<meta name="twitter:description" content="背景由于业务需求我们需要根据client_ip对部分接口做一个简单的 ab test，将部分流量导新的服务上。基于之前做 WAF 的经验，制定了大体方案：根据 client_ip 做 hash， 根据 hash 值来确定是请求新后端还是原来的后端服务。在说明详细方案前，先说明一下现状。当前的配置如下：1234567891011121314151617location ~ ^/api/rest/v\">
 
 
 
@@ -117,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://m.fanruo.net/2018/09/14/1-2-lua-环境安装/"/>
+  <link rel="canonical" href="https://m.fanruo.net/2019/06/18/openresty-执行阶段问题踩坑/"/>
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>1.2 lua 环境安装 | 凡 若</title>
+  <title>openresty 执行阶段问题踩坑 | 凡 若</title>
   
 
 
@@ -376,7 +376,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2018/09/14/1-2-lua-环境安装/"/>
+    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2019/06/18/openresty-执行阶段问题踩坑/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Frank Yu"/>
@@ -393,7 +393,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">1.2 lua 环境安装
+          <h2 class="post-title" itemprop="name headline">openresty 执行阶段问题踩坑
 
               
             
@@ -419,24 +419,12 @@
                 
               
 
-              <time title="创建时间：2018-09-14 20:40:04" itemprop="dateCreated datePublished" datetime="2018-09-14T20:40:04+08:00">2018-09-14</time>
+              <time title="创建时间：2019-06-18 14:55:58 / 修改时间：14:56:59" itemprop="dateCreated datePublished" datetime="2019-06-18T14:55:58+08:00">2019-06-18</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-05-21 16:33:10" itemprop="dateModified" datetime="2019-05-21T16:33:10+08:00">2019-05-21</time>
               
             
           </span>
@@ -453,14 +441,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言/" itemprop="url" rel="index"><span itemprop="name">语言</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/语言/lua/" itemprop="url" rel="index"><span itemprop="name">lua</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/OpenResty/" itemprop="url" rel="index"><span itemprop="name">OpenResty</span></a></span>
 
                 
                 
@@ -479,8 +460,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/09/14/1-2-lua-环境安装/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/09/14/1-2-lua-环境安装/" itemprop="commentCount"></span>
+                <a href="/2019/06/18/openresty-执行阶段问题踩坑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/18/openresty-执行阶段问题踩坑/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -488,7 +469,7 @@
 
           
           
-            <span id="/2018/09/14/1-2-lua-环境安装/" class="leancloud_visitors" data-flag-title="1.2 lua 环境安装">
+            <span id="/2019/06/18/openresty-执行阶段问题踩坑/" class="leancloud_visitors" data-flag-title="openresty 执行阶段问题踩坑">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -513,7 +494,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">327</span>
+                <span title="本文字数">3.1k</span>
               
 
               
@@ -527,7 +508,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -547,8 +528,23 @@
       
 
       
-        <h1 id="lua-环境安装"><a href="#lua-环境安装" class="headerlink" title="lua 环境安装"></a>lua 环境安装</h1><h2 id="linux-系统安装lua"><a href="#linux-系统安装lua" class="headerlink" title="linux 系统安装lua"></a>linux 系统安装lua</h2><p>linux &amp; Mac上安装 Lua 安装非常简单，只需要下载源码包并在终端解压编译即可，本文使用了5.3.4版本进行安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gz</span><br><span class="line">tar zxf lua-5.3.4.tar.gz</span><br><span class="line">cd lua-5.3.4</span><br><span class="line">make linux test</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></p>
-<h2 id="mac-系统安装lua"><a href="#mac-系统安装lua" class="headerlink" title="mac 系统安装lua"></a>mac 系统安装lua</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gz</span><br><span class="line">tar zxf lua-5.3.4.tar.gz</span><br><span class="line">cd lua-5.3.4</span><br><span class="line">make macosx test</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>由于业务需求我们需要根据<code>client_ip</code>对部分接口做一个简单的 ab test，将部分流量导新的服务上。基于之前做 WAF 的经验，制定了大体方案：根据 <code>client_ip</code> 做 hash， 根据 hash 值来确定是请求新后端还是原来的后端服务。<br>在说明详细方案前，先说明一下现状。当前的配置如下：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^/api/rest/v\d+/Login &#123;</span><br><span class="line">    rewrite ^(.*)$ /loginServer$1 break;</span><br><span class="line"></span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_next_upstream error timeout invalid_header;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_set_header Clientip $http_clientip;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Scheme $scheme;</span><br><span class="line">    proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header Connection "";</span><br><span class="line"></span><br><span class="line">    proxy_pass http://test.fanruo.net;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中，<code>/loginServer</code>是当前服务路径前缀，<code>/loginServerNew</code>是新服务路径前缀。所以，具体需求可以描述为，10% 的用户使用<code>/loginServerNew</code>服务，90% 的用户使用<code>/loginServer</code>服务。</p>
+<h3 id="具体方案"><a href="#具体方案" class="headerlink" title="具体方案"></a>具体方案</h3><ol>
+<li>根据字符串 client_ip 转成长整数 ip_num;</li>
+<li>对 ip_num 按 100 取模，取最后两位 hash；</li>
+<li>当 hash &lt; 10 时走<code>/loginServerNew</code>服务， 设置 <code>tag=&quot;New&quot;</code>, 否则 <code>tag=&quot;&quot;</code></li>
+<li>改造<code>rewrite</code>指令为<code>rewrite ^(.*)$ /loginServer$tag$1 break;</code></li>
+</ol>
+<p>对应配置为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^/api/rest/v\d+/Login &#123;</span><br><span class="line">    set $tag "";</span><br><span class="line">    access_by_lua_file conf/lua/abtest.lua;</span><br><span class="line">    rewrite ^(.*)$ /loginServer$tag$1 break;</span><br><span class="line"></span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_next_upstream error timeout invalid_header;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_set_header Clientip $http_clientip;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Scheme $scheme;</span><br><span class="line">    proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header Connection "";</span><br><span class="line"></span><br><span class="line">    proxy_pass http://test.fanruo.net;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应 lua 脚本（conf/lua/btest.lua）：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> client_ip = ngx.var.http_clientip <span class="keyword">or</span> ngx.var.remote_addr</span><br><span class="line"><span class="keyword">local</span> o1,o2,o3,o4 = client_ip:<span class="built_in">match</span>(<span class="string">"(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)"</span> )</span><br><span class="line"><span class="keyword">local</span> ip_num = <span class="number">2</span>^<span class="number">24</span>*o1 + <span class="number">2</span>^<span class="number">16</span>*o2 + <span class="number">2</span>^<span class="number">8</span>*o3 + o4</span><br><span class="line"><span class="keyword">local</span> hash = ip_num % <span class="number">100</span></span><br><span class="line"></span><br><span class="line">ngx.var.tag = <span class="string">""</span></span><br><span class="line"><span class="keyword">if</span> hash &gt; <span class="number">10</span> <span class="keyword">then</span></span><br><span class="line">    ngx.var.tag = <span class="string">"New"</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>按照上述实现，最终总是走原来的服务<code>/loginServer</code>。通过分析 tag 的值一直是 “”，因此，需求不能满足。</p>
+<h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>通过分析，由于之前 WAF 是通过直接修改 proxy_pass 参数来完成的，而 proxy_pass 对应 content phase，该阶段在 access phase 之后，因此上面的配置没有问题。而本需求是在 rewrite phase，因此需要在该阶段之前修改对应变量 tag 只能在 set phase 来完成 nginx 变量修改操作。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>跟进上述分析，修改 nginx.conf 配置和 lua 脚本如下：</p>
+<p>lua 脚本修改为：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> client_ip = ngx.var.http_clientip <span class="keyword">or</span> ngx.var.remote_addr</span><br><span class="line"><span class="keyword">local</span> o1,o2,o3,o4 = client_ip:<span class="built_in">match</span>(<span class="string">"(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)"</span> )</span><br><span class="line"><span class="keyword">local</span> ip_num = <span class="number">2</span>^<span class="number">24</span>*o1 + <span class="number">2</span>^<span class="number">16</span>*o2 + <span class="number">2</span>^<span class="number">8</span>*o3 + o4</span><br><span class="line"><span class="keyword">local</span> hash = ip_num % <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> tag = <span class="string">""</span></span><br><span class="line"><span class="keyword">if</span> hash &gt; <span class="number">10</span> <span class="keyword">then</span></span><br><span class="line">    tag = <span class="string">"New"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> tag</span><br></pre></td></tr></table></figure></p>
+<p>nginx.conf 配置修改为：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^/api/rest/v\d+/Login &#123;</span><br><span class="line">    set_by_lua_file $tag conf/lua/abtest.lua;</span><br><span class="line">    rewrite ^(.*)$ /loginServer$tag$1 break;</span><br><span class="line"></span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_next_upstream error timeout invalid_header;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_set_header Clientip $http_clientip;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Scheme $scheme;</span><br><span class="line">    proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header Connection "";</span><br><span class="line"></span><br><span class="line">    proxy_pass http://test.fanruo.net;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -583,7 +579,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://m.fanruo.net/2018/09/14/1-2-lua-环境安装/" title="1.2 lua 环境安装">https://m.fanruo.net/2018/09/14/1-2-lua-环境安装/</a>
+    <a href="https://m.fanruo.net/2019/06/18/openresty-执行阶段问题踩坑/" title="openresty 执行阶段问题踩坑">https://m.fanruo.net/2019/06/18/openresty-执行阶段问题踩坑/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
@@ -596,7 +592,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/lua/" rel="tag"># lua</a>
+            <a href="/tags/OpenResty/" rel="tag"># OpenResty</a>
           
         </div>
       
@@ -609,8 +605,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/14/1-1-lua-简介/" rel="next" title="1.1 lua 简介">
-                <i class="fa fa-chevron-left"></i> 1.1 lua 简介
+              <a href="/2019/05/29/nginx-lua-开发中过程中-post-body-过大返回-4xx-续/" rel="next" title="nginx + lua 开发中过程中 post body 过大返回 4xx (续)">
+                <i class="fa fa-chevron-left"></i> nginx + lua 开发中过程中 post body 过大返回 4xx (续)
               </a>
             
           </div>
@@ -618,10 +614,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/19/2-1-lua-基本语法/" rel="prev" title="2.1 lua 基本语法">
-                2.1 lua 基本语法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -841,7 +833,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lua-环境安装"><span class="nav-number">1.</span> <span class="nav-text">lua 环境安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux-系统安装lua"><span class="nav-number">1.1.</span> <span class="nav-text">linux 系统安装lua</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mac-系统安装lua"><span class="nav-number">1.2.</span> <span class="nav-text">mac 系统安装lua</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#具体方案"><span class="nav-number">1.1.</span> <span class="nav-text">具体方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因分析"><span class="nav-number">3.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">4.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
             
 
           </div>
