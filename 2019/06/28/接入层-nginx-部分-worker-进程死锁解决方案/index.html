@@ -15,11 +15,11 @@
 
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
 
 
 
@@ -44,9 +44,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
 
-<link rel="stylesheet" href="/css/main.css?v=7.1.1"/>
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
@@ -104,29 +104,29 @@
 <meta property="og:site_name" content="凡 若">
 <meta property="og:description" content="背景部分 worker 进程 CPU 使用率达到100%整个 worker 不可用。 原因诱因上游 DLP （长连接）上线，由于 BNS 生效时间长，导致 nginx 连接上游失败，在释放连接时 nginx worker 进程可能在持有读锁时出现问题，从而导致读写锁的状态和实际情况不一致，最终读锁永远没法释放，而写锁会死锁。 主因通过火焰图分析，发现整个进程的耗时都在 ngx_rwlock_wlo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png">
 <meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png">
-<meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/接入层-nginx-部分-worker-进程死锁解决方案/2_bt.png">
+<meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/06/28/接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png">
 <meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/2_bt.png">
-<meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/接入层-nginx-部分-worker-进程死锁解决方案/3_code.png">
+<meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/06/28/接入层-nginx-部分-worker-进程死锁解决方案/2_bt.png">
 <meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/3_code.png">
-<meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/接入层-nginx-部分-worker-进程死锁解决方案/4_code.png">
+<meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/06/28/接入层-nginx-部分-worker-进程死锁解决方案/3_code.png">
 <meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/4_code.png">
+<meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/06/28/接入层-nginx-部分-worker-进程死锁解决方案/4_code.png">
 <meta property="og:updated_time" content="2019-06-28T05:28:49.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接入层 nginx 部分 worker 进程死锁解决方案">
 <meta name="twitter:description" content="背景部分 worker 进程 CPU 使用率达到100%整个 worker 不可用。 原因诱因上游 DLP （长连接）上线，由于 BNS 生效时间长，导致 nginx 连接上游失败，在释放连接时 nginx worker 进程可能在持有读锁时出现问题，从而导致读写锁的状态和实际情况不一致，最终读锁永远没法释放，而写锁会死锁。 主因通过火焰图分析，发现整个进程的耗时都在 ngx_rwlock_wlo">
-<meta name="twitter:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png">
+<meta name="twitter:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="凡 若" type="application/atom+xml"/>
+  <link rel="alternate" href="/atom.xml" title="凡 若" type="application/atom+xml">
 
 
 
   
   
-  <link rel="canonical" href="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/"/>
+  <link rel="canonical" href="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/">
 
 
 
@@ -177,7 +177,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -187,7 +187,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
     
@@ -238,7 +238,7 @@
       
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
         
@@ -257,7 +257,7 @@
       
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
         
@@ -276,7 +276,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签<span class="badge">14</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">14</span></a>
 
   </li>
         
@@ -295,7 +295,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类<span class="badge">6</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span></a>
 
   </li>
         
@@ -314,7 +314,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档<span class="badge">15</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">15</span></a>
 
   </li>
         
@@ -333,7 +333,7 @@
       
     
 
-    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br/>日程表</a>
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>日程表</a>
 
   </li>
 
@@ -380,21 +380,21 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/"/>
+    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Frank Yu"/>
-      <meta itemprop="description" content="初心 读书 知新 生活"/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Frank Yu">
+      <meta itemprop="description" content="初心 读书 知新 生活">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凡 若"/>
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凡 若">
     </span>
 
     
@@ -450,7 +450,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
 
                 
                 
@@ -539,10 +539,10 @@
       
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>部分 worker 进程 CPU 使用率达到100%整个 worker 不可用。</p>
 <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><h3 id="诱因"><a href="#诱因" class="headerlink" title="诱因"></a>诱因</h3><p>上游 DLP （长连接）上线，由于 BNS 生效时间长，导致 nginx 连接上游失败，在释放连接时 nginx worker 进程可能在持有读锁时出现问题，从而导致读写锁的状态和实际情况不一致，最终读锁永远没法释放，而写锁会死锁。</p>
-<h3 id="主因"><a href="#主因" class="headerlink" title="主因"></a>主因</h3><p>通过火焰图分析，发现整个进程的耗时都在 ngx_rwlock_wlock 这个函数上。<br><img src="./接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png" alt=""><br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png"></p>
+<h3 id="主因"><a href="#主因" class="headerlink" title="主因"></a>主因</h3><p>通过火焰图分析，发现整个进程的耗时都在 ngx_rwlock_wlock 这个函数上。<br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png" alt=""><br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/06/28/接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png"></p>
 <p>通 GDB 查看该进程的堆栈信息，执行下面的命令（121606 是对应 CPU 打满进程的进程号 ），查看进程调用栈。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 先执行下面命令进入 GDB</span><br><span class="line">/opt/compiler/gcc-4.8.2/bin/gdb -nx /proc/121606/exe 121606</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span> 执行 bt</span><br><span class="line"><span class="meta">&gt;</span> bt</span><br></pre></td></tr></table></figure></p>
 <p>上述命令执行的结果如下图，可以看出 worker 进程在释放连接时出现问题，最终死锁在 ngx_rwlock_wlock 函数上。</p>
-<p><img src="./接入层-nginx-部分-worker-进程死锁解决方案/2_bt.png" alt=""><br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/2_bt.png"><br>查看 nginx 源码，可以发现在 ngx_http_upstream_free_round_robin_peer 函数中 调用了 ngx_http_upstream_rr_peers_rlock 函数， 该函数最终调用了 ngx_rwlock_wlock。<br><img src="./接入层-nginx-部分-worker-进程死锁解决方案/3_code.png" alt=""><br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/3_code.png"><br>从上面的代码可以看出当宏定义 NGX_HTTP_UPSTREAM_ZONE为1时ngx_http_upstream_rr_peer_lock有可能加锁，当NGX_HTTP_UPSTREAM_ZONE不为1时，不会加锁。当 nginx 编译时不将http_upstream_zone_module模块去掉(添加 –without-http_upstream_zone_module 参数)时 NGX_HTTP_UPSTREAM_ZONE为1，即使在 nginx 中没有使用 zone 指令。<br><img src="./接入层-nginx-部分-worker-进程死锁解决方案/4_code.png" alt=""><br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/4_code.png"></p>
+<p><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/2_bt.png" alt=""><br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/06/28/接入层-nginx-部分-worker-进程死锁解决方案/2_bt.png"><br>查看 nginx 源码，可以发现在 ngx_http_upstream_free_round_robin_peer 函数中 调用了 ngx_http_upstream_rr_peers_rlock 函数， 该函数最终调用了 ngx_rwlock_wlock。<br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/3_code.png" alt=""><br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/06/28/接入层-nginx-部分-worker-进程死锁解决方案/3_code.png"><br>从上面的代码可以看出当宏定义 NGX_HTTP_UPSTREAM_ZONE为1时ngx_http_upstream_rr_peer_lock有可能加锁，当NGX_HTTP_UPSTREAM_ZONE不为1时，不会加锁。当 nginx 编译时不将http_upstream_zone_module模块去掉(添加 –without-http_upstream_zone_module 参数)时 NGX_HTTP_UPSTREAM_ZONE为1，即使在 nginx 中没有使用 zone 指令。<br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/4_code.png" alt=""><br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/06/28/接入层-nginx-部分-worker-进程死锁解决方案/4_code.png"></p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>由于我们没有使用 zone 指令，即没有使用 http_upstream_zone_module 模块，只需重新编译 nginx 二进制，将http_upstream_zone_module模块去掉(添加 –without-http_upstream_zone_module 参数)即可。</p>
 
       
@@ -676,7 +676,7 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Frank Yu</p>
               <div class="site-description motion-element" itemprop="description">初心 读书 知新 生活</div>
@@ -814,7 +814,7 @@
               
               
               
-              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"/></a>
+              <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-nd.svg" alt="Creative Commons"></a>
              </div>
           
 
@@ -887,7 +887,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.7.1</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
