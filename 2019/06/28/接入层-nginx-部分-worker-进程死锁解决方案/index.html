@@ -105,10 +105,14 @@
 <meta property="og:description" content="背景部分 worker 进程 CPU 使用率达到100%整个 worker 不可用。 原因诱因上游 DLP （长连接）上线，由于 BNS 生效时间长，导致 nginx 连接上游失败，在释放连接时 nginx worker 进程可能在持有读锁时出现问题，从而导致读写锁的状态和实际情况不一致，最终读锁永远没法释放，而写锁会死锁。 主因通过火焰图分析，发现整个进程的耗时都在 ngx_rwlock_wlo">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png">
+<meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png">
 <meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/接入层-nginx-部分-worker-进程死锁解决方案/2_bt.png">
+<meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/2_bt.png">
 <meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/接入层-nginx-部分-worker-进程死锁解决方案/3_code.png">
+<meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/3_code.png">
 <meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/接入层-nginx-部分-worker-进程死锁解决方案/4_code.png">
-<meta property="og:updated_time" content="2019-06-28T05:20:06.288Z">
+<meta property="og:image" content="https://m.fanruo.net/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/4_code.png">
+<meta property="og:updated_time" content="2019-06-28T05:28:49.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接入层 nginx 部分 worker 进程死锁解决方案">
 <meta name="twitter:description" content="背景部分 worker 进程 CPU 使用率达到100%整个 worker 不可用。 原因诱因上游 DLP （长连接）上线，由于 BNS 生效时间长，导致 nginx 连接上游失败，在释放连接时 nginx worker 进程可能在持有读锁时出现问题，从而导致读写锁的状态和实际情况不一致，最终读锁永远没法释放，而写锁会死锁。 主因通过火焰图分析，发现整个进程的耗时都在 ngx_rwlock_wlo">
@@ -424,7 +428,7 @@
                 
               
 
-              <time title="创建时间：2019-06-28 13:14:30 / 修改时间：13:20:06" itemprop="dateCreated datePublished" datetime="2019-06-28T13:14:30+08:00">2019-06-28</time>
+              <time title="创建时间：2019-06-28 13:14:30 / 修改时间：13:28:49" itemprop="dateCreated datePublished" datetime="2019-06-28T13:14:30+08:00">2019-06-28</time>
             
 
             
@@ -499,7 +503,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">950</span>
+                <span title="本文字数">949</span>
               
 
               
@@ -535,11 +539,10 @@
       
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>部分 worker 进程 CPU 使用率达到100%整个 worker 不可用。</p>
 <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><h3 id="诱因"><a href="#诱因" class="headerlink" title="诱因"></a>诱因</h3><p>上游 DLP （长连接）上线，由于 BNS 生效时间长，导致 nginx 连接上游失败，在释放连接时 nginx worker 进程可能在持有读锁时出现问题，从而导致读写锁的状态和实际情况不一致，最终读锁永远没法释放，而写锁会死锁。</p>
-<h3 id="主因"><a href="#主因" class="headerlink" title="主因"></a>主因</h3><p>通过火焰图分析，发现整个进程的耗时都在 ngx_rwlock_wlock 这个函数上。<br><img src="./接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png" alt=""></p>
+<h3 id="主因"><a href="#主因" class="headerlink" title="主因"></a>主因</h3><p>通过火焰图分析，发现整个进程的耗时都在 ngx_rwlock_wlock 这个函数上。<br><img src="./接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png" alt=""><br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/1_火焰图.png"></p>
 <p>通 GDB 查看该进程的堆栈信息，执行下面的命令（121606 是对应 CPU 打满进程的进程号 ），查看进程调用栈。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 先执行下面命令进入 GDB</span><br><span class="line">/opt/compiler/gcc-4.8.2/bin/gdb -nx /proc/121606/exe 121606</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span> 执行 bt</span><br><span class="line"><span class="meta">&gt;</span> bt</span><br></pre></td></tr></table></figure></p>
 <p>上述命令执行的结果如下图，可以看出 worker 进程在释放连接时出现问题，最终死锁在 ngx_rwlock_wlock 函数上。</p>
-<p><img src="./接入层-nginx-部分-worker-进程死锁解决方案/2_bt.png" alt=""></p>
-<p>查看 nginx 源码，可以发现在 ngx_http_upstream_free_round_robin_peer 函数中 调用了 ngx_http_upstream_rr_peers_rlock 函数， 该函数最终调用了 ngx_rwlock_wlock。<br><img src="./接入层-nginx-部分-worker-进程死锁解决方案/3_code.png" alt=""><br>从上面的代码可以看出当宏定义 NGX_HTTP_UPSTREAM_ZONE为1时ngx_http_upstream_rr_peer_lock有可能加锁，当NGX_HTTP_UPSTREAM_ZONE不为1时，不会加锁。当 nginx 编译时不将http_upstream_zone_module模块去掉(添加 –without-http_upstream_zone_module 参数)时 NGX_HTTP_UPSTREAM_ZONE为1，即使在 nginx 中没有使用 zone 指令。<br><img src="./接入层-nginx-部分-worker-进程死锁解决方案/4_code.png" alt=""></p>
+<p><img src="./接入层-nginx-部分-worker-进程死锁解决方案/2_bt.png" alt=""><br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/2_bt.png"><br>查看 nginx 源码，可以发现在 ngx_http_upstream_free_round_robin_peer 函数中 调用了 ngx_http_upstream_rr_peers_rlock 函数， 该函数最终调用了 ngx_rwlock_wlock。<br><img src="./接入层-nginx-部分-worker-进程死锁解决方案/3_code.png" alt=""><br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/3_code.png"><br>从上面的代码可以看出当宏定义 NGX_HTTP_UPSTREAM_ZONE为1时ngx_http_upstream_rr_peer_lock有可能加锁，当NGX_HTTP_UPSTREAM_ZONE不为1时，不会加锁。当 nginx 编译时不将http_upstream_zone_module模块去掉(添加 –without-http_upstream_zone_module 参数)时 NGX_HTTP_UPSTREAM_ZONE为1，即使在 nginx 中没有使用 zone 指令。<br><img src="./接入层-nginx-部分-worker-进程死锁解决方案/4_code.png" alt=""><br><img src="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/4_code.png"></p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>由于我们没有使用 zone 指令，即没有使用 http_upstream_zone_module 模块，只需重新编译 nginx 二进制，将http_upstream_zone_module模块去掉(添加 –without-http_upstream_zone_module 参数)即可。</p>
 
       
