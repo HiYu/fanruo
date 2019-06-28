@@ -396,7 +396,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/" class="post-title-link" itemprop="url">接入层 nginx 部分 worker 进程死锁解决方案</a>
+                <a href="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/" class="post-title-link" itemprop="url">接入层 Nginx 部分 worker 进程死锁解决方案</a>
               
             
           </h2>
@@ -421,7 +421,7 @@
                 
               
 
-              <time title="创建时间：2019-06-28 13:14:30 / 修改时间：13:35:07" itemprop="dateCreated datePublished" datetime="2019-06-28T13:14:30+08:00">2019-06-28</time>
+              <time title="创建时间：2019-06-28 13:14:30 / 修改时间：13:39:15" itemprop="dateCreated datePublished" datetime="2019-06-28T13:14:30+08:00">2019-06-28</time>
             
 
             
@@ -471,7 +471,7 @@
 
           
           
-            <span id="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/" class="leancloud_visitors" data-flag-title="接入层 nginx 部分 worker 进程死锁解决方案">
+            <span id="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/" class="leancloud_visitors" data-flag-title="接入层 Nginx 部分 worker 进程死锁解决方案">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -496,7 +496,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">951</span>
+                <span title="本文字数">955</span>
               
 
               
@@ -534,9 +534,9 @@
           
             <p>
               背景部分 worker 进程 CPU 使用率达到100%整个 worker 不可用。
-原因诱因上游 DLP （长连接）上线，由于 BNS 生效时间长，导致 nginx 连接上游失败，在释放连接时 nginx worker 进程可能在持有读锁时出现问题，从而导致读写锁的状态和实际情况不一致，最终读锁永远没法释放，而写锁会死锁。
+原因诱因上游长连接服务上线，由于服务发现服务生效时间长，导致 Nginx 连接上游失败，在释放连接时 Nginx worker 进程可能在持有读锁时出现问题，从而导致读写锁的状态和实际情况不一致，最终读锁永远没法释放，而写锁会死锁。
 主因通过火焰图分析，发现整个进程的耗时都在 ngx_rwlock_wlock 这个函数上。
-通 GDB 查看该进程的堆栈信息，执行下面的命令（12160
+通 GDB 查看该进程的堆栈信息，执行下面的命令（121606 是对
               ...
             </p>
           <!--noindex-->
