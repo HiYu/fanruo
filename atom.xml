@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://m.fanruo.net/"/>
-  <updated>2020-02-16T11:25:27.361Z</updated>
+  <updated>2020-02-16T12:16:55.636Z</updated>
   <id>https://m.fanruo.net/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【leetcode】数组-加一</title>
+    <link href="https://m.fanruo.net/2020/02/16/%E3%80%90leetcode%E3%80%91%E6%95%B0%E7%BB%84-%E5%8A%A0%E4%B8%80/"/>
+    <id>https://m.fanruo.net/2020/02/16/【leetcode】数组-加一/</id>
+    <published>2020-02-16T12:16:14.000Z</published>
+    <updated>2020-02-16T12:16:55.636Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。<br>最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。<br>你可以假设除了整数 0 之外，这个整数不会以零开头。<br><strong>难易程度</strong>：easy<br><strong>示例 1</strong>:<br>输入: [1,2,3]<br>输出: [1,2,4]<br>解释: 输入数组表示数字 123。</p><p><strong>示例 2</strong>:<br>输入: [4,3,2,1]<br>输出: [4,3,2,2]<br>解释: 输入数组表示数字 4321。</p><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="解法一"><a href="#解法一" class="headerlink" title="解法一"></a>解法一</h2><h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>此题可以理解为模拟加法。因此本题需要考虑的一点是<strong>进位</strong>问题，尤其是要考虑最高位进位。<br>看完题目，最近直接想方法是十进制加法，从最低位位开始加一，设数组digits长度为n，则从digits[n-1]开始加1，当gigits[n-1]+1&gt;10,则产出进位1，逆序遍历数组digits每个元素加上上一个元素执行加法操作之后的进位c。至此，大家可能已经发现最初的被加数1，其实可以看作c=1。直接上代码。<br><strong>时间复杂度</strong>：O(N)<br><strong>空间复杂度</strong>：O(1)</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; plusOne(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; digits) &#123;</span><br><span class="line">        <span class="keyword">int</span> c = <span class="number">1</span>;<span class="comment">// 加1，看作最初的进位</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ret(digits);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = ret.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = ret[i] + c;</span><br><span class="line">            c = tmp / <span class="number">10</span>;</span><br><span class="line">            ret[i] = tmp % <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> ret;</span><br><span class="line">            &#125; <span class="comment">// 提前返回</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="number">1</span>) &#123;</span><br><span class="line">            ret.insert(ret.begin(), c);<span class="comment">// vector的非尾部插入极其耗时。</span></span><br><span class="line">        &#125;<span class="comment">// 处理最高位进位</span></span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="解法二"><a href="#解法二" class="headerlink" title="解法二"></a>解法二</h2><h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>解法一是很常规的解法，就是模拟加法。我们仔细研究题目，会发现本题有几个特点：</p><ol><li>只加1，意味着，只有在对应的元素digits[i]是9的时候才会产生进位1</li><li>产生进位之后digits[i]对应位上只能是0<br>综上，我们只需要逆序遍历数组digits（这是数组长度为n）,如果索引i对应的元素是9，则置0继续遍历，不是9的则加1，直接返回，当一致遍历到i=0,切digits[0] = 9,才会在最高位产生进位，注意，此时索引1~(n-1)位上都是0。因此只需要将digits[0]设置为1，并且在数组尾部新增一个元素0即可。（有同学应该已经发现，只有digits数组是类似[9,9,9]（即所以元素都是9的时候）才会产生溢出）.<br>相比解法一，少了取模和除法操作，也少了vector插入操作，耗时进一步优化。<br><strong>时间复杂度</strong>：O(N)<br><strong>空间复杂度</strong>：O(1)</li></ol><h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; plusOne(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; digits) &#123;</span><br><span class="line">        <span class="keyword">int</span> c = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = digits.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (digits[i] != <span class="number">9</span>) &#123;</span><br><span class="line">                digits[i] += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">return</span> digits;</span><br><span class="line">            &#125;</span><br><span class="line">            digits[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        digits.push_back(<span class="number">0</span>);</span><br><span class="line">        digits[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。&lt;br&gt;最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。&lt;br
+      
+    
+    </summary>
+    
+    
+      <category term="leetcode" scheme="https://m.fanruo.net/tags/leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>【leetcode】数组-至少是其他数字两倍的最大数</title>
