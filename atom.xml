@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://m.fanruo.net/"/>
-  <updated>2020-02-16T11:11:41.793Z</updated>
+  <updated>2020-02-16T11:25:27.361Z</updated>
   <id>https://m.fanruo.net/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【leetcode】数组-至少是其他数字两倍的最大数</title>
+    <link href="https://m.fanruo.net/2020/02/16/%E3%80%90leetcode%E3%80%91%E6%95%B0%E7%BB%84-%E8%87%B3%E5%B0%91%E6%98%AF%E5%85%B6%E4%BB%96%E6%95%B0%E5%AD%97%E4%B8%A4%E5%80%8D%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B0/"/>
+    <id>https://m.fanruo.net/2020/02/16/【leetcode】数组-至少是其他数字两倍的最大数/</id>
+    <published>2020-02-16T11:24:55.000Z</published>
+    <updated>2020-02-16T11:25:27.361Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>在一个给定的数组nums中，总是存在一个最大元素 。<br>查找数组中的最大元素是否至少是数组中每个其他数字的两倍。<br>如果是，则返回最大元素的索引，否则返回-1。<br>难易程度：<em>easy</em><br><strong>示例 1</strong>:</p><p>输入: nums = [3, 6, 1, 0]<br>输出: 1<br>解释: 6是最大的整数, 对于数组中的其他整数,<br>6大于数组中其他元素的两倍。6的索引是1, 所以我们返回1. </p><p><strong>示例 2</strong>:</p><p>输入: nums = [1, 2, 3, 4]<br>输出: -1<br>解释: 4没有超过3的两倍大, 所以我们返回 -1.</p><p><strong>提示</strong>:</p><p>nums 的长度范围在[1, 50].<br>每个 nums[i] 的整数范围在 [0, 100].</p><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>本题比较简单，只需遍历一遍数组，记录最大值max、最大值索引i以及次最大值，如果最大值大于次最大值的2倍即满足要求。<br><strong>时间复杂度</strong>：O(N)<br><strong>空间复杂度</strong>：O(1)</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dominantIndex</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> second_max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; max) &#123;</span><br><span class="line">                second_max = max;</span><br><span class="line">                max = nums[i];</span><br><span class="line">                index = i;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] &gt; second_max) &#123;</span><br><span class="line">                second_max = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (max &gt;= (second_max * <span class="number">2</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> index;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;在一个给定的数组nums中，总是存在一个最大元素 。&lt;br&gt;查找数组中的最大元素是否至少是数组中每个其他数字的两倍。&lt;br&gt;如果是，则返回最
+      
+    
+    </summary>
+    
+    
+      <category term="leetcode" scheme="https://m.fanruo.net/tags/leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>【leetcode】数组-寻找数组的中心索引</title>
