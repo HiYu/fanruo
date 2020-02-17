@@ -96,18 +96,20 @@
 
 
 
-  <meta name="description" content="背景由于业务需求我们需要根据client_ip对部分接口做一个简单的 ab test，将部分流量导新的服务上。基于之前做 WAF 的经验，制定了大体方案：根据 client_ip 做 hash， 根据 hash 值来确定是请求新后端还是原来的后端服务。在说明详细方案前，先说明一下现状。当前的配置如下：1234567891011121314151617location ~ ^/api/rest/v\">
-<meta name="keywords" content="OpenResty">
+  <meta name="description" content="题目给定一个含有 M x N 个元素的矩阵（M 行，N 列），请以对角线遍历的顺序返回这个矩阵中的所有元素，对角线遍历如下图所示。 示例: 输入:[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]] 输出:  [1,2,4,7,5,3,6,8,9] 解释: 说明:给定矩阵中的元素总数不会超过 100000。 题解分析本题需要仔细揣摩题目，找出规律。抓住两点：  题目实例">
+<meta name="keywords" content="leetcode,数组">
 <meta property="og:type" content="article">
-<meta property="og:title" content="openresty 执行阶段问题踩坑">
-<meta property="og:url" content="https://m.fanruo.net/2019/06/18/openresty-执行阶段问题踩坑/index.html">
+<meta property="og:title" content="【leetcode】4. 数组-对角线遍历">
+<meta property="og:url" content="https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/index.html">
 <meta property="og:site_name" content="凡 若">
-<meta property="og:description" content="背景由于业务需求我们需要根据client_ip对部分接口做一个简单的 ab test，将部分流量导新的服务上。基于之前做 WAF 的经验，制定了大体方案：根据 client_ip 做 hash， 根据 hash 值来确定是请求新后端还是原来的后端服务。在说明详细方案前，先说明一下现状。当前的配置如下：1234567891011121314151617location ~ ^/api/rest/v\">
+<meta property="og:description" content="题目给定一个含有 M x N 个元素的矩阵（M 行，N 列），请以对角线遍历的顺序返回这个矩阵中的所有元素，对角线遍历如下图所示。 示例: 输入:[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]] 输出:  [1,2,4,7,5,3,6,8,9] 解释: 说明:给定矩阵中的元素总数不会超过 100000。 题解分析本题需要仔细揣摩题目，找出规律。抓住两点：  题目实例">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-18T06:56:59.242Z">
+<meta property="og:image" content="https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/diagonal_traverse.png">
+<meta property="og:updated_time" content="2020-02-17T17:49:36.082Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="openresty 执行阶段问题踩坑">
-<meta name="twitter:description" content="背景由于业务需求我们需要根据client_ip对部分接口做一个简单的 ab test，将部分流量导新的服务上。基于之前做 WAF 的经验，制定了大体方案：根据 client_ip 做 hash， 根据 hash 值来确定是请求新后端还是原来的后端服务。在说明详细方案前，先说明一下现状。当前的配置如下：1234567891011121314151617location ~ ^/api/rest/v\">
+<meta name="twitter:title" content="【leetcode】4. 数组-对角线遍历">
+<meta name="twitter:description" content="题目给定一个含有 M x N 个元素的矩阵（M 行，N 列），请以对角线遍历的顺序返回这个矩阵中的所有元素，对角线遍历如下图所示。 示例: 输入:[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]] 输出:  [1,2,4,7,5,3,6,8,9] 解释: 说明:给定矩阵中的元素总数不会超过 100000。 题解分析本题需要仔细揣摩题目，找出规律。抓住两点：  题目实例">
+<meta name="twitter:image" content="https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/diagonal_traverse.png">
 
 
 
@@ -117,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="https://m.fanruo.net/2019/06/18/openresty-执行阶段问题踩坑/">
+  <link rel="canonical" href="https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/">
 
 
 
@@ -127,7 +129,7 @@
   };
 </script>
 
-  <title>openresty 执行阶段问题踩坑 | 凡 若</title>
+  <title>【leetcode】4. 数组-对角线遍历 | 凡 若</title>
   
 
 
@@ -376,7 +378,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2019/06/18/openresty-执行阶段问题踩坑/">
+    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Frank Yu">
@@ -393,7 +395,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">openresty 执行阶段问题踩坑
+          <h2 class="post-title" itemprop="name headline">【leetcode】4. 数组-对角线遍历
 
               
             
@@ -419,7 +421,7 @@
                 
               
 
-              <time title="创建时间：2019-06-18 14:55:58 / 修改时间：14:56:59" itemprop="dateCreated datePublished" datetime="2019-06-18T14:55:58+08:00">2019-06-18</time>
+              <time title="创建时间：2020-02-18 01:38:20 / 修改时间：01:49:36" itemprop="dateCreated datePublished" datetime="2020-02-18T01:38:20+08:00">2020-02-18</time>
             
 
             
@@ -441,7 +443,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/OpenResty/" itemprop="url" rel="index"><span itemprop="name">OpenResty</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
 
                 
                 
@@ -460,8 +462,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/06/18/openresty-执行阶段问题踩坑/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/18/openresty-执行阶段问题踩坑/" itemprop="commentCount"></span>
+                <a href="/2020/02/18/【leetcode】4-数组-对角线遍历/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/02/18/【leetcode】4-数组-对角线遍历/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -469,7 +471,7 @@
 
           
           
-            <span id="/2019/06/18/openresty-执行阶段问题踩坑/" class="leancloud_visitors" data-flag-title="openresty 执行阶段问题踩坑">
+            <span id="/2020/02/18/【leetcode】4-数组-对角线遍历/" class="leancloud_visitors" data-flag-title="【leetcode】4. 数组-对角线遍历">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -494,7 +496,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.1k</span>
+                <span title="本文字数">1.9k</span>
               
 
               
@@ -508,7 +510,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -528,23 +530,24 @@
       
 
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>由于业务需求我们需要根据<code>client_ip</code>对部分接口做一个简单的 ab test，将部分流量导新的服务上。基于之前做 WAF 的经验，制定了大体方案：根据 <code>client_ip</code> 做 hash， 根据 hash 值来确定是请求新后端还是原来的后端服务。<br>在说明详细方案前，先说明一下现状。当前的配置如下：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^/api/rest/v\d+/Login &#123;</span><br><span class="line">    rewrite ^(.*)$ /loginServer$1 break;</span><br><span class="line"></span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_next_upstream error timeout invalid_header;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_set_header Clientip $http_clientip;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Scheme $scheme;</span><br><span class="line">    proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header Connection "";</span><br><span class="line"></span><br><span class="line">    proxy_pass http://test.fanruo.net;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>其中，<code>/loginServer</code>是当前服务路径前缀，<code>/loginServerNew</code>是新服务路径前缀。所以，具体需求可以描述为，10% 的用户使用<code>/loginServerNew</code>服务，90% 的用户使用<code>/loginServer</code>服务。</p>
-<h3 id="具体方案"><a href="#具体方案" class="headerlink" title="具体方案"></a>具体方案</h3><ol>
-<li>根据字符串 client_ip 转成长整数 ip_num;</li>
-<li>对 ip_num 按 100 取模，取最后两位 hash；</li>
-<li>当 hash &lt; 10 时走<code>/loginServerNew</code>服务， 设置 <code>tag=&quot;New&quot;</code>, 否则 <code>tag=&quot;&quot;</code></li>
-<li>改造<code>rewrite</code>指令为<code>rewrite ^(.*)$ /loginServer$tag$1 break;</code></li>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个含有 M x N 个元素的矩阵（M 行，N 列），请以对角线遍历的顺序返回这个矩阵中的所有元素，对角线遍历如下图所示。</p>
+<p><strong>示例</strong>:</p>
+<p><strong>输入</strong>:<br>[<br> [ 1, 2, 3 ],<br> [ 4, 5, 6 ],<br> [ 7, 8, 9 ]<br>]</p>
+<p><strong>输出</strong>:  [1,2,4,7,5,3,6,8,9]</p>
+<p><strong>解释</strong>:<br><img src="/2020/02/18/【leetcode】4-数组-对角线遍历/diagonal_traverse.png" alt="image"></p>
+<p><strong>说明</strong>:<br>给定矩阵中的元素总数不会超过 100000。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>本题需要仔细揣摩题目，找出规律。抓住两点：</p>
+<ol>
+<li>题目实例，如果给出的<code>3*3</code>的矩阵不能有所收获的话，可以尝试更其他组合的矩阵，比如<code>4*3</code>等等。</li>
+<li>题图，图的表现力更强一些，同样，如果题目种的图不能发现规律的话，可以尝试更多的矩阵。<br>经过一通分析，发现如下规律[为表述方便设某一元素的坐标为<code>(x,y)</code>]：</li>
+<li><code>x + y</code> 为偶数是遍历方向为：<code>左下-&gt;右上，x--，y++</code>，<code>x + y</code> 为奇数是遍历方向为：<code>右上-&gt;左下,y--, x++</code></li>
+<li>一共遍历<code>M + N - 1</code> 次，即遍历<code>[0, M+N-2]</code></li>
+<li>第n次遍历是<code>n = x + y</code>，<code>n</code>从0开始</li>
+<li>每次遍历的时候，<code>左下-&gt;右上</code> 若<code>x &lt; M</code>则起点为<code>(n, 0)</code>否则为<code>(M-1,n-M-1)</code>;<code>右上-&gt;左下</code>若<code>y &lt; N</code>则起点为<code>(0, n)</code>否则为<code>(n-N-1, N-1)</code></li>
 </ol>
-<p>对应配置为</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^/api/rest/v\d+/Login &#123;</span><br><span class="line">    set $tag "";</span><br><span class="line">    access_by_lua_file conf/lua/abtest.lua;</span><br><span class="line">    rewrite ^(.*)$ /loginServer$tag$1 break;</span><br><span class="line"></span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_next_upstream error timeout invalid_header;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_set_header Clientip $http_clientip;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Scheme $scheme;</span><br><span class="line">    proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header Connection "";</span><br><span class="line"></span><br><span class="line">    proxy_pass http://test.fanruo.net;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>对应 lua 脚本（conf/lua/btest.lua）：</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> client_ip = ngx.var.http_clientip <span class="keyword">or</span> ngx.var.remote_addr</span><br><span class="line"><span class="keyword">local</span> o1,o2,o3,o4 = client_ip:<span class="built_in">match</span>(<span class="string">"(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)"</span> )</span><br><span class="line"><span class="keyword">local</span> ip_num = <span class="number">2</span>^<span class="number">24</span>*o1 + <span class="number">2</span>^<span class="number">16</span>*o2 + <span class="number">2</span>^<span class="number">8</span>*o3 + o4</span><br><span class="line"><span class="keyword">local</span> hash = ip_num % <span class="number">100</span></span><br><span class="line"></span><br><span class="line">ngx.var.tag = <span class="string">""</span></span><br><span class="line"><span class="keyword">if</span> hash &gt; <span class="number">10</span> <span class="keyword">then</span></span><br><span class="line">    ngx.var.tag = <span class="string">"New"</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>按照上述实现，最终总是走原来的服务<code>/loginServer</code>。通过分析 tag 的值一直是 “”，因此，需求不能满足。</p>
-<h2 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h2><p>通过分析，由于之前 WAF 是通过直接修改 proxy_pass 参数来完成的，而 proxy_pass 对应 content phase，该阶段在 access phase 之后，因此上面的配置没有问题。而本需求是在 rewrite phase，因此需要在该阶段之前修改对应变量 tag 只能在 set phase 来完成 nginx 变量修改操作。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>跟进上述分析，修改 nginx.conf 配置和 lua 脚本如下：</p>
-<p>lua 脚本修改为：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> client_ip = ngx.var.http_clientip <span class="keyword">or</span> ngx.var.remote_addr</span><br><span class="line"><span class="keyword">local</span> o1,o2,o3,o4 = client_ip:<span class="built_in">match</span>(<span class="string">"(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)%.(%d%d?%d?)"</span> )</span><br><span class="line"><span class="keyword">local</span> ip_num = <span class="number">2</span>^<span class="number">24</span>*o1 + <span class="number">2</span>^<span class="number">16</span>*o2 + <span class="number">2</span>^<span class="number">8</span>*o3 + o4</span><br><span class="line"><span class="keyword">local</span> hash = ip_num % <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> tag = <span class="string">""</span></span><br><span class="line"><span class="keyword">if</span> hash &gt; <span class="number">10</span> <span class="keyword">then</span></span><br><span class="line">    tag = <span class="string">"New"</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> tag</span><br></pre></td></tr></table></figure></p>
-<p>nginx.conf 配置修改为：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^/api/rest/v\d+/Login &#123;</span><br><span class="line">    set_by_lua_file $tag conf/lua/abtest.lua;</span><br><span class="line">    rewrite ^(.*)$ /loginServer$tag$1 break;</span><br><span class="line"></span><br><span class="line">    proxy_http_version 1.1;</span><br><span class="line">    proxy_next_upstream error timeout invalid_header;</span><br><span class="line">    proxy_redirect off;</span><br><span class="line"></span><br><span class="line">    proxy_set_header Host $http_host;</span><br><span class="line">    proxy_set_header Clientip $http_clientip;</span><br><span class="line">    proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">    proxy_set_header X-Scheme $scheme;</span><br><span class="line">    proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">    proxy_set_header Connection "";</span><br><span class="line"></span><br><span class="line">    proxy_pass http://test.fanruo.net;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>具体分析如下(以示例种3*3矩阵举例)：<br>第0趟 <code>x = 0, y = 0; x + y = 0</code>，0是偶数，<code>左下-&gt;右上</code>，<code>[(0,0)],[1]</code><br>第1趟 <code>x = 0, y = 1; x + y = 1</code>，1是奇数，<code>右上-&gt;左下</code>，<code>[(0,1),(1,0)],[2,4]</code><br>第2趟 <code>x = 2, y = 0; x + y = 2</code>，2是偶数，<code>左下-&gt;右上</code>，<code>[(2,0),(1,1),(0,2)],[7,5,3]</code><br>第3趟 <code>x = 1, y = 2; x + y = 3</code>，3是奇数，<code>右上-&gt;左下</code>，<code>[(1,2),(2,1)],[6,8]</code><br>第4趟 <code>x = 2, y = 2; x + y = 4</code>，4是偶数，<code>左下-&gt;右上</code>，<code>[(2,2)],[9]</code><br>因此，对角遍历后的结果为<code>[1,2,4,7,5,3,6,8,9]</code></p>
+<p><strong>时间复杂度</strong>：O(N*N)<br><strong>空间复杂度</strong>：O(N)</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; findDiagonalOrder(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ret;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.size();</span><br><span class="line">        <span class="keyword">if</span> (m == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> ret;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> n = matrix[<span class="number">0</span>].size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">0</span>; t &lt; m + n; t++) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (t % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                x = t &lt; m ? t : m - <span class="number">1</span>;</span><br><span class="line">                y = t - x;</span><br><span class="line">                <span class="keyword">while</span> (x &gt;= <span class="number">0</span> &amp;&amp; y &lt; n) &#123;</span><br><span class="line">                    ret.push_back(matrix[x][y]);</span><br><span class="line">                    x--;</span><br><span class="line">                    y++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                y = t &lt; n ? t : n - <span class="number">1</span>;</span><br><span class="line">                x = t - y;</span><br><span class="line">                <span class="keyword">while</span> (y &gt;= <span class="number">0</span> &amp;&amp; x &lt; m) &#123;</span><br><span class="line">                    ret.push_back(matrix[x][y]);</span><br><span class="line">                    y--;</span><br><span class="line">                    x++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -579,7 +582,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://m.fanruo.net/2019/06/18/openresty-执行阶段问题踩坑/" title="openresty 执行阶段问题踩坑">https://m.fanruo.net/2019/06/18/openresty-执行阶段问题踩坑/</a>
+    <a href="https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/" title="【leetcode】4. 数组-对角线遍历">https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
@@ -592,7 +595,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/OpenResty/" rel="tag"># OpenResty</a>
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/数组/" rel="tag"># 数组</a>
           
         </div>
       
@@ -605,8 +610,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/29/nginx-lua-开发中过程中-post-body-过大返回-4xx-续/" rel="next" title="nginx + lua 开发中过程中 post body 过大返回 4xx (续)">
-                <i class="fa fa-chevron-left"></i> nginx + lua 开发中过程中 post body 过大返回 4xx (续)
+              <a href="/2020/02/16/【leetcode】数组-加一/" rel="next" title="【leetcode】数组-加一">
+                <i class="fa fa-chevron-left"></i> 【leetcode】数组-加一
               </a>
             
           </div>
@@ -614,10 +619,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/28/接入层-nginx-部分-worker-进程死锁解决方案/" rel="prev" title="接入层 Nginx 部分 worker 进程死锁解决方案">
-                接入层 Nginx 部分 worker 进程死锁解决方案 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -847,7 +848,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#具体方案"><span class="nav-number">1.1.</span> <span class="nav-text">具体方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因分析"><span class="nav-number">3.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">4.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
             
 
           </div>
