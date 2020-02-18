@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://m.fanruo.net/"/>
-  <updated>2020-02-18T00:12:23.756Z</updated>
+  <updated>2020-02-18T06:07:18.101Z</updated>
   <id>https://m.fanruo.net/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>推荐几本redis书籍</title>
+    <link href="https://m.fanruo.net/2020/02/18/%E6%8E%A8%E8%8D%90%E5%87%A0%E6%9C%ACredis%E4%B9%A6%E7%B1%8D/"/>
+    <id>https://m.fanruo.net/2020/02/18/推荐几本redis书籍/</id>
+    <published>2020-02-18T05:58:50.000Z</published>
+    <updated>2020-02-18T06:07:18.101Z</updated>
+    
+    <content type="html"><![CDATA[<p>Redis作为基于键值对的NoSQL数据库，具有高性能、丰富的数据结构、持久化、高可用、分布式等特性，同时Redis本身非常稳定，已经得到业界的广泛认可和使用。 掌握Redis已经逐步成为开发和运维人员的必备技能之一。下面分享一下几本本人看过的Redis书籍，希望对大家有所帮助。</p><h1 id="Redis开发与运维"><a href="#Redis开发与运维" class="headerlink" title="Redis开发与运维"></a>Redis开发与运维</h1><p><img src="/2020/02/18/推荐几本redis书籍/Redis开发与运维.png" alt="image"><br>本书全面讲解Redis基本功能及其应用，并结合线上开发与运维监控中的实际使用案例，深入分析并总结了实际开发运维中遇到的“陷阱”，以及背后的原因， 包含大规模集群开发与管理的场景、应用案例与开发技巧，为高效开发运维提供了大量实际经验和建议。本书不要求读者有任何Redis使用经验,对入门与进阶DevOps的开发者提供有价值的帮助。主要内容包括：Redis的安装配置、API、各种高效功能、客户端、持久化、复制、高可用、内存、哨兵、集群、缓存设计等，Redis高可用集群解决方案，Redis设计和使用中的问题，最后提供了一个开源工具：Redis监控运维云平台CacheCloud。</p><h1 id="Redis-深度历险：核心原理与应用实践"><a href="#Redis-深度历险：核心原理与应用实践" class="headerlink" title="Redis 深度历险：核心原理与应用实践"></a>Redis 深度历险：核心原理与应用实践</h1><p><img src="/2020/02/18/推荐几本redis书籍/redis深度历险.png" alt="image"><br>Redis 是互联网技术架构在存储系统中使用得最为广泛的中间件，也是中高级后端工程师技术面试中面试官最喜欢问的工程技能之一，特别是那些优秀的互联网公司，通常要求面试者不仅仅掌握 Redis 基础用法，还要理解 Redis 内部实现的细节原理。《Redis 深度历险：核心原理与应用实践》作者老钱在使用 Redis 上积累了丰富的实战经验，希望帮助更多后端开发者更快、更深入地掌握 Redis 技能。</p><p>《Redis 深度历险：核心原理与应用实践》分为基础和应用篇、原理篇、集群篇、拓展篇、源码篇共 5 大块内容。基础和应用篇讲解对读者来说最有价值的内容，可以直接应用到实际工作中；原理篇、集群篇让开发者透过简单的技术表面看到精致的底层世界；拓展篇帮助读者拓展技术视野和夯实基础，便于进阶学习；源码篇让高阶的读者能够读懂源码，掌握核心技术实力。</p><h1 id="Redis设计与实现"><a href="#Redis设计与实现" class="headerlink" title="Redis设计与实现"></a>Redis设计与实现</h1><p><img src="/2020/02/18/推荐几本redis书籍/redis设计与实现.png" alt="image"><br>本书全面而完整地讲解了Redis的内部机制与实现方式，对Redis的大多数单机功能以及所有多机功能的实现原理进行了介绍，展示了这些功能的核心数据结构以及关键的算法思想,图示丰富，描述清晰，并给出大量参考信息。通过阅读本书，读者可以快速、有效地了解Redis的内部构造以及运作机制，更好、更高效地使用Redis。</p><p>本书主要分为四大部分。第一部分“数据结构与对象”介绍了Redis中的各种对象及其数据结构，并说明这些数据结构如何影响对象的功能和性能。第二部分“单机数据库的实现”对Redis实现单机数据库的方法进行了介绍，包括数据库、RDB持久化、AOF持久化、事件等。第三部分“多机数据库的实现”对Redis的Sentinel、复制、集群三个多机功能进行了介绍。第四部分“独立功能的实现”对Redis中各个相对独立的功能模块进行了介绍，涉及发布与订阅、事务、Lua脚本、排序、二进制位数组、慢查询日志、监视器等。本书作者专门维护了<a href="http://www.redisbook.com网站，提供带有详细注释的Redis源代码，以及本书相关的更新内容。" target="_blank" rel="noopener">www.redisbook.com网站，提供带有详细注释的Redis源代码，以及本书相关的更新内容。</a></p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>三本书都是国人原创，豆瓣上都在8.5分以上，比较良心了。《Redis开发与运维》原理与实践并重的同时，更多的分析了实际生产环境中踩过的各种坑，比较接地气，毕竟大多数人只是使用而非对Redis做二次开发。《Redis设计与实现》比较详尽的介绍了Redis的实现，对有希望了解Redis底层的同学会有比较大的帮助。《Redis 深度历险：核心原理与应用实践》文风亲切，从客户端的视角去看Reids，同时对最新版本的一些关键特性做了介绍，但受限于篇幅，并没有特别深入。总之，这三本书写的通俗易懂，结合来看能够既懂原理，又能了解实践，同时对新特性也能有所收获。</p><p>好书很多，不过没看过没有发言权，不敢随意推荐。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Redis作为基于键值对的NoSQL数据库，具有高性能、丰富的数据结构、持久化、高可用、分布式等特性，同时Redis本身非常稳定，已经得到业界的广泛认可和使用。 掌握Redis已经逐步成为开发和运维人员的必备技能之一。下面分享一下几本本人看过的Redis书籍，希望对大家有所
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="https://m.fanruo.net/categories/Redis/"/>
+    
+      <category term="书籍推荐" scheme="https://m.fanruo.net/categories/Redis/%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/"/>
+    
+    
+      <category term="Redis" scheme="https://m.fanruo.net/tags/Redis/"/>
+    
+      <category term="书籍推荐" scheme="https://m.fanruo.net/tags/%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/"/>
+    
+  </entry>
   
   <entry>
     <title>【leetcode】4. 数组-对角线遍历</title>
