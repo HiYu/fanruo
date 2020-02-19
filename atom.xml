@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://m.fanruo.net/"/>
-  <updated>2020-02-19T13:36:33.479Z</updated>
+  <updated>2020-02-19T15:14:56.194Z</updated>
   <id>https://m.fanruo.net/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【leetcode】6. 数组-删除排序数组中的重复项</title>
+    <link href="https://m.fanruo.net/2020/02/19/%E3%80%90leetcode%E3%80%916-%E6%95%B0%E7%BB%84-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/"/>
+    <id>https://m.fanruo.net/2020/02/19/【leetcode】6-数组-删除排序数组中的重复项/</id>
+    <published>2020-02-19T15:14:08.000Z</published>
+    <updated>2020-02-19T15:14:56.194Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。<br>不要使用额外的数组空间，你<strong>必须在原地修改输入数组并在使用 O(1)额外空间的条件</strong>下完成。</p><p><strong>示例 1</strong>:<br>给定数组 nums = [1,1,2],<br>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。<br>你不需要考虑数组中超出新长度后面的元素。</p><p><strong>示例 2</strong>:<br>给定 nums = [0,0,1,1,1,2,2,3,3,4],<br>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。<br>你不需要考虑数组中超出新长度后面的元素。</p><p>说明:<br>为什么返回数值是整数，但输出的答案是数组呢?<br>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。<br>你可以想象内部操作如下:</p><p>// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝<br>int len = removeDuplicates(nums);</p><p>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。<br>for (int i = 0; i &lt; len; i++) {<br>    print(nums[i]);<br>}</p><blockquote><p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array" target="_blank" rel="noopener">https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p></blockquote><h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>本题需要注意几个点：</p><ol><li>数组是有序的</li><li>删除数组中重复的元素，每个元素只保留一个</li><li>原地删除，即在传入数组的基础上删除</li><li>空间复杂度为<code>O(1)</code></li></ol><p>依据上述要求，只能操作原数组<code>nums</code>，解题思路：遍历数组，将非重复的元素前移覆盖重复元素（从重复元素的第二个开始倍覆盖）。具体算法是：</p><ol><li>设两个游标<code>k</code>和<code>i</code>,<code>k</code>为最先可以被覆盖元素的下标,<code>i</code>为数组遍历游标</li><li><code>k</code>的初始值为<code>1</code>:删除数组中重复的元素，每个元素只保留一个，因此从第二个元素开始删，即k之前的子数组各元素已经是唯一的</li><li><code>i</code>的初始值也为<code>1</code>,遍历时比较<code>nums[i]</code>是否和<code>nums[i-1]</code>,如果，如果不相等则将其移动到<code>k</code>处，并且<code>k++</code></li><li>由于<code>k</code>是最后一个可以覆盖的位置，因此<code>k</code>即新数组长度</li></ol><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.empty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i<span class="number">-1</span>] != nums[i]) &#123;</span><br><span class="line">                nums[k++] = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。&lt;br&gt;不要使用额外的数组空间，你&lt;str
+      
+    
+    </summary>
+    
+      <category term="leetcode" scheme="https://m.fanruo.net/categories/leetcode/"/>
+    
+      <category term="数组" scheme="https://m.fanruo.net/categories/leetcode/%E6%95%B0%E7%BB%84/"/>
+    
+    
+      <category term="leetcode" scheme="https://m.fanruo.net/tags/leetcode/"/>
+    
+      <category term="数组" scheme="https://m.fanruo.net/tags/%E6%95%B0%E7%BB%84/"/>
+    
+  </entry>
   
   <entry>
     <title>【leetcode】5. 数组-两数之和</title>
@@ -549,33 +578,6 @@
       
       
         &lt;h2 id=&quot;开始&quot;&gt;&lt;a href=&quot;#开始&quot; class=&quot;headerlink&quot; title=&quot;开始&quot;&gt;&lt;/a&gt;开始&lt;/h2&gt;&lt;p&gt;C语言之后大多数讲解语言的书籍都会以打印&lt;code&gt;hello world&lt;/code&gt;来开始。那么，如何使用lua 打印&lt;code&gt;hel
-      
-    
-    </summary>
-    
-      <category term="语言" scheme="https://m.fanruo.net/categories/%E8%AF%AD%E8%A8%80/"/>
-    
-      <category term="lua" scheme="https://m.fanruo.net/categories/%E8%AF%AD%E8%A8%80/lua/"/>
-    
-    
-      <category term="lua" scheme="https://m.fanruo.net/tags/lua/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>1.2 lua 环境安装</title>
-    <link href="https://m.fanruo.net/2018/09/14/1-2-lua-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"/>
-    <id>https://m.fanruo.net/2018/09/14/1-2-lua-环境安装/</id>
-    <published>2018-09-14T12:40:04.000Z</published>
-    <updated>2019-05-21T08:33:10.701Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="lua-环境安装"><a href="#lua-环境安装" class="headerlink" title="lua 环境安装"></a>lua 环境安装</h1><h2 id="linux-系统安装lua"><a href="#linux-系统安装lua" class="headerlink" title="linux 系统安装lua"></a>linux 系统安装lua</h2><p>linux &amp; Mac上安装 Lua 安装非常简单，只需要下载源码包并在终端解压编译即可，本文使用了5.3.4版本进行安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gz</span><br><span class="line">tar zxf lua-5.3.4.tar.gz</span><br><span class="line">cd lua-5.3.4</span><br><span class="line">make linux test</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></p><h2 id="mac-系统安装lua"><a href="#mac-系统安装lua" class="headerlink" title="mac 系统安装lua"></a>mac 系统安装lua</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -R -O http://www.lua.org/ftp/lua-5.3.4.tar.gz</span><br><span class="line">tar zxf lua-5.3.4.tar.gz</span><br><span class="line">cd lua-5.3.4</span><br><span class="line">make macosx test</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;lua-环境安装&quot;&gt;&lt;a href=&quot;#lua-环境安装&quot; class=&quot;headerlink&quot; title=&quot;lua 环境安装&quot;&gt;&lt;/a&gt;lua 环境安装&lt;/h1&gt;&lt;h2 id=&quot;linux-系统安装lua&quot;&gt;&lt;a href=&quot;#linux-系统安装lua&quot; c
       
     
     </summary>
