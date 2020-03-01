@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="全局变量创建一个全局变量全局变量不需要声明，给一个变量赋值即创建了一个全局变量，访问一个没有初始化的变量（默认是全局变量，即，lua的变量默认是全局变量，特别注意）也不会出错，会返回nil。123print(var_a) -- nilvar_a = 10print(var_a) -- 10 在命令模式中执行如下：1234Lua 5.3.4  Copyright (C) 1994-2017 Lua.">
+  <meta name="description" content="全局变量创建一个全局变量全局变量不需要声明，给一个变量赋值即创建了一个全局变量，访问一个没有初始化的变量（默认是全局变量，即，lua的变量默认是全局变量，特别注意）也不会出错，会返回nil。 123print(var_a) -- nilvar_a = 10print(var_a) -- 10  在命令模式中执行如下： 1234Lua 5.3.4  Copyright (C) 1994-2017 L">
 <meta name="keywords" content="lua,变量">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2.5 lua 变量">
 <meta property="og:url" content="https://m.fanruo.net/2019/05/21/2-5-lua-变量/index.html">
 <meta property="og:site_name" content="凡 若">
-<meta property="og:description" content="全局变量创建一个全局变量全局变量不需要声明，给一个变量赋值即创建了一个全局变量，访问一个没有初始化的变量（默认是全局变量，即，lua的变量默认是全局变量，特别注意）也不会出错，会返回nil。123print(var_a) -- nilvar_a = 10print(var_a) -- 10 在命令模式中执行如下：1234Lua 5.3.4  Copyright (C) 1994-2017 Lua.">
+<meta property="og:description" content="全局变量创建一个全局变量全局变量不需要声明，给一个变量赋值即创建了一个全局变量，访问一个没有初始化的变量（默认是全局变量，即，lua的变量默认是全局变量，特别注意）也不会出错，会返回nil。 123print(var_a) -- nilvar_a = 10print(var_a) -- 10  在命令模式中执行如下： 1234Lua 5.3.4  Copyright (C) 1994-2017 L">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-05-21T14:06:30.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2.5 lua 变量">
-<meta name="twitter:description" content="全局变量创建一个全局变量全局变量不需要声明，给一个变量赋值即创建了一个全局变量，访问一个没有初始化的变量（默认是全局变量，即，lua的变量默认是全局变量，特别注意）也不会出错，会返回nil。123print(var_a) -- nilvar_a = 10print(var_a) -- 10 在命令模式中执行如下：1234Lua 5.3.4  Copyright (C) 1994-2017 Lua.">
+<meta name="twitter:description" content="全局变量创建一个全局变量全局变量不需要声明，给一个变量赋值即创建了一个全局变量，访问一个没有初始化的变量（默认是全局变量，即，lua的变量默认是全局变量，特别注意）也不会出错，会返回nil。 123print(var_a) -- nilvar_a = 10print(var_a) -- 10  在命令模式中执行如下： 1234Lua 5.3.4  Copyright (C) 1994-2017 L">
 
 
 
@@ -501,7 +501,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">990</span>
+                <span title="本文字数">1k</span>
               
 
               
@@ -535,9 +535,15 @@
       
 
       
-        <h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><h3 id="创建一个全局变量"><a href="#创建一个全局变量" class="headerlink" title="创建一个全局变量"></a>创建一个全局变量</h3><p>全局变量不需要声明，给一个变量赋值即创建了一个全局变量，访问一个没有初始化的变量（默认是全局变量，即，lua的变量默认是全局变量，特别注意）也不会出错，会返回<code>nil</code>。<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(var_a) <span class="comment">-- nil</span></span><br><span class="line">var_a = <span class="number">10</span></span><br><span class="line"><span class="built_in">print</span>(var_a) <span class="comment">-- 10</span></span><br></pre></td></tr></table></figure></p>
-<p>在命令模式中执行如下：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Lua 5.3.4  Copyright (C) 1994-2017 Lua.org, PUC-Rio</span><br><span class="line"><span class="meta">&gt;</span> print(var_a)</span><br><span class="line">nil</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="删除一个全局变量"><a href="#删除一个全局变量" class="headerlink" title="删除一个全局变量"></a>删除一个全局变量</h3><p>删除一个变量很简单，直接将改变量赋值为<code>nil</code>;如下面的例子：b是全局变量，当赋值为<code>nil</code>之后，再调用<code>print</code>就会返回<code>nil</code>。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Lua 5.3.4  Copyright (C) 1994-2017 Lua.org, PUC-Rio</span><br><span class="line"><span class="meta">&gt;</span> b = 1; print("b=" .. b); b = nil; print(b);</span><br><span class="line">b=1</span><br><span class="line">nil</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure></p>
+        <h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><h3 id="创建一个全局变量"><a href="#创建一个全局变量" class="headerlink" title="创建一个全局变量"></a>创建一个全局变量</h3><p>全局变量不需要声明，给一个变量赋值即创建了一个全局变量，访问一个没有初始化的变量（默认是全局变量，即，lua的变量默认是全局变量，特别注意）也不会出错，会返回<code>nil</code>。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(var_a) <span class="comment">-- nil</span></span><br><span class="line">var_a = <span class="number">10</span></span><br><span class="line"><span class="built_in">print</span>(var_a) <span class="comment">-- 10</span></span><br></pre></td></tr></table></figure>
+
+<p>在命令模式中执行如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Lua 5.3.4  Copyright (C) 1994-2017 Lua.org, PUC-Rio</span><br><span class="line"><span class="meta">&gt;</span> print(var_a)</span><br><span class="line">nil</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="删除一个全局变量"><a href="#删除一个全局变量" class="headerlink" title="删除一个全局变量"></a>删除一个全局变量</h3><p>删除一个变量很简单，直接将改变量赋值为<code>nil</code>;如下面的例子：b是全局变量，当赋值为<code>nil</code>之后，再调用<code>print</code>就会返回<code>nil</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Lua 5.3.4  Copyright (C) 1994-2017 Lua.org, PUC-Rio</span><br><span class="line"><span class="meta">&gt;</span> b = 1; print("b=" .. b); b = nil; print(b);</span><br><span class="line">b=1</span><br><span class="line">nil</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>总之，可以这么理解：当一个变量被赋值为<code>nil</code>，这个变量就变得像从来没出现过一样，换句话说，<strong>只有当一个变量的值不是<code>nil</code>这个变量才是存在的</strong>。</p>
 <h2 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h2><p>使用<code>local</code> 关键字来声明一个局部变量，和其他语言一样，局部变量只在被声明的那个代码块中有效。代码块包括：</p>
 <ol>
@@ -545,8 +551,12 @@
 <li>函数体</li>
 <li>chunk（变量被声明的那个文件或者文本串</li>
 </ol>
-<p><strong>注意</strong>:命令行模式中每一行就是一个chunk,也就是说，上一行的局部变量下一行就不可见了。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Lua 5.3.4  Copyright (C) 1994-2017 Lua.org, PUC-Rio</span><br><span class="line"><span class="meta">&gt;</span> a = 1 -- 全局变量</span><br><span class="line"><span class="meta">&gt;</span> print(a)</span><br><span class="line">1</span><br><span class="line"><span class="meta">&gt;</span> local b = 2 -- 局部变量</span><br><span class="line"><span class="meta">&gt;</span> print(b)</span><br><span class="line">nil</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="使用do-end"><a href="#使用do-end" class="headerlink" title="使用do ... end"></a>使用<code>do ... end</code></h3><p>使用<code>do ... end</code>可以给一个block一个明确的边界。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Lua 5.3.4  Copyright (C) 1994-2017 Lua.org, PUC-Rio</span><br><span class="line"><span class="meta">&gt;</span> a = 1 --全局变量</span><br><span class="line"><span class="meta">&gt;</span> local b = 2 -- 局部变量</span><br><span class="line"><span class="meta">&gt;</span> do</span><br><span class="line"><span class="meta">&gt;</span>&gt; local c = a * 3 --局部变量</span><br><span class="line"><span class="meta">&gt;</span>&gt; print(a)</span><br><span class="line"><span class="meta">&gt;</span>&gt; print(b)</span><br><span class="line"><span class="meta">&gt;</span>&gt; print(c)</span><br><span class="line"><span class="meta">&gt;</span>&gt; end</span><br><span class="line">1</span><br><span class="line">nil</span><br><span class="line">3</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>:命令行模式中每一行就是一个chunk,也就是说，上一行的局部变量下一行就不可见了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Lua 5.3.4  Copyright (C) 1994-2017 Lua.org, PUC-Rio</span><br><span class="line"><span class="meta">&gt;</span> a = 1 -- 全局变量</span><br><span class="line"><span class="meta">&gt;</span> print(a)</span><br><span class="line">1</span><br><span class="line"><span class="meta">&gt;</span> local b = 2 -- 局部变量</span><br><span class="line"><span class="meta">&gt;</span> print(b)</span><br><span class="line">nil</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用do-end"><a href="#使用do-end" class="headerlink" title="使用do ... end"></a>使用<code>do ... end</code></h3><p>使用<code>do ... end</code>可以给一个block一个明确的边界。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Lua 5.3.4  Copyright (C) 1994-2017 Lua.org, PUC-Rio</span><br><span class="line"><span class="meta">&gt;</span> a = 1 --全局变量</span><br><span class="line"><span class="meta">&gt;</span> local b = 2 -- 局部变量</span><br><span class="line"><span class="meta">&gt;</span> do</span><br><span class="line"><span class="meta">&gt;</span>&gt; local c = a * 3 --局部变量</span><br><span class="line"><span class="meta">&gt;</span>&gt; print(a)</span><br><span class="line"><span class="meta">&gt;</span>&gt; print(b)</span><br><span class="line"><span class="meta">&gt;</span>&gt; print(c)</span><br><span class="line"><span class="meta">&gt;</span>&gt; end</span><br><span class="line">1</span><br><span class="line">nil</span><br><span class="line">3</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>

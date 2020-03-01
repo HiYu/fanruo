@@ -501,7 +501,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">800</span>
+                <span title="本文字数">802</span>
               
 
               
@@ -544,7 +544,9 @@
 <p>因此，可以明确出现该问题是客户端链接超时造成的。</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>为解决该问题，做如下优化：</p>
 <h3 id="调整超时时间，和-buffer"><a href="#调整超时时间，和-buffer" class="headerlink" title="调整超时时间，和 buffer"></a>调整超时时间，和 buffer</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">client_body_timeout 10s;</span><br><span class="line">client_header_timeout 10s;</span><br><span class="line">client_body_in_single_buffer on; #这个 directive 让 Nginx 将所有的 request body 存储在一个缓冲当中，它的默认值是 off。启用它可以优化读取 $request_body 变量时的 I/O 性能</span><br></pre></td></tr></table></figure>
+
 <h3 id="开启-access-buffer-和-if"><a href="#开启-access-buffer-和-if" class="headerlink" title="开启 access buffer 和 if"></a>开启 access buffer 和 if</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">log_format  main escape=json '[$log_time] [$logid] [INFO] $click_info';</span><br><span class="line"><span class="meta">#</span>设置变量loggable，默认$loggable=0;当$status==200时，$loggable=1</span><br><span class="line">map $status $loggable &#123;</span><br><span class="line">	200  1;</span><br><span class="line">    default 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>只有真确处理了请求才会写日志。客户端在收到 408 时，会将 body 拆分重传。</p>
 
       

@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="算术表达式Lua 的算术运算符如下表所示：    表达符 备注     + 加法   - 减法   * 乘法   / 除法   ^ 指数   % 取模    实例123456789print(1 + 2) --&amp;gt;打印 3print(5 / 10) --&amp;gt;打印 0.5。 这是Lua不同于c语言的print(5.0 / 10) --&amp;gt;打印 0.5。 浮点数相除的结果是浮点数-- pr">
+  <meta name="description" content="算术表达式Lua 的算术运算符如下表所示：    表达符 备注    + 加法   - 减法   * 乘法   / 除法   ^ 指数   % 取模   实例 123456789print(1 + 2) --&amp;gt;打印 3print(5 / 10) --&amp;gt;打印 0.5。 这是Lua不同于c语言的print(5.0 / 10) --&amp;gt;打印 0.5。 浮点数相除的结果是浮点数-- pri">
 <meta name="keywords" content="lua,表达式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2.3 lua 表达式">
 <meta property="og:url" content="https://m.fanruo.net/2019/05/19/2-3-lua-表达式/index.html">
 <meta property="og:site_name" content="凡 若">
-<meta property="og:description" content="算术表达式Lua 的算术运算符如下表所示：    表达符 备注     + 加法   - 减法   * 乘法   / 除法   ^ 指数   % 取模    实例123456789print(1 + 2) --&amp;gt;打印 3print(5 / 10) --&amp;gt;打印 0.5。 这是Lua不同于c语言的print(5.0 / 10) --&amp;gt;打印 0.5。 浮点数相除的结果是浮点数-- pr">
+<meta property="og:description" content="算术表达式Lua 的算术运算符如下表所示：    表达符 备注    + 加法   - 减法   * 乘法   / 除法   ^ 指数   % 取模   实例 123456789print(1 + 2) --&amp;gt;打印 3print(5 / 10) --&amp;gt;打印 0.5。 这是Lua不同于c语言的print(5.0 / 10) --&amp;gt;打印 0.5。 浮点数相除的结果是浮点数-- pri">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-05-21T08:34:42.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2.3 lua 表达式">
-<meta name="twitter:description" content="算术表达式Lua 的算术运算符如下表所示：    表达符 备注     + 加法   - 减法   * 乘法   / 除法   ^ 指数   % 取模    实例123456789print(1 + 2) --&amp;gt;打印 3print(5 / 10) --&amp;gt;打印 0.5。 这是Lua不同于c语言的print(5.0 / 10) --&amp;gt;打印 0.5。 浮点数相除的结果是浮点数-- pr">
+<meta name="twitter:description" content="算术表达式Lua 的算术运算符如下表所示：    表达符 备注    + 加法   - 减法   * 乘法   / 除法   ^ 指数   % 取模   实例 123456789print(1 + 2) --&amp;gt;打印 3print(5 / 10) --&amp;gt;打印 0.5。 这是Lua不同于c语言的print(5.0 / 10) --&amp;gt;打印 0.5。 浮点数相除的结果是浮点数-- pri">
 
 
 
@@ -555,8 +555,7 @@
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>+</td>
 <td>加法</td>
 </tr>
@@ -580,9 +579,10 @@
 <td>%</td>
 <td>取模</td>
 </tr>
-</tbody>
-</table>
-<p>实例<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">1</span> + <span class="number">2</span>) <span class="comment">--&gt;打印 3</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">5</span> / <span class="number">10</span>) <span class="comment">--&gt;打印 0.5。 这是Lua不同于c语言的</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">5.0</span> / <span class="number">10</span>) <span class="comment">--&gt;打印 0.5。 浮点数相除的结果是浮点数</span></span><br><span class="line"><span class="comment">-- print(10 / 0) --&gt;注意除数不能为0，计算的结果会出错</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">2</span> ^ <span class="number">10</span>) <span class="comment">--&gt;打印 1024。 求2的10次方</span></span><br><span class="line"><span class="keyword">local</span> num = <span class="number">1357</span></span><br><span class="line"><span class="built_in">print</span>(num % <span class="number">2</span>) <span class="comment">--&gt;打印 1</span></span><br><span class="line"><span class="built_in">print</span>((num % <span class="number">2</span>) == <span class="number">1</span>) <span class="comment">--&gt;打印 true。 判断num是否为奇数</span></span><br><span class="line"><span class="built_in">print</span>((num % <span class="number">5</span>) == <span class="number">0</span>) <span class="comment">--&gt;打印 false。判断num是否能被5整数</span></span><br></pre></td></tr></table></figure></p>
+</tbody></table>
+<p>实例</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">1</span> + <span class="number">2</span>) <span class="comment">--&gt;打印 3</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">5</span> / <span class="number">10</span>) <span class="comment">--&gt;打印 0.5。 这是Lua不同于c语言的</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">5.0</span> / <span class="number">10</span>) <span class="comment">--&gt;打印 0.5。 浮点数相除的结果是浮点数</span></span><br><span class="line"><span class="comment">-- print(10 / 0) --&gt;注意除数不能为0，计算的结果会出错</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">2</span> ^ <span class="number">10</span>) <span class="comment">--&gt;打印 1024。 求2的10次方</span></span><br><span class="line"><span class="keyword">local</span> num = <span class="number">1357</span></span><br><span class="line"><span class="built_in">print</span>(num % <span class="number">2</span>) <span class="comment">--&gt;打印 1</span></span><br><span class="line"><span class="built_in">print</span>((num % <span class="number">2</span>) == <span class="number">1</span>) <span class="comment">--&gt;打印 true。 判断num是否为奇数</span></span><br><span class="line"><span class="built_in">print</span>((num % <span class="number">5</span>) == <span class="number">0</span>) <span class="comment">--&gt;打印 false。判断num是否能被5整数</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="关系表达式"><a href="#关系表达式" class="headerlink" title="关系表达式"></a>关系表达式</h2><table>
 <thead>
 <tr>
@@ -590,8 +590,7 @@
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>&lt;</td>
 <td>小于</td>
 </tr>
@@ -615,14 +614,15 @@
 <td>~=</td>
 <td>不等于</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">1</span> &lt; <span class="number">2</span>) <span class="comment">--&gt;打印 true</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">1</span> == <span class="number">2</span>) <span class="comment">--&gt;打印 false</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">1</span> ~= <span class="number">2</span>) <span class="comment">--&gt;打印 true</span></span><br><span class="line"><span class="keyword">local</span> a, b = <span class="literal">true</span>, <span class="literal">false</span></span><br><span class="line"><span class="built_in">print</span>(a == b) <span class="comment">--&gt;打印 false</span></span><br></pre></td></tr></table></figure>
+
 <p><strong>特别注意：</strong></p>
 <ol>
 <li>不同于C/C++等语言，lua中的“不等于”是<code>~=</code>而非<code>!=</code>.</li>
 <li>由于 Lua 字符串总是会被“内化”，即相同内容的字符串只会被保存一份，因此 Lua 字符串之间的相等性比较可以简化为其内部存储地址的比较。这意味着 Lua 字符串的相等性比较总是为 O(1). 而在其他编程语言中，字符串的相等性比较则通常为 O(n)，即需要逐个字节（ 或按若干个连续字节） 进行比较。</li>
 <li>在使用“==”做等于判断时，要注意对于 table, userdata 和函数， Lua 是作引用比较的。也就是说，只有当两个变量引用同一个对象时，才认为它们相等。如实例：<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> a = &#123; x = <span class="number">1</span>, y = <span class="number">0</span>&#125;</span><br><span class="line"><span class="keyword">local</span> b = &#123; x = <span class="number">1</span>, y = <span class="number">0</span>&#125;</span><br><span class="line"><span class="keyword">if</span> a == b <span class="keyword">then</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"a==b"</span>)</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"a~=b"</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">---output:</span></span><br><span class="line">a~=b</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 <h2 id="逻辑表达式"><a href="#逻辑表达式" class="headerlink" title="逻辑表达式"></a>逻辑表达式</h2><table>
@@ -632,8 +632,7 @@
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>and</td>
 <td>逻辑与</td>
 </tr>
@@ -645,12 +644,12 @@
 <td>not</td>
 <td>逻辑非</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>Lua 中的 <code>and</code> 和 <code>or</code> 是不同于C/C++语言的。在C/C++语言中，<code>and</code> 和 <code>or</code> 只得到两个值 1 和 0，其中 1表示真，0 表示假。而 Lua 中 <code>and</code>和<code>or</code> 的执行结果返回的表达式的结果，而非<code>true</code>或者<code>flase</code>这类逻辑结果。也就是说：</p>
 <ol>
 <li><code>a and b</code> 如果 a 为 <code>nil</code>，则返回 a，否则返回 b;</li>
 <li><code>a or b</code> 如果 a 为 <code>nil</code>，则返回 b，否则返回 a。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span>local c = nil</span><br><span class="line"><span class="meta">&gt;</span>local d = 0</span><br><span class="line"><span class="meta">&gt;</span>local e = 100</span><br><span class="line"><span class="meta">&gt;</span>print(c and d)</span><br><span class="line">nil</span><br><span class="line"><span class="meta">&gt;</span>print(c and e)</span><br><span class="line">nil</span><br><span class="line"><span class="meta">&gt;</span>print(d and e)</span><br><span class="line">100</span><br><span class="line"><span class="meta">&gt;</span>print(c or d)</span><br><span class="line">0</span><br><span class="line"><span class="meta">&gt;</span>print(c or e)</span><br><span class="line">100</span><br><span class="line"><span class="meta">&gt;</span>print(not c)</span><br><span class="line">true</span><br><span class="line"><span class="meta">&gt;</span>print(not d)</span><br><span class="line">false</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
 <p><strong>特别注意：</strong></p>
@@ -665,8 +664,7 @@
 <th>优先级(由高到低)</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>^</td>
 </tr>
 <tr>
@@ -690,9 +688,9 @@
 <tr>
 <td>or</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> a, b = <span class="number">1</span>, <span class="number">2</span></span><br><span class="line"><span class="keyword">local</span> x, y = <span class="number">3</span>, <span class="number">4</span></span><br><span class="line"><span class="keyword">local</span> i = <span class="number">10</span></span><br><span class="line"><span class="keyword">local</span> res = <span class="number">0</span></span><br><span class="line">res = a + i &lt; b/<span class="number">2</span> + <span class="number">1</span> <span class="comment">--&gt;等价于res = (a + i) &lt; ((b/2) + 1)</span></span><br><span class="line">res = <span class="number">5</span> + x^<span class="number">2</span>*<span class="number">8</span> <span class="comment">--&gt;等价于res = 5 + ((x^2) * 8)</span></span><br><span class="line">res = a &lt; y <span class="keyword">and</span> y &lt;=x <span class="comment">--&gt;等价于res = (a &lt; y) and (y &lt;= x)</span></span><br></pre></td></tr></table></figure>
+
 <p><strong>tips</strong></p>
 <ol>
 <li>若不确定某些操作符的优先级，就应显示地用括号来指定运算顺序。这样做还可以提高代码的可读性。</li>

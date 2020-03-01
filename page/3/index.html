@@ -744,7 +744,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">955</span>
+                <span title="本文字数">957</span>
               
 
               
@@ -1007,7 +1007,8 @@
         
           
             <p>
-              背景由于业务需求我们需要根据client_ip对部分接口做一个简单的 ab test，将部分流量导新的服务上。基于之前做 WAF 的经验，制定了大体方案：根据 client_ip 做 hash， 根据 hash 值来确定是请求新后端还是原来的后端服务。在说明详细方案前，先说明一下现状。当前的配置如下：location ~ ^/api/rest/v\d+/Login &#123;    rewrite ^(.*)$ /loginServer$1 break;    proxy_
+              背景由于业务需求我们需要根据client_ip对部分接口做一个简单的 ab test，将部分流量导新的服务上。基于之前做 WAF 的经验，制定了大体方案：根据 client_ip 做 hash， 根据 hash 值来确定是请求新后端还是原来的后端服务。在说明详细方案前，先说明一下现状。当前的配置如下：
+location ~ ^/api/rest/v\d+/Login &#123;    rewrite ^(.*)$ /loginServer$1 break;    proxy
               ...
             </p>
           <!--noindex-->
@@ -1200,7 +1201,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">800</span>
+                <span title="本文字数">802</span>
               
 
               
@@ -1434,7 +1435,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">599</span>
+                <span title="本文字数">601</span>
               
 
               
@@ -1704,7 +1705,8 @@
           
             <p>
               通过前两章的学习大体掌握了lua的基本语法，这部分语法和其他语言大体类似，可以说这是一门语言语法的最最基础的部分了。在接下来的部分，将学习一下带有lua特性的语法知识。
-返回值通常一个函数会返回一个返回值，比如C/C++等，也有一些语言会返回多个返回值，比如python。lua也支持多返回值。以标准库中的string.find()函数为例，该函数会返回匹配字符串在搜索字符串中的起始位置索引，如果没匹配成功则返回nil。#!/usr/bin/buas, e = string.f
+返回值通常一个函数会返回一个返回值，比如C/C++等，也有一些语言会返回多个返回值，比如python。lua也支持多返回值。以标准库中的string.find()函数为例，该函数会返回匹配字符串在搜索字符串中的起始位置索引，如果没匹配成功则返回nil。
+#!/usr/bin/buas, e = string.
               ...
             </p>
           <!--noindex-->
@@ -1897,7 +1899,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">934</span>
+                <span title="本文字数">938</span>
               
 
               
@@ -1936,7 +1938,8 @@
             <p>
               和其他语言一样lua也提供对应的跳出关键字，不过lua不提供continue关键字。
 break语句break用于跳出循环，终止for、repeat、while 三种循环的执行，并跳出当前循环体，继续执行当前循环之后的语句,在循环外部不可用。
-returnreturn 只能写在语句块的最后，一旦执行了return 语句，该语句之后的所有语句都不会再执行。若要写在函数中间，则只能写在一个显式的语句块内。local function add(x, y)    return x +
+returnreturn 只能写在语句块的最后，一旦执行了return 语句，该语句之后的所有语句都不会再执行。若要写在函数中间，则只能写在一个显式的语句块内。
+local function add(x, y)    return x 
               ...
             </p>
           <!--noindex-->
@@ -2129,7 +2132,7 @@ returnreturn 只能写在语句块的最后，一旦执行了return 语句，该
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">990</span>
+                <span title="本文字数">1k</span>
               
 
               
@@ -2166,9 +2169,13 @@ returnreturn 只能写在语句块的最后，一旦执行了return 语句，该
         
           
             <p>
-              全局变量创建一个全局变量全局变量不需要声明，给一个变量赋值即创建了一个全局变量，访问一个没有初始化的变量（默认是全局变量，即，lua的变量默认是全局变量，特别注意）也不会出错，会返回nil。print(var_a) -- nilvar_a = 10print(var_a) -- 10
-在命令模式中执行如下：Lua 5.3.4  Copyright (C) 1994-2017 Lua.org, PUC-Rio&gt; print(var_a)nil&gt;
-删除一个全局变量删除
+              全局变量创建一个全局变量全局变量不需要声明，给一个变量赋值即创建了一个全局变量，访问一个没有初始化的变量（默认是全局变量，即，lua的变量默认是全局变量，特别注意）也不会出错，会返回nil。
+print(var_a) -- nilvar_a = 10print(var_a) -- 10
+
+在命令模式中执行如下：
+Lua 5.3.4  Copyright (C) 1994-2017 Lua.org, PUC-Rio&gt; print(var_a)nil&gt;
+
+删除一个全局
               ...
             </p>
           <!--noindex-->

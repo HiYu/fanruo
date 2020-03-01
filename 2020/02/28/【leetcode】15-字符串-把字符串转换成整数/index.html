@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="凡 若">
 <meta property="og:description" content="题目写一个函数 StrToInt，实现把字符串转换成整数这个功能。不能使用 atoi 或者其他类似的库函数。首先，该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止。当我们寻找到的第一个非空字符为正或者负号时，则将该符号与之后面尽可能多的连续数字组合起来，作为该整数的正负号；假如第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成整数。该字符串除了有效的整数部分">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-28T14:34:30.989Z">
+<meta property="og:updated_time" content="2020-03-01T12:28:17.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【leetcode】15. 字符串-把字符串转换成整数">
 <meta name="twitter:description" content="题目写一个函数 StrToInt，实现把字符串转换成整数这个功能。不能使用 atoi 或者其他类似的库函数。首先，该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止。当我们寻找到的第一个非空字符为正或者负号时，则将该符号与之后面尽可能多的连续数字组合起来，作为该整数的正负号；假如第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成整数。该字符串除了有效的整数部分">
@@ -419,12 +419,24 @@
                 
               
 
-              <time title="创建时间：2020-02-28 22:29:32 / 修改时间：22:34:30" itemprop="dateCreated datePublished" datetime="2020-02-28T22:29:32+08:00">2020-02-28</time>
+              <time title="创建时间：2020-02-28 22:29:32" itemprop="dateCreated datePublished" datetime="2020-02-28T22:29:32+08:00">2020-02-28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-03-01 20:28:17" itemprop="dateModified" datetime="2020-03-01T20:28:17+08:00">2020-03-01</time>
               
             
           </span>
@@ -501,7 +513,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2k</span>
+                <span title="本文字数">2.3k</span>
               
 
               
@@ -563,7 +575,17 @@
 <blockquote>
 <p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof" target="_blank" rel="noopener">https://leetcode-cn.com/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
 </blockquote>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>本题并不难，关键在于处理细节：</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>本题并不难，循环处理每一个字符：</p>
+<ol>
+<li>如果是空白则跳过，直到找到第一个非空白字符；</li>
+<li>如果第一个非空白字符为<code>-</code>则<code>sign = -1</code>；</li>
+<li>如果第一个非空白字符为<code>+</code>则<code>sign = 1</code>；</li>
+<li>如果第一个非空白字符不是<code>[\-+0-9]</code>则<code>return 0</code>；</li>
+<li>遍历数字部分（ <code>res = res * 10 + (str[begin] - &#39;0&#39;)</code>），注意此处需要判断是否溢出（<code>res &gt; INT_MAX / 10 || (res == INT_MAX / 10 &amp;&amp; str[begin] &gt; &#39;7&#39;)</code>）；</li>
+<li>如果溢出则返回最大（小）值；</li>
+<li>返回最终结果：<code>return  res * sign;</code></li>
+</ol>
+<p>关键在于处理细节：</p>
 <ol>
 <li>符号</li>
 <li>前导零、前导空白</li>
@@ -571,8 +593,7 @@
 <li>大数处理</li>
 </ol>
 <p><strong>时间复杂度</strong>：O(N)<br><strong>空间复杂度</strong>：O(1)</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">strToInt</span><span class="params">(<span class="built_in">string</span> str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> begin = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sign = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 处理前导空白</span></span><br><span class="line">        <span class="keyword">while</span> (str[begin] == <span class="string">' '</span>) &#123;</span><br><span class="line">            begin++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 处理正负号</span></span><br><span class="line">        <span class="keyword">if</span> (str[begin] == <span class="string">'-'</span>) &#123;</span><br><span class="line">            sign = <span class="number">-1</span>;</span><br><span class="line">            begin++;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str[begin] == <span class="string">'+'</span>) &#123;</span><br><span class="line">            begin++;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str[begin] &lt; <span class="string">'0'</span> &amp;&amp; str[begin] &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (begin &lt; str.size() &amp;&amp; str[begin] &gt;= <span class="string">'0'</span> &amp;&amp; str[begin] &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">            <span class="comment">// 处理大数</span></span><br><span class="line">            <span class="keyword">if</span> (res &gt; INT_MAX / <span class="number">10</span> || (res == INT_MAX / <span class="number">10</span> &amp;&amp; str[begin] &gt; <span class="string">'7'</span>)) &#123;</span><br><span class="line">                <span class="keyword">return</span> sign == <span class="number">1</span> ? INT_MAX : INT_MIN;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 数值处理，整道题这句是核心</span></span><br><span class="line">            res = res * <span class="number">10</span> + (str[begin] - <span class="string">'0'</span>);</span><br><span class="line">            begin++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 处理符号</span></span><br><span class="line">        <span class="keyword">return</span>  res * sign;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">strToInt</span><span class="params">(<span class="built_in">string</span> str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> begin = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sign = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 处理前导空白</span></span><br><span class="line">        <span class="keyword">while</span> (str[begin] == <span class="string">' '</span>) &#123;</span><br><span class="line">            begin++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 处理正负号</span></span><br><span class="line">        <span class="keyword">if</span> (str[begin] == <span class="string">'-'</span>) &#123;</span><br><span class="line">            sign = <span class="number">-1</span>;</span><br><span class="line">            begin++;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str[begin] == <span class="string">'+'</span>) &#123;</span><br><span class="line">            begin++;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (str[begin] &lt; <span class="string">'0'</span> &amp;&amp; str[begin] &gt; <span class="string">'9'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (begin &lt; str.size() &amp;&amp; str[begin] &gt;= <span class="string">'0'</span> &amp;&amp; str[begin] &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">            <span class="comment">// 处理大数</span></span><br><span class="line">            <span class="keyword">if</span> (res &gt; INT_MAX / <span class="number">10</span> || (res == INT_MAX / <span class="number">10</span> &amp;&amp; str[begin] &gt; <span class="string">'7'</span>)) &#123;</span><br><span class="line">                <span class="keyword">return</span> sign == <span class="number">1</span> ? INT_MAX : INT_MIN;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 数值处理，整道题这行是核心</span></span><br><span class="line">            res = res * <span class="number">10</span> + (str[begin] - <span class="string">'0'</span>);</span><br><span class="line">            begin++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 处理符号</span></span><br><span class="line">        <span class="keyword">return</span>  res * sign;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
 
