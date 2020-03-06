@@ -96,20 +96,18 @@
 
 
 
-  <meta name="description" content="题目给定一个含有 M x N 个元素的矩阵（M 行，N 列），请以对角线遍历的顺序返回这个矩阵中的所有元素，对角线遍历如下图所示。难易程度：Medium 示例: 输入:[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]] 输出:  [1,2,4,7,5,3,6,8,9] 解释: 说明:给定矩阵中的元素总数不会超过 100000。 题解分析本题需要仔细揣摩题目，找出规律。">
-<meta name="keywords" content="leetcode,数组">
+  <meta name="description" content="题目输入一个正整数 target ，输出所有和为 target 的连续正整数序列（至少含有两个数）。序列内的数字由小到大排列，不同序列按照首个数字从小到大排列。难易程度：easy 示例 1：  输入：target = 9输出：[[2,3,4],[4,5]]  示例 2：  输入：target = 15输出：[[1,2,3,4,5],[4,5,6],[7,8]]   限制：1 &amp;lt;= targe">
+<meta name="keywords" content="leetcode,数组,序列求和">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【leetcode】4. 数组-对角线遍历">
-<meta property="og:url" content="https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/index.html">
+<meta property="og:title" content="【leetcode】20. 序列-和为s的连续正数序列">
+<meta property="og:url" content="https://m.fanruo.net/2020/03/06/【leetcode】20-序列-和为s的连续正数序列/index.html">
 <meta property="og:site_name" content="凡 若">
-<meta property="og:description" content="题目给定一个含有 M x N 个元素的矩阵（M 行，N 列），请以对角线遍历的顺序返回这个矩阵中的所有元素，对角线遍历如下图所示。难易程度：Medium 示例: 输入:[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]] 输出:  [1,2,4,7,5,3,6,8,9] 解释: 说明:给定矩阵中的元素总数不会超过 100000。 题解分析本题需要仔细揣摩题目，找出规律。">
+<meta property="og:description" content="题目输入一个正整数 target ，输出所有和为 target 的连续正整数序列（至少含有两个数）。序列内的数字由小到大排列，不同序列按照首个数字从小到大排列。难易程度：easy 示例 1：  输入：target = 9输出：[[2,3,4],[4,5]]  示例 2：  输入：target = 15输出：[[1,2,3,4,5],[4,5,6],[7,8]]   限制：1 &amp;lt;= targe">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/diagonal_traverse.png">
-<meta property="og:updated_time" content="2020-02-18T00:12:23.756Z">
+<meta property="og:updated_time" content="2020-03-06T15:46:17.670Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【leetcode】4. 数组-对角线遍历">
-<meta name="twitter:description" content="题目给定一个含有 M x N 个元素的矩阵（M 行，N 列），请以对角线遍历的顺序返回这个矩阵中的所有元素，对角线遍历如下图所示。难易程度：Medium 示例: 输入:[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]] 输出:  [1,2,4,7,5,3,6,8,9] 解释: 说明:给定矩阵中的元素总数不会超过 100000。 题解分析本题需要仔细揣摩题目，找出规律。">
-<meta name="twitter:image" content="https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/diagonal_traverse.png">
+<meta name="twitter:title" content="【leetcode】20. 序列-和为s的连续正数序列">
+<meta name="twitter:description" content="题目输入一个正整数 target ，输出所有和为 target 的连续正整数序列（至少含有两个数）。序列内的数字由小到大排列，不同序列按照首个数字从小到大排列。难易程度：easy 示例 1：  输入：target = 9输出：[[2,3,4],[4,5]]  示例 2：  输入：target = 15输出：[[1,2,3,4,5],[4,5,6],[7,8]]   限制：1 &amp;lt;= targe">
 
 
 
@@ -119,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/">
+  <link rel="canonical" href="https://m.fanruo.net/2020/03/06/【leetcode】20-序列-和为s的连续正数序列/">
 
 
 
@@ -129,7 +127,7 @@
   };
 </script>
 
-  <title>【leetcode】4. 数组-对角线遍历 | 凡 若</title>
+  <title>【leetcode】20. 序列-和为s的连续正数序列 | 凡 若</title>
   
 
 
@@ -378,7 +376,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/">
+    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2020/03/06/【leetcode】20-序列-和为s的连续正数序列/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Frank Yu">
@@ -395,7 +393,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">【leetcode】4. 数组-对角线遍历
+          <h2 class="post-title" itemprop="name headline">【leetcode】20. 序列-和为s的连续正数序列
 
               
             
@@ -421,7 +419,7 @@
                 
               
 
-              <time title="创建时间：2020-02-18 01:38:20 / 修改时间：08:12:23" itemprop="dateCreated datePublished" datetime="2020-02-18T01:38:20+08:00">2020-02-18</time>
+              <time title="创建时间：2020-03-06 23:44:15 / 修改时间：23:46:17" itemprop="dateCreated datePublished" datetime="2020-03-06T23:44:15+08:00">2020-03-06</time>
             
 
             
@@ -447,6 +445,13 @@
 
                 
                 
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/leetcode/数组/" itemprop="url" rel="index"><span itemprop="name">数组</span></a></span>
+
+                
+                
               
             </span>
           
@@ -462,8 +467,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2020/02/18/【leetcode】4-数组-对角线遍历/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/02/18/【leetcode】4-数组-对角线遍历/" itemprop="commentCount"></span>
+                <a href="/2020/03/06/【leetcode】20-序列-和为s的连续正数序列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/06/【leetcode】20-序列-和为s的连续正数序列/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -471,7 +476,7 @@
 
           
           
-            <span id="/2020/02/18/【leetcode】4-数组-对角线遍历/" class="leancloud_visitors" data-flag-title="【leetcode】4. 数组-对角线遍历">
+            <span id="/2020/03/06/【leetcode】20-序列-和为s的连续正数序列/" class="leancloud_visitors" data-flag-title="【leetcode】20. 序列-和为s的连续正数序列">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -496,7 +501,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.9k</span>
+                <span title="本文字数">1.6k</span>
               
 
               
@@ -510,7 +515,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -530,24 +535,25 @@
       
 
       
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个含有 M x N 个元素的矩阵（M 行，N 列），请以对角线遍历的顺序返回这个矩阵中的所有元素，对角线遍历如下图所示。<br>难易程度：<em>Medium</em></p>
-<p><strong>示例</strong>:</p>
-<p><strong>输入</strong>:<br>[<br> [ 1, 2, 3 ],<br> [ 4, 5, 6 ],<br> [ 7, 8, 9 ]<br>]</p>
-<p><strong>输出</strong>:  [1,2,4,7,5,3,6,8,9]</p>
-<p><strong>解释</strong>:<br><img src="/2020/02/18/【leetcode】4-数组-对角线遍历/diagonal_traverse.png" alt="image"></p>
-<p><strong>说明</strong>:<br>给定矩阵中的元素总数不会超过 100000。</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>本题需要仔细揣摩题目，找出规律。抓住两点：</p>
-<ol>
-<li>题目实例，如果给出的<code>3*3</code>的矩阵不能有所收获的话，可以尝试更其他组合的矩阵，比如<code>4*3</code>等等。</li>
-<li>题图，图的表现力更强一些，同样，如果题目种的图不能发现规律的话，可以尝试更多的矩阵。<br>经过一通分析，发现如下规律[为表述方便设某一元素的坐标为<code>(x,y)</code>]：</li>
-<li><code>x + y</code> 为偶数是遍历方向为：<code>左下-&gt;右上，x--，y++</code>，<code>x + y</code> 为奇数是遍历方向为：<code>右上-&gt;左下,y--, x++</code></li>
-<li>一共遍历<code>M + N - 1</code> 次，即遍历<code>[0, M+N-2]</code></li>
-<li>第n次遍历是<code>n = x + y</code>，<code>n</code>从0开始</li>
-<li>每次遍历的时候，<code>左下-&gt;右上</code> 若<code>x &lt; M</code>则起点为<code>(n, 0)</code>否则为<code>(M-1,n-M-1)</code>;<code>右上-&gt;左下</code>若<code>y &lt; N</code>则起点为<code>(0, n)</code>否则为<code>(n-N-1, N-1)</code></li>
-</ol>
-<p>具体分析如下(以示例种3*3矩阵举例)：<br>第0趟 <code>x = 0, y = 0; x + y = 0</code>，0是偶数，<code>左下-&gt;右上</code>，<code>[(0,0)],[1]</code><br>第1趟 <code>x = 0, y = 1; x + y = 1</code>，1是奇数，<code>右上-&gt;左下</code>，<code>[(0,1),(1,0)],[2,4]</code><br>第2趟 <code>x = 2, y = 0; x + y = 2</code>，2是偶数，<code>左下-&gt;右上</code>，<code>[(2,0),(1,1),(0,2)],[7,5,3]</code><br>第3趟 <code>x = 1, y = 2; x + y = 3</code>，3是奇数，<code>右上-&gt;左下</code>，<code>[(1,2),(2,1)],[6,8]</code><br>第4趟 <code>x = 2, y = 2; x + y = 4</code>，4是偶数，<code>左下-&gt;右上</code>，<code>[(2,2)],[9]</code><br>因此，对角遍历后的结果为<code>[1,2,4,7,5,3,6,8,9]</code></p>
-<p><strong>时间复杂度</strong>：O(N*N)<br><strong>空间复杂度</strong>：O(N)</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; findDiagonalOrder(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ret;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.size();</span><br><span class="line">        <span class="keyword">if</span> (m == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> ret;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> n = matrix[<span class="number">0</span>].size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> t = <span class="number">0</span>; t &lt; m + n; t++) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (t % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                x = t &lt; m ? t : m - <span class="number">1</span>;</span><br><span class="line">                y = t - x;</span><br><span class="line">                <span class="keyword">while</span> (x &gt;= <span class="number">0</span> &amp;&amp; y &lt; n) &#123;</span><br><span class="line">                    ret.push_back(matrix[x][y]);</span><br><span class="line">                    x--;</span><br><span class="line">                    y++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                y = t &lt; n ? t : n - <span class="number">1</span>;</span><br><span class="line">                x = t - y;</span><br><span class="line">                <span class="keyword">while</span> (y &gt;= <span class="number">0</span> &amp;&amp; x &lt; m) &#123;</span><br><span class="line">                    ret.push_back(matrix[x][y]);</span><br><span class="line">                    y--;</span><br><span class="line">                    x++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>输入一个正整数 target ，输出所有和为 target 的连续正整数序列（至少含有两个数）。<br>序列内的数字由小到大排列，不同序列按照首个数字从小到大排列。<br><strong>难易程度</strong>：easy</p>
+<p><strong>示例 1</strong>：</p>
+<blockquote>
+<p>输入：target = 9<br>输出：[[2,3,4],[4,5]]</p>
+</blockquote>
+<p><strong>示例 2</strong>：</p>
+<blockquote>
+<p>输入：target = 15<br>输出：[[1,2,3,4,5],[4,5,6],[7,8]]</p>
+</blockquote>
+<blockquote>
+<p>限制：<br>1 &lt;= target &lt;= 10^5</p>
+</blockquote>
+<blockquote>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof" target="_blank" rel="noopener">https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>本题方法比较多，如暴力遍历，双指针法等，这里只介绍利用数学公式来求解的方法。<br>本题本质上是序列求和问题，此类问题的一个经典问题就是求<code>1,...,100</code>这100个数之和。当年高斯使用的方法就是<code>(1+100)*100/2</code>。</p>
+<p>设<code>s &lt; x</code> 且<code>s,...,x</code>这<code>(x - s + 1)</code>个连续整数之和为<code>target</code>。那么，有<code>(s + x)*(x -s + 1) == 2 * target</code>,即存在一元二次方程:<br><code>x^2 + x + s*(1-s) - 2*target = 0</code>。<br>根据韦达定理解得：<br><code>x = (sqrt(1-4(s*(1-s) - 2*target)) - 1) / 2</code><br>最终本题转变成有多少个<code>[s, x]</code>区间的问题，即枚举<code>s</code>的情况下求解一元二次方程:<code>x^2 + x + s*(1-s) - 2*target = 0</code> 整数正值的问题。</p>
+<p><strong>时间复杂度</strong>：O(N)，由于枚举以后只需要 O(1)的时间判断，所以时间复杂度为枚举起点的复杂度O(target/2) 。<br><strong>空间复杂度</strong>：O(1) ，除了答案数组只需要常数的空间存放若干变量。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; findContinuousSequence(<span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="comment">// 题中要求至少含有两个数，所以s最大为target-1</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> s = <span class="number">1</span>; s &lt;= target / <span class="number">2</span>; s++) &#123;</span><br><span class="line">            <span class="comment">// 主要这里s*(1-s)可能超过MAX_INT，因此同乘以1ll来提升类型，下同</span></span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> d = <span class="number">1</span> - <span class="number">4</span>*(<span class="number">1l</span>l * s*(<span class="number">1</span> - s) - <span class="number">2</span> * target);</span><br><span class="line">            <span class="keyword">if</span> (d &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> sqrt_d = (<span class="keyword">int</span>)<span class="built_in">sqrt</span>(d);</span><br><span class="line">            <span class="keyword">if</span> (<span class="number">1l</span>l * sqrt_d * sqrt_d == d &amp;&amp; (sqrt_d - <span class="number">1</span>) % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = s; i &lt;= (sqrt_d - <span class="number">1</span>) / <span class="number">2</span>; i++) &#123;</span><br><span class="line">                    tmp.push_back(i);</span><br><span class="line">                &#125;</span><br><span class="line">                res.push_back(tmp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -589,7 +595,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/" title="【leetcode】4. 数组-对角线遍历">https://m.fanruo.net/2020/02/18/【leetcode】4-数组-对角线遍历/</a>
+    <a href="https://m.fanruo.net/2020/03/06/【leetcode】20-序列-和为s的连续正数序列/" title="【leetcode】20. 序列-和为s的连续正数序列">https://m.fanruo.net/2020/03/06/【leetcode】20-序列-和为s的连续正数序列/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
@@ -606,6 +612,8 @@
           
             <a href="/tags/数组/" rel="tag"># 数组</a>
           
+            <a href="/tags/序列求和/" rel="tag"># 序列求和</a>
+          
         </div>
       
 
@@ -617,8 +625,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/16/【leetcode】数组-加一/" rel="next" title="【leetcode】3. 数组-加一">
-                <i class="fa fa-chevron-left"></i> 【leetcode】3. 数组-加一
+              <a href="/2020/02/28/【leetcode】19-栈-队列-队列的最大值/" rel="next" title="【leetcode】19. 栈&队列-队列的最大值">
+                <i class="fa fa-chevron-left"></i> 【leetcode】19. 栈&队列-队列的最大值
               </a>
             
           </div>
@@ -626,10 +634,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/18/推荐几本redis书籍/" rel="prev" title="推荐几本redis书籍">
-                推荐几本redis书籍 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
