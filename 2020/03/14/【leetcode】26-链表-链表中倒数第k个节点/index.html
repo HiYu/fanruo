@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="和其他语言一样lua也提供对应的跳出关键字，不过lua不提供continue关键字。 break语句break用于跳出循环，终止for、repeat、while 三种循环的执行，并跳出当前循环体，继续执行当前循环之后的语句,在循环外部不可用。 returnreturn 只能写在语句块的最后，一旦执行了return 语句，该语句之后的所有语句都不会再执行。若要写在函数中间，则只能写在一个显式的语句块">
-<meta name="keywords" content="lua,语法">
+  <meta name="description" content="题目输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。难易程度：easy 示例 1:  给定一个链表: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, 和 k = 2.返回链表 4-&amp;gt;5.   来源：力扣">
+<meta name="keywords" content="leetcode,链表">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2.6 lua break 与 return">
-<meta property="og:url" content="https://m.fanruo.net/2019/05/23/2-6-lua-break-与-return/index.html">
+<meta property="og:title" content="【leetcode】26. 链表-链表中倒数第k个节点">
+<meta property="og:url" content="https://m.fanruo.net/2020/03/14/【leetcode】26-链表-链表中倒数第k个节点/index.html">
 <meta property="og:site_name" content="凡 若">
-<meta property="og:description" content="和其他语言一样lua也提供对应的跳出关键字，不过lua不提供continue关键字。 break语句break用于跳出循环，终止for、repeat、while 三种循环的执行，并跳出当前循环体，继续执行当前循环之后的语句,在循环外部不可用。 returnreturn 只能写在语句块的最后，一旦执行了return 语句，该语句之后的所有语句都不会再执行。若要写在函数中间，则只能写在一个显式的语句块">
+<meta property="og:description" content="题目输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。难易程度：easy 示例 1:  给定一个链表: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, 和 k = 2.返回链表 4-&amp;gt;5.   来源：力扣">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-23T00:57:52.057Z">
+<meta property="og:updated_time" content="2020-03-14T15:18:34.936Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2.6 lua break 与 return">
-<meta name="twitter:description" content="和其他语言一样lua也提供对应的跳出关键字，不过lua不提供continue关键字。 break语句break用于跳出循环，终止for、repeat、while 三种循环的执行，并跳出当前循环体，继续执行当前循环之后的语句,在循环外部不可用。 returnreturn 只能写在语句块的最后，一旦执行了return 语句，该语句之后的所有语句都不会再执行。若要写在函数中间，则只能写在一个显式的语句块">
+<meta name="twitter:title" content="【leetcode】26. 链表-链表中倒数第k个节点">
+<meta name="twitter:description" content="题目输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。难易程度：easy 示例 1:  给定一个链表: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, 和 k = 2.返回链表 4-&amp;gt;5.   来源：力扣">
 
 
 
@@ -117,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://m.fanruo.net/2019/05/23/2-6-lua-break-与-return/">
+  <link rel="canonical" href="https://m.fanruo.net/2020/03/14/【leetcode】26-链表-链表中倒数第k个节点/">
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>2.6 lua break 与 return | 凡 若</title>
+  <title>【leetcode】26. 链表-链表中倒数第k个节点 | 凡 若</title>
   
 
 
@@ -376,7 +376,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2019/05/23/2-6-lua-break-与-return/">
+    <link itemprop="mainEntityOfPage" href="https://m.fanruo.net/2020/03/14/【leetcode】26-链表-链表中倒数第k个节点/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Frank Yu">
@@ -393,7 +393,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">2.6 lua break 与 return
+          <h2 class="post-title" itemprop="name headline">【leetcode】26. 链表-链表中倒数第k个节点
 
               
             
@@ -419,7 +419,7 @@
                 
               
 
-              <time title="创建时间：2019-05-23 08:56:53 / 修改时间：08:57:52" itemprop="dateCreated datePublished" datetime="2019-05-23T08:56:53+08:00">2019-05-23</time>
+              <time title="创建时间：2020-03-14 23:17:35 / 修改时间：23:18:34" itemprop="dateCreated datePublished" datetime="2020-03-14T23:17:35+08:00">2020-03-14</time>
             
 
             
@@ -441,14 +441,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/语言/" itemprop="url" rel="index"><span itemprop="name">语言</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/语言/lua/" itemprop="url" rel="index"><span itemprop="name">lua</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/leetcode/链表/" itemprop="url" rel="index"><span itemprop="name">链表</span></a></span>
 
                 
                 
@@ -467,8 +467,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/05/23/2-6-lua-break-与-return/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/23/2-6-lua-break-与-return/" itemprop="commentCount"></span>
+                <a href="/2020/03/14/【leetcode】26-链表-链表中倒数第k个节点/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/14/【leetcode】26-链表-链表中倒数第k个节点/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -476,7 +476,7 @@
 
           
           
-            <span id="/2019/05/23/2-6-lua-break-与-return/" class="leancloud_visitors" data-flag-title="2.6 lua break 与 return">
+            <span id="/2020/03/14/【leetcode】26-链表-链表中倒数第k个节点/" class="leancloud_visitors" data-flag-title="【leetcode】26. 链表-链表中倒数第k个节点">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -501,7 +501,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">938</span>
+                <span title="本文字数">1.6k</span>
               
 
               
@@ -535,15 +535,27 @@
       
 
       
-        <p>和其他语言一样<code>lua</code>也提供对应的跳出关键字，不过<code>lua</code>不提供<code>continue</code>关键字。</p>
-<h2 id="break"><a href="#break" class="headerlink" title="break"></a>break</h2><p>语句<code>break</code>用于跳出循环，终止<code>for</code>、<code>repeat</code>、<code>while</code> 三种循环的执行，并跳出当前循环体，继续执行当前循环之后的语句,在循环外部不可用。</p>
-<h2 id="return"><a href="#return" class="headerlink" title="return"></a>return</h2><p>return 只能写在语句块的最后，一旦执行了return 语句，该语句之后的所有语句都不会再执行。若要写在函数中间，则只能写在一个显式的语句块内。</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(x, y)</span></span></span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line">    <span class="comment">--print("add: I will return the result " .. (x + y))</span></span><br><span class="line">    <span class="comment">--因为前面有个return，若不注释该语句，则会报错</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">is_positive</span><span class="params">(x)</span></span></span><br><span class="line">    <span class="keyword">if</span> x &gt; <span class="number">0</span> <span class="keyword">then</span></span><br><span class="line">        <span class="keyword">return</span> x .. <span class="string">" is positive"</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> x .. <span class="string">" is non-positive"</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="comment">--由于return只出现在前面显式的语句块，所以此语句不注释也不会报错</span></span><br><span class="line">    <span class="comment">--，但是不会被执行，此处不会产生输出</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"function end!"</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">sum = add(<span class="number">10</span>, <span class="number">20</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"The sum is "</span> .. sum) <span class="comment">--&gt;output:The sum is 30</span></span><br><span class="line">answer = is_positive(<span class="number">-10</span>)</span><br><span class="line"><span class="built_in">print</span>(answer) <span class="comment">--&gt;output:-10 is non-positive</span></span><br></pre></td></tr></table></figure>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。例如，一个链表有6个节点，从头节点开始，它们的值依次是1、2、3、4、5、6。这个链表的倒数第3个节点是值为4的节点。<br><strong>难易程度</strong>：easy</p>
+<p><strong>示例 1</strong>:</p>
+<blockquote>
+<p>给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 k = 2.<br>返回链表 4-&gt;5.</p>
+</blockquote>
+<blockquote>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof" target="_blank" rel="noopener">https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+</blockquote>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>本题典型的双指针题目：</p>
+<ol>
+<li>设指针<code>rp</code>、<code>lp</code>都指向<code>head</code>,</li>
+<li><code>rp</code>先走<code>k</code>步</li>
+<li><code>rp</code>、<code>lp</code> 同步移动</li>
+<li>到<code>rp</code>指向链表尾后<code>NULL</code>的时候，<code>lp</code>即是倒数第<code>k</code>个节点</li>
+</ol>
+<p><strong>时间复杂度</strong>：O(N)<br><strong>空间复杂度</strong>：O(1)</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">getKthFromEnd</span><span class="params">(ListNode* head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        ListNode *lp = head, *rp = head;</span><br><span class="line">        <span class="keyword">while</span> (rp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            rp = rp-&gt;next;</span><br><span class="line">            <span class="keyword">if</span> (k &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                k--;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                lp = lp-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lp;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>有时候，为了调试方便，我们可以想在某个函数的中间提前 <code>return</code> ，以进行控制流的短路。此时我们可以将 <code>return</code> 放在一个 <code>do ... end</code> 代码块中:</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span><span class="params">()</span></span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"before"</span>)</span><br><span class="line">    <span class="keyword">do</span> <span class="keyword">return</span> <span class="keyword">end</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"after"</span>) <span class="comment">-- 这一行语句永远不会执行到</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>上述算法，可以进一步优化，<code>rp</code>只先走<code>k-1</code>步，最后<code>rp</code>指向链表的最后一个节点。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">getKthFromEnd</span><span class="params">(ListNode* head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        ListNode *lp = head, *rp = head;</span><br><span class="line">        <span class="keyword">while</span> (rp-&gt;next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            rp = rp-&gt;next;<span class="comment">// 结束时，rp是最后一个节点，而非NULL</span></span><br><span class="line">            <span class="keyword">if</span> (k &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                k--;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                lp = lp-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lp;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p><strong>特别注意</strong>：上述实例中<code>return</code>如果不放在<code>do ... end</code>中将会保存，因为<code>return</code>只能放在函数的最后。</p>
 
       
     </div>
@@ -584,7 +596,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://m.fanruo.net/2019/05/23/2-6-lua-break-与-return/" title="2.6 lua break 与 return">https://m.fanruo.net/2019/05/23/2-6-lua-break-与-return/</a>
+    <a href="https://m.fanruo.net/2020/03/14/【leetcode】26-链表-链表中倒数第k个节点/" title="【leetcode】26. 链表-链表中倒数第k个节点">https://m.fanruo.net/2020/03/14/【leetcode】26-链表-链表中倒数第k个节点/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！</li>
@@ -597,9 +609,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/lua/" rel="tag"># lua</a>
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
           
-            <a href="/tags/语法/" rel="tag"># 语法</a>
+            <a href="/tags/链表/" rel="tag"># 链表</a>
           
         </div>
       
@@ -612,8 +624,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/21/2-5-lua-变量/" rel="next" title="2.5 lua 变量">
-                <i class="fa fa-chevron-left"></i> 2.5 lua 变量
+              <a href="/2020/03/08/【leetcode】25-数组-旋转数组的最小数字/" rel="next" title="【leetcode】25. 数组-旋转数组的最小数字">
+                <i class="fa fa-chevron-left"></i> 【leetcode】25. 数组-旋转数组的最小数字
               </a>
             
           </div>
@@ -621,10 +633,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/24/3-1-lua-函数/" rel="prev" title="3.1 lua 函数">
-                3.1 lua 函数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -902,7 +910,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#break"><span class="nav-number">1.</span> <span class="nav-text">break</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#return"><span class="nav-number">2.</span> <span class="nav-text">return</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
             
 
           </div>
