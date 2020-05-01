@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://m.fanruo.net/"/>
-  <updated>2020-03-14T15:18:34.936Z</updated>
+  <updated>2020-05-01T14:35:37.974Z</updated>
   <id>https://m.fanruo.net/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redis 源码源文件文件说明</title>
+    <link href="https://m.fanruo.net/2020/05/01/redis-%E6%BA%90%E7%A0%81%E6%BA%90%E6%96%87%E4%BB%B6%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E/"/>
+    <id>https://m.fanruo.net/2020/05/01/redis-源码源文件文件说明/</id>
+    <published>2020-05-01T14:34:38.000Z</published>
+    <updated>2020-05-01T14:35:37.974Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="redis-源码源文件说明"><a href="#redis-源码源文件说明" class="headerlink" title="redis 源码源文件说明"></a>redis 源码源文件说明</h1><table><thead><tr><th>分类</th><th>源文件</th><th>说明</th><th>备注</th></tr></thead><tbody><tr><td>数据结构/编码</td><td>adlist.c, adlist.h</td><td>双端链表数据结构的实现。</td><td></td></tr><tr><td>数据结构/编码</td><td>quicklist.c, quicklist.h</td><td>快表实现</td><td></td></tr><tr><td>数据结构/编码</td><td>listpack.c, listpack.h, listpack_malloc.h</td><td>5.0 新增liskpack实现</td><td></td></tr><tr><td>数据结构/编码</td><td>rax.c, rax.h, rax_malloc.h</td><td>基数树实现</td><td></td></tr><tr><td>数据结构/编码</td><td>dict.c, dict.h</td><td>字典数据结构的实现。</td><td></td></tr><tr><td>数据结构/编码</td><td>intset.c, intset.h</td><td>intset 数据结构实现</td><td></td></tr><tr><td>数据结构/编码</td><td>sds.c, sds.h, sdsalloc.h</td><td>sds 字符串实现</td><td></td></tr><tr><td>数据结构/编码</td><td>ziplist.c, ziplist.h</td><td>压缩表实现</td><td></td></tr><tr><td>数据结构/编码</td><td>zipmap.c, zipmap.h</td><td>ZIPMAP 数据结构的实现，在 Redis 2.6 以前用与优化 HASH 类型， Redis 2.6 开始已经废弃。</td><td></td></tr><tr><td>数据结构/编码</td><td>stream.h</td><td>5.0 新增stream数据结构实现</td><td></td></tr><tr><td>数据类型/功能</td><td>t_string.c</td><td>string 数据类型实现</td><td></td></tr><tr><td>数据类型/功能</td><td>t_hash.c</td><td>hash 数据类型实现</td><td></td></tr><tr><td>数据类型/功能</td><td>t_list.c</td><td>list 数据类型实现</td><td></td></tr><tr><td>数据类型/功能</td><td>t_set.c</td><td>set 数据类型实现</td><td></td></tr><tr><td>数据类型/功能</td><td>t_stream.c</td><td>stream 数据类型实现</td><td></td></tr><tr><td>数据类型/功能</td><td>t_zset.c</td><td>数据类型实现</td><td></td></tr><tr><td>数据类型/功能</td><td>geo.c, geo.h, geohash.c, geohash.h, geohash_helper.c, geohash_helper.h</td><td>地理信息相关操作实现</td><td></td></tr><tr><td>数据类型/功能</td><td>hyperloglog.c</td><td>hyperloglog 相关操作实现</td><td></td></tr><tr><td>数据类型/功能</td><td>pubsub.c</td><td>消息队列实现</td><td></td></tr><tr><td>数据类型/功能</td><td>bitops.c</td><td>位操作相关实现</td><td></td></tr><tr><td>数据类型/功能</td><td>scripting.c</td><td>lua脚本功能实现</td><td></td></tr><tr><td>数据类型/功能</td><td>sort.c</td><td>SORT命令的实现</td><td></td></tr><tr><td>数据类型/功能</td><td>multi.c</td><td>Redis 的事务实现。</td><td></td></tr><tr><td>数据类型/功能</td><td>blocked.c</td><td>用于实现 BLPOP 命令和 WAIT 命令的阻塞效果。</td><td></td></tr><tr><td>数据类型/功能</td><td>lolwut5.c</td><td>5.0 新增的酷炫命令</td><td></td></tr><tr><td>数据类型/功能</td><td>lolwut.c</td><td>5.0 新增的酷炫命令</td><td></td></tr><tr><td>事件处理器/IO</td><td>ae.c, ae.h, ae_epoll.c, ae_evport.c, ae_kqueue.c, ae_select.c</td><td>事件处理器，以及各个具体实现</td><td></td></tr><tr><td>事件处理器/IO</td><td>rio.c, rio.h</td><td>Redis 对文件 I/O 函数的包装， 在普通 I/O 函数的基础上增加了显式缓存、以及计算校验和等功能。</td><td></td></tr><tr><td>事件处理器/IO</td><td>bio.c, bio.h</td><td>Redis 的后台 I/O 程序，用于将 I/O 操作放到子线程里面执行， 减少 I/O 操作对主线程的阻塞。</td><td></td></tr><tr><td>事件处理器/IO</td><td>syncio.c</td><td>同步IO实现</td><td></td></tr><tr><td>事件处理器/IO</td><td>anet.c, anet.h</td><td>Redis 的异步网络框架，内容主要为对 socket 库的包装。</td><td></td></tr><tr><td>事件处理器/IO</td><td>networking.c</td><td>Redis 的客户端网络操作库， 用于实现命令请求接收、发送命令回复等工作， 文件中的函数大多为 write 、 read 、 close 等函数的包装， 以及各种协议的分析和构建函数。</td><td></td></tr><tr><td>数据库实现</td><td>object.c</td><td>Redis 的对象系统实现。</td><td></td></tr><tr><td>数据库实现</td><td>db.c</td><td>数据库实现。</td><td></td></tr><tr><td>数据库实现</td><td>notify.c</td><td>Redis 的数据库通知实现。</td><td></td></tr><tr><td>数据库实现</td><td>evict.c</td><td>LRU 数据淘汰机制</td><td></td></tr><tr><td>数据类型/功能</td><td>expire.c</td><td>过期机制实现</td><td></td></tr><tr><td>服务端&amp;客户端</td><td>server.c, server.h</td><td>服务端实现</td><td></td></tr><tr><td>服务端&amp;客户端</td><td>config.c, config.h</td><td>Redis 的配置管理实现，负责读取并分析配置文件， 然后根据这些配置修改 Redis 服务器的各个选项。</td><td></td></tr><tr><td>服务端&amp;客户端</td><td>redis-cli.c</td><td>客户端实现</td><td></td></tr><tr><td>持久化</td><td>aof.c</td><td>aof 实现</td><td></td></tr><tr><td>持久化</td><td>redis-check-aof.c</td><td>AOF 文件的合法性检查程序。</td><td></td></tr><tr><td>持久化</td><td>rdb.c, rdb.h</td><td>RDB 功能实现</td><td></td></tr><tr><td>持久化</td><td>redis-check-rdb.c</td><td>RDB 文件的合法性检查程序。</td><td></td></tr><tr><td>持久化</td><td>childinfo.c</td><td>进程处理，rdb或aof子进程工作分离</td><td></td></tr><tr><td>多机支持</td><td>replication.c</td><td>主从复制实现</td><td></td></tr><tr><td>多机支持</td><td>sentinel.c</td><td>哨兵功能实现</td><td></td></tr><tr><td>多机支持</td><td>cluster.c, cluster.h</td><td>集群功能实现</td><td></td></tr><tr><td>多机支持</td><td>redis-trib.rb</td><td>集群管理功能实现</td><td></td></tr><tr><td>监控相关</td><td>slowlog.c, slowlog.h</td><td>慢日志</td><td></td></tr><tr><td>监控相关</td><td>latency.c, latency.h</td><td>延迟监控</td><td></td></tr><tr><td>监控相关</td><td>sparkline.c, sparkline.h</td><td>微线图功能实现</td><td></td></tr><tr><td>工具功能</td><td>util.c, util.h</td><td>工具类函数集合</td><td></td></tr><tr><td>工具功能</td><td>siphash.c</td><td>Redis 4.0 &amp; 5.0, 采用的是 SipHash 哈希算法</td><td></td></tr><tr><td>工具功能</td><td>pqsort.c, pqsort.h</td><td>快速排序（QuickSort）算法的实现</td><td></td></tr><tr><td>工具功能</td><td>lzf_c.c, lzf_d.c, lzf.h, lzfP.h</td><td>Redis 对字符串和 RDB 文件进行压缩时使用的 LZF 压缩算法的实现。</td><td></td></tr><tr><td>工具功能</td><td>module.c, redismodule.h</td><td>支持用户自定义module</td><td></td></tr><tr><td>工具功能</td><td>modules</td><td>module demo</td><td></td></tr><tr><td>工具功能</td><td>endianconv.c, endianconv.h</td><td>二进制的大端、小端转换函数。</td><td></td></tr><tr><td>工具功能</td><td>sha1.c, sha1.h</td><td>SHA1 校验和计算函数。</td><td></td></tr><tr><td>工具功能</td><td>crc16.c, crc64.c, crc64.h</td><td>计算 CRC 校验和。</td><td></td></tr><tr><td>工具功能</td><td>rand.c, rand.h</td><td>随机数实现</td><td></td></tr><tr><td>工具功能</td><td>localtime.c</td><td>时间功能实现</td><td></td></tr><tr><td>工具功能</td><td>setproctitle.c</td><td>进程环境设置函数</td><td></td></tr><tr><td>工具功能</td><td>atomicvar.h</td><td>原子计数实现</td><td></td></tr><tr><td>内存管理</td><td>zmalloc.c, zmalloc.h</td><td></td><td></td></tr><tr><td>内存管理</td><td>defrag.c</td><td>内存碎片整理</td><td></td></tr><tr><td>内存管理</td><td>lazyfree.c</td><td>redis 4.0 引入了lazyfree的机制，它可以将删除键或数据库的操作放在后台线程里执行， 从而尽可能地避免服务器阻塞。</td><td></td></tr><tr><td>调试/测试/其他</td><td>valgrind.sup</td><td>valgrind 的suppression文件。</td><td></td></tr><tr><td>调试/测试/其他</td><td>asciilogo.h</td><td>ascii logo</td><td></td></tr><tr><td>调试/测试/其他</td><td>version.h</td><td>版本</td><td></td></tr><tr><td>调试/测试/其他</td><td>release.c</td><td>记录和生成 Redis 的释出版本信息。</td><td></td></tr><tr><td>调试/测试/其他</td><td>testhelp.h</td><td>测试辅助宏。</td><td></td></tr><tr><td>调试/测试/其他</td><td>debug.c</td><td>调试实现。</td><td></td></tr><tr><td>调试/测试/其他</td><td>debugmacro.h</td><td>调试宏定义实现</td><td></td></tr><tr><td>调试/测试/其他</td><td>redis-benchmark.c</td><td>redis benchmark 测试工具</td><td></td></tr><tr><td>调试/测试/其他</td><td>memtest.c</td><td>内存测试。</td><td></td></tr><tr><td>调试/测试/其他</td><td>redisassert.h</td><td>Redis 自建的断言系统。</td><td></td></tr><tr><td>调试/测试/其他</td><td>help.h</td><td>utils/generate-command-help.rb 程序自动生成的命令帮助信息。</td><td></td></tr><tr><td>调试/测试/其他</td><td>mkreleasehdr.sh</td><td>用于生成释出信息的脚本。</td><td></td></tr><tr><td>调试/测试/其他</td><td>solarisfixes.h</td><td>针对 Solaris 系统的补丁。</td><td></td></tr><tr><td>调试/测试/其他</td><td>fmacros.h</td><td>一些移植性方面的宏。</td><td></td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;redis-源码源文件说明&quot;&gt;&lt;a href=&quot;#redis-源码源文件说明&quot; class=&quot;headerlink&quot; title=&quot;redis 源码源文件说明&quot;&gt;&lt;/a&gt;redis 源码源文件说明&lt;/h1&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;分类&lt;/
+      
+    
+    </summary>
+    
+      <category term="源码阅读" scheme="https://m.fanruo.net/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="redis" scheme="https://m.fanruo.net/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/redis/"/>
+    
+    
+      <category term="源码阅读" scheme="https://m.fanruo.net/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    
+      <category term="redis" scheme="https://m.fanruo.net/tags/redis/"/>
+    
+  </entry>
   
   <entry>
     <title>【leetcode】26. 链表-链表中倒数第k个节点</title>
@@ -570,35 +602,6 @@
       <category term="leetcode" scheme="https://m.fanruo.net/tags/leetcode/"/>
     
       <category term="数组" scheme="https://m.fanruo.net/tags/%E6%95%B0%E7%BB%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【好书推荐】血疫-埃博拉的故事</title>
-    <link href="https://m.fanruo.net/2020/02/21/%E3%80%90%E5%A5%BD%E4%B9%A6%E6%8E%A8%E8%8D%90%E3%80%91%E8%A1%80%E7%96%AB-%E5%9F%83%E5%8D%9A%E6%8B%89%E7%9A%84%E6%95%85%E4%BA%8B/"/>
-    <id>https://m.fanruo.net/2020/02/21/【好书推荐】血疫-埃博拉的故事/</id>
-    <published>2020-02-21T02:02:31.000Z</published>
-    <updated>2020-02-24T01:44:41.650Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><img src="http://q66nxrlmf.bkt.clouddn.com/%E8%A1%80%E7%96%AB.png" alt="image"><br>这是一本“人命关天”的书。<br>艾滋病、SARS、埃博拉、寨卡，文明与病毒之间，只隔了一个航班的距离。<br>来自热带雨林的危险病毒，可在24小时内乘飞机抵达地球上的任何城市。航空线路连接了全世界的所有城市，构成网络。埃博拉已经进入网络，开始环球旅行。<br>这不只是一个病毒的故事，它关系着人类的无知、贪婪、勇气和牺牲，以及面对大自然时的敬畏。<br>真实，远比想象更惊悚。</p><p>普雷斯顿采访1967-1993年间大量埃博拉病毒亲历者，再现人类历史上病毒灾难来袭的真实场景。<br>1989年11月，美国弗吉尼亚州的雷斯顿城发生过埃博拉病毒事件。这个小城位于华盛顿特区以西24公里处，晴朗的天气里人们都能在雷斯顿城的高层建筑上望见华盛顿纪念碑那米黄色的尖顶。这里的灵长类动物检疫中心接收了100只从菲律宾进口的食蟹猴。没过几天，两只死亡。<br>理论上，少量动物死亡是很常见的。令人不安的是，不到一个月，又有29只猴子死亡。随着猴子死亡相继增加，科研人员渐渐逼近真相：猴子感染了一种未知的病毒。在大量研究下，他们认为这是埃博拉病毒。最后，美军出动将大楼封锁，所有动物处死。幸运的是，在目前已知的五种埃博拉病毒中，这种雷斯顿型亚型只感染灵长类动物，让人类逃过一劫。<br>1994年，美国作家理查德.普雷斯顿基于这一史料，采访大量亲历者后出版非虚构作品。</p><h1 id="总结-amp-拓展"><a href="#总结-amp-拓展" class="headerlink" title="总结&amp;拓展"></a>总结&amp;拓展</h1><p>全书介绍了<code>丝状病毒</code>的几种比较早期的病毒发现爆发的过程。<code>丝状病毒</code>包含的属有：</p><ol><li>马尔堡病毒</li><li>埃博拉病毒</li></ol><p>其中埃博拉病毒包括：</p><ol><li>Zaire ebolavirus（EBOV） (扎伊尔埃博拉病毒, 1976）- 标准亚种 （致死率高达90%）</li><li>Sudan ebolavirus（SUDV） (苏丹埃博拉病毒, 1976） （致死率高达68%）</li><li>Reston ebolavirus（RESTV） (雷斯顿埃博拉病毒, 1989）（所有感染者都为猴类，无人类感染）</li><li>Taï Forest ebolavirus（TAFV） (科特迪瓦埃博拉病毒, 1994）</li><li>Bundibugyo ebolavirus（BDBV） (本迪布焦埃博拉病毒, 2007）</li><li>Bombali ebolavirus（BOMV） (邦巴利埃博拉病毒, 2018）</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://q66nxrlmf.bkt.clouddn.com/%E8%A1%80%E7%96%AB.png&quot; alt
-      
-    
-    </summary>
-    
-      <category term="书籍推荐" scheme="https://m.fanruo.net/categories/%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90/"/>
-    
-    
-      <category term="埃博拉" scheme="https://m.fanruo.net/tags/%E5%9F%83%E5%8D%9A%E6%8B%89/"/>
-    
-      <category term="丝状病毒" scheme="https://m.fanruo.net/tags/%E4%B8%9D%E7%8A%B6%E7%97%85%E6%AF%92/"/>
-    
-      <category term="马尔堡" scheme="https://m.fanruo.net/tags/%E9%A9%AC%E5%B0%94%E5%A0%A1/"/>
     
   </entry>
   
